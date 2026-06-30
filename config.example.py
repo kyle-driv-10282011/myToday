@@ -18,6 +18,11 @@ GITHUB_FEEDS_URL     = 'https://api.github.com/repos/your-username/myToday/conte
 # PagerDuty API token — PagerDuty → Integrations → API Access Keys → Create New API Key
 PAGERDUTY_TOKEN      = 'your-pagerduty-token'
 
+# PagerDuty teams — schedule and service IDs found in the PagerDuty URL for each schedule/service
+PAGERDUTY_TEAMS      = [
+    {'name': 'Your Team', 'schedule': 'XXXXXXX', 'service': 'XXXXXXX'},
+]
+
 # Finnhub API key — finnhub.io → Dashboard → API Key (free tier works)
 FINNHUB_KEY          = 'your-finnhub-api-key'
 

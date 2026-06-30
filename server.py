@@ -112,7 +112,7 @@ try:
         PROXY_SECRET,
         SLACK_WORKSPACE_ID, SLACK_WORKSPACE_DOMAIN, GITHUB_PAT, PAGERDUTY_TOKEN, FINNHUB_KEY,
         MS_CLIENT_ID, MS_TENANT_ID, AUTO_PULL, PULL_INTERVAL,
-        GITHUB_API_URL, GITHUB_FEEDS_URL,
+        GITHUB_API_URL, GITHUB_FEEDS_URL, PAGERDUTY_TEAMS,
     )
     import config as _config
     PORT = getattr(_config, 'PORT', 8080)
@@ -707,11 +707,7 @@ class Handler(http.server.BaseHTTPRequestHandler):
                 else:
                     opener = urllib.request.build_opener(https_handler)
 
-                try:
-                    with open(os.path.join(BASE_DIR, 'feeds.json'), 'r') as _f:
-                        teams = json.load(_f).get('pagerduty', [])
-                except Exception:
-                    teams = []
+                teams = PAGERDUTY_TEAMS
                 headers = {'Authorization': f'Token token={PAGERDUTY_TOKEN}', 'Accept': 'application/vnd.pagerduty+json;version=2'}
                 results = []
 

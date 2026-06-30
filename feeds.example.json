@@ -7,9 +7,6 @@
     { "id": "tz-in",  "label": "India",         "tz": "Asia/Kolkata",     "lat": 18.52, "lon": 73.86  }
   ],
   "stocks": ["AAPL", "MSFT", "GOOG"],
-  "pagerduty": [
-    {"name": "Your Team", "schedule": "XXXXXXX", "service": "XXXXXXX"}
-  ],
   "feeds": [
     {"name": "TechCrunch",            "url": "https://techcrunch.com/feed/"},
     {"name": "Security: Krebs",       "url": "https://krebsonsecurity.com/feed/"},
