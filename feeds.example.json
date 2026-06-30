@@ -1,7 +1,10 @@
 {
-  "github_pull_urls": [
-    "https://api.github.com/repos/your-username/myToday/contents/calendar.html",
-    "https://api.github.com/repos/your-username/myToday/contents/feeds.json"
+  "locations": [
+    { "id": "tz-mn",  "label": "Minnesota",     "tz": "America/Chicago",  "lat": 45.0125715, "lon": -93.6645887 },
+    { "id": "tz-nh",  "label": "New Hampshire", "tz": "America/New_York", "lat": 42.99, "lon": -71.46 },
+    { "id": "tz-lon", "label": "Telford",       "tz": "Europe/London",    "lat": 52.68, "lon": -2.45  },
+    { "id": "tz-ams", "label": "Amsterdam",     "tz": "Europe/Amsterdam", "lat": 52.37, "lon": 4.90   },
+    { "id": "tz-in",  "label": "India",         "tz": "Asia/Kolkata",     "lat": 18.52, "lon": 73.86  }
   ],
   "stocks": ["AAPL", "MSFT", "GOOG"],
   "pagerduty": [
