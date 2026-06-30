@@ -25,7 +25,7 @@ The dashboard UI. It:
 ## End-user setup (receiving the zip from someone else)
 
 ### Requirements
-- Windows 10 or 11
+- Windows 10 or 11, or Linux
 - A modern browser (Edge or Chrome)
 - Internet access for the first-time browser install
 
@@ -33,11 +33,11 @@ The dashboard UI. It:
 
 **1. Unzip**
 
-Extract the `myToday` folder somewhere permanent (e.g. `C:\Users\yourname\myToday`). Do not run it from the zip or from Downloads if files get blocked.
+Extract the `myToday` folder somewhere permanent (e.g. `C:\Users\yourname\myToday` on Windows, `~/myToday` on Linux). Do not run it from the zip or from Downloads if files get blocked.
 
 **2. Create your config**
 
-In the `myToday` folder, copy `config.example.py` and rename the copy to `config.py`. Open it in Notepad and fill in your credentials. See the [Config reference](#config-reference) section below.
+In the `myToday` folder, copy `config.example.py` and rename the copy to `config.py`. Open it and fill in your credentials. See the [Config reference](#config-reference) section below.
 
 **3. Create your feeds**
 
@@ -45,16 +45,22 @@ Copy `feeds.example.json` and rename the copy to `feeds.json`. Edit it to add yo
 
 **4. Run first-time browser install**
 
-Double-click `setup.bat`. This downloads the Chromium browser that myToday uses for the Slack login (~200MB). You only need to do this once.
+This downloads the Chromium browser that myToday uses for the Slack login (~200MB). You only need to do this once.
+
+- **Windows:** Double-click `setup.bat`
+- **Linux:** `chmod +x setup.sh myToday && ./setup.sh`
 
 ```
 Installing Playwright browser (one-time setup)...
-Done. You can now run myToday.exe
+Done. You can now run myToday
 ```
 
 **5. Start the app**
 
-Double-click `myToday.exe`. You should see:
+- **Windows:** Double-click `myToday.exe`
+- **Linux:** `./myToday`
+
+You should see:
 
 ```
 Serving at http://localhost:8080
@@ -79,7 +85,7 @@ Open your browser and go to `http://localhost:8080` (or whichever port was print
 
 ### Requirements
 - Python 3.11 or later
-- Windows (PyInstaller builds are platform-specific)
+- Windows or Linux (PyInstaller builds are platform-specific — build on the OS you want to target)
 - Git
 
 ### Steps
@@ -88,14 +94,21 @@ Open your browser and go to `http://localhost:8080` (or whichever port was print
 
 ```
 git clone https://github.com/kyle-driv-10282011/myToday.git
-cd myToday\calendar
+cd myToday
 ```
 
 **2. Create and activate a virtual environment**
 
+Windows:
 ```
 python -m venv .venv
 .venv\Scripts\activate
+```
+
+Linux:
+```
+python3 -m venv .venv
+source .venv/bin/activate
 ```
 
 **3. Install dependencies**
@@ -119,13 +132,12 @@ Then open `http://localhost:8080`.
 
 ### Building the distributable
 
-Run `build.bat` from the `calendar` folder. It cleans any previous build, installs PyInstaller, and produces `dist\myToday\`.
+Cleans any previous build, installs PyInstaller, and produces `dist/myToday/`.
 
-```
-build.bat
-```
+- **Windows:** `build.bat`
+- **Linux:** `./build.sh`
 
-Zip up `dist\myToday\` and distribute.
+Zip up `dist/myToday/` and distribute.
 
 ---
 
