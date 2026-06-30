@@ -2,12 +2,10 @@
 set -e
 
 echo "Cleaning previous build..."
-rm -rf build dist myToday.spec
+rm -rf build dist myToday.spec .venv
 
 echo "Setting up build environment..."
-if [ ! -d .venv ]; then
-    python3 -m venv .venv
-fi
+python3 -m venv .venv
 source .venv/bin/activate
 
 echo "Installing build dependencies..."
