@@ -11,11 +11,6 @@ SLACK_WORKSPACE_DOMAIN = 'yourworkspace.slack.com'
 # Needs repo:read scope on the myToday repo
 GITHUB_PAT           = 'github_pat_...'
 
-# GitHub API URLs for auto-pull — path to calendar.html and feeds.json in the repo
-# Not needed unless you're testing against your own fork --- IGNORE ---
-GITHUB_API_URL       = 'https://api.github.com/repos/your-username/myToday/contents/calendar/calendar.html'
-GITHUB_FEEDS_URL     = 'https://api.github.com/repos/your-username/myToday/contents/calendar/feeds.json'
-
 # PagerDuty API token — PagerDuty → Integrations → API Access Keys → Create New API Key
 PAGERDUTY_TOKEN      = 'your-pagerduty-token'
 

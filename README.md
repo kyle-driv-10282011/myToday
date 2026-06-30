@@ -151,8 +151,6 @@ All settings live in `config.py` alongside the exe. A template is provided in `c
 | `SLACK_WORKSPACE_ID` | Your Slack workspace ID (`T0000000`) | Visible in any Slack URL: `slack.com/client/T0000000/...` |
 | `SLACK_WORKSPACE_DOMAIN` | Your Slack domain | e.g. `yourcompany.slack.com` |
 | `GITHUB_PAT` | GitHub Personal Access Token | github.com → Settings → Developer settings → Personal access tokens (repo:read scope) |
-| `GITHUB_API_URL` | GitHub API URL to `calendar.html` in your repo | See `config.example.py` for the format |
-| `GITHUB_FEEDS_URL` | GitHub API URL to `feeds.json` in your repo | See `config.example.py` for the format |
 | `PAGERDUTY_TOKEN` | PagerDuty API token | PagerDuty → Integrations → API Access Keys → Create New API Key |
 | `FINNHUB_KEY` | Finnhub API key for stock prices | finnhub.io → Dashboard (free tier works) |
 | `MS_CLIENT_ID` | Azure app registration Client ID | portal.azure.com → Azure Active Directory → App registrations → your app → Overview |
@@ -167,6 +165,10 @@ All feeds configuration lives in `feeds.json` alongside the exe. A template is p
 
 ```json
 {
+  "github_pull_urls": [
+    "https://api.github.com/repos/your-username/myToday/contents/calendar.html",
+    "https://api.github.com/repos/your-username/myToday/contents/feeds.json"
+  ],
   "stocks": ["AAPL", "MSFT"],
   "pagerduty": [
     {"name": "Your Team", "schedule": "XXXXXXX", "service": "XXXXXXX"}
@@ -179,6 +181,7 @@ All feeds configuration lives in `feeds.json` alongside the exe. A template is p
 
 | Key | Description |
 |-----|-------------|
+| `github_pull_urls` | GitHub API URLs for files to auto-pull on startup and sync on a timer. The filename in the URL determines the local destination — `calendar.html` updates the dashboard UI, any other file is written beside the executable. |
 | `stocks` | List of ticker symbols shown in the stock ticker |
 | `pagerduty` | List of teams — `name` is display name, `schedule` and `service` are PagerDuty IDs found in the PagerDuty URL when viewing that schedule/service |
 | `feeds` | List of RSS/Atom feeds — `name` is display name, `url` is the feed URL |

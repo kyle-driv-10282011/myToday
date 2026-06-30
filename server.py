@@ -112,7 +112,6 @@ try:
         PROXY_SECRET,
         SLACK_WORKSPACE_ID, SLACK_WORKSPACE_DOMAIN, GITHUB_PAT, PAGERDUTY_TOKEN, FINNHUB_KEY,
         MS_CLIENT_ID, MS_TENANT_ID, AUTO_PULL, PULL_INTERVAL,
-        GITHUB_API_URL, GITHUB_FEEDS_URL,
     )
     import config as _config
     PORT = getattr(_config, 'PORT', 8080)
@@ -885,8 +884,15 @@ class Handler(http.server.BaseHTTPRequestHandler):
         self.send_header('Access-Control-Allow-Headers', 'Content-Type, Cache-Control')
 
 
-_last_sha       = None
-_last_feeds_sha = None
+_last_shas = {}  # url -> last known sha
+
+def _load_github_pull_urls():
+    feeds_file = os.path.join(BASE_DIR, 'feeds.json')
+    try:
+        with open(feeds_file, 'r') as f:
+            return json.load(f).get('github_pull_urls', [])
+    except Exception:
+        return []
 
 def _github_opener():
     ssl_ctx      = make_ssl_context()
@@ -901,14 +907,16 @@ def _github_opener():
 def pull_calendar_html(content=None):
     try:
         if content is None:
+            urls = _load_github_pull_urls()
+            url  = next((u for u in urls if u.rstrip('/').endswith('calendar.html')), None)
+            if not url:
+                print('pull_calendar_html: no calendar.html URL found in feeds.json github_pull_urls')
+                return
             opener = _github_opener()
-            req = urllib.request.Request(
-                GITHUB_API_URL,
-                headers={
-                    'Authorization': f'token {GITHUB_PAT}',
-                    'Accept': 'application/vnd.github.raw',
-                }
-            )
+            req = urllib.request.Request(url, headers={
+                'Authorization': f'token {GITHUB_PAT}',
+                'Accept': 'application/vnd.github.raw',
+            })
             with opener.open(req, timeout=20) as r:
                 content = r.read()
         ts = datetime.datetime.now().strftime('%Y-%m-%d %H:%M')
@@ -921,37 +929,30 @@ def pull_calendar_html(content=None):
         print(f'pull_calendar_html error: {e}')
 
 def check_and_pull():
-    global _last_sha, _last_feeds_sha
+    global _last_shas
     opener = _github_opener()
     auth   = {'Authorization': f'token {GITHUB_PAT}'}
-    try:
-        req  = urllib.request.Request(GITHUB_API_URL, headers=auth)
-        with opener.open(req, timeout=20) as r:
-            meta = json.loads(r.read())
-        sha = meta.get('sha')
-        if sha and sha != _last_sha:
-            _last_sha = sha
-            encoded = (meta.get('content') or '').replace('\n', '')
-            content  = base64.b64decode(encoded) if encoded else None
-            pull_calendar_html(content)
-    except Exception as e:
-        print(f'check_and_pull (calendar.html) error: {e}')
-    try:
-        req  = urllib.request.Request(GITHUB_FEEDS_URL, headers=auth)
-        with opener.open(req, timeout=20) as r:
-            meta = json.loads(r.read())
-        sha = meta.get('sha')
-        if sha and sha != _last_feeds_sha:
-            _last_feeds_sha = sha
-            encoded = (meta.get('content') or '').replace('\n', '')
-            content  = base64.b64decode(encoded) if encoded else None
-            if content:
-                feeds_file = os.path.join(BASE_DIR, 'feeds.json')
-                with open(feeds_file, 'wb') as f:
-                    f.write(content)
-                print(f'feeds.json updated → {feeds_file}')
-    except Exception as e:
-        print(f'check_and_pull (feeds.json) error: {e}')
+    for url in _load_github_pull_urls():
+        filename = url.rstrip('/').rsplit('/', 1)[-1]
+        try:
+            req  = urllib.request.Request(url, headers=auth)
+            with opener.open(req, timeout=20) as r:
+                meta = json.loads(r.read())
+            sha = meta.get('sha')
+            if sha and sha != _last_shas.get(url):
+                _last_shas[url] = sha
+                encoded = (meta.get('content') or '').replace('\n', '')
+                content  = base64.b64decode(encoded) if encoded else None
+                if content:
+                    if filename == 'calendar.html':
+                        pull_calendar_html(content)
+                    else:
+                        dest = os.path.join(BASE_DIR, filename)
+                        with open(dest, 'wb') as f:
+                            f.write(content)
+                        print(f'{filename} updated → {dest}')
+        except Exception as e:
+            print(f'check_and_pull ({filename}) error: {e}')
 
 def pull_loop():
     while True:

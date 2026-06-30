@@ -1,4 +1,8 @@
 {
+  "github_pull_urls": [
+    "https://api.github.com/repos/your-username/myToday/contents/calendar.html",
+    "https://api.github.com/repos/your-username/myToday/contents/feeds.json"
+  ],
   "stocks": ["AAPL", "MSFT", "GOOG"],
   "pagerduty": [
     {"name": "Your Team", "schedule": "XXXXXXX", "service": "XXXXXXX"}
