@@ -6,3 +6,4 @@ build/
 myToday.spec
 .claude/
 settings.local.json
+feeds.json
