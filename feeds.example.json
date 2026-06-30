@@ -1,0 +1,11 @@
+{
+  "stocks": ["AAPL", "MSFT", "GOOG"],
+  "pagerduty": [
+    {"name": "Your Team", "schedule": "XXXXXXX", "service": "XXXXXXX"}
+  ],
+  "feeds": [
+    {"name": "TechCrunch",            "url": "https://techcrunch.com/feed/"},
+    {"name": "Security: Krebs",       "url": "https://krebsonsecurity.com/feed/"},
+    {"name": "Cloud: AWS Architecture","url": "https://aws.amazon.com/blogs/architecture/feed/"}
+  ]
+}
