@@ -2,6 +2,7 @@
   "locations": [
     { "id": "tz-mn",  "label": "Minnesota",     "tz": "America/Chicago",  "lat": 45.0125715, "lon": -93.6645887 },
     { "id": "tz-nh",  "label": "New Hampshire", "tz": "America/New_York", "lat": 42.99, "lon": -71.46 },
+    { "id": "tz-orl", "label": "Orlando",       "tz": "America/New_York", "lat": 28.538333, "lon": -81.379444 },
     { "id": "tz-lon", "label": "Telford",       "tz": "Europe/London",    "lat": 52.68, "lon": -2.45  },
     { "id": "tz-ams", "label": "Amsterdam",     "tz": "Europe/Amsterdam", "lat": 52.37, "lon": 4.90   },
     { "id": "tz-in",  "label": "India",         "tz": "Asia/Kolkata",     "lat": 18.52, "lon": 73.86  }

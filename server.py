@@ -636,12 +636,16 @@ class Handler(http.server.BaseHTTPRequestHandler):
                     root  = ET.fromstring(xml_bytes)
                     ns    = {'atom': 'http://www.w3.org/2005/Atom'}
                     items = []
+                    def _strip_html(s):
+                        return re.sub(r'<[^>]+>', '', s or '').strip()
+
                     # RSS 2.0
                     for item in root.findall('./channel/item'):
                         title = item.findtext('title') or ''
                         link  = item.findtext('link') or ''
                         date  = item.findtext('pubDate') or ''
-                        items.append({'title': title.strip(), 'link': link.strip(), 'date': date.strip()})
+                        desc  = _strip_html(item.findtext('description') or '')
+                        items.append({'title': title.strip(), 'link': link.strip(), 'date': date.strip(), 'description': desc})
                     # Atom
                     if not items:
                         for entry in root.findall('atom:entry', ns) or root.findall('{http://www.w3.org/2005/Atom}entry'):
@@ -652,7 +656,12 @@ class Handler(http.server.BaseHTTPRequestHandler):
                                     or entry.findtext('{http://www.w3.org/2005/Atom}published')
                                     or entry.findtext('atom:updated', namespaces=ns)
                                     or entry.findtext('{http://www.w3.org/2005/Atom}updated') or '')
-                            items.append({'title': title.strip(), 'link': link.strip(), 'date': date.strip()})
+                            desc = _strip_html(
+                                entry.findtext('atom:summary', namespaces=ns)
+                                or entry.findtext('{http://www.w3.org/2005/Atom}summary')
+                                or entry.findtext('atom:content', namespaces=ns)
+                                or entry.findtext('{http://www.w3.org/2005/Atom}content') or '')
+                            items.append({'title': title.strip(), 'link': link.strip(), 'date': date.strip(), 'description': desc})
                     body = json.dumps({'status': 'ok', 'items': items[:15]}).encode()
                     with _rss_cache_lock:
                         _rss_cache[feed_url] = (now, body)

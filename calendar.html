@@ -300,11 +300,16 @@
       flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
     }
     #rss-lines { display: flex; flex-direction: column; gap: 0; }
-    .rss-line { font-size: 11px; font-family: 'DM Mono', monospace; line-height: 1.45; padding: 4px 0; }
-    .rss-line a { color: var(--text); text-decoration: none; display: block; }
-    .rss-line a:hover { color: var(--blue); }
+    .rss-line { font-size: 11px; font-family: 'DM Mono', monospace; line-height: 1.45; padding: 4px 0; cursor: pointer; }
+    .rss-line:hover .rss-title { color: var(--blue); }
+    .rss-title { color: var(--text); }
+    .rss-title-row { display: flex; justify-content: space-between; align-items: baseline; gap: 6px; }
+    .rss-open-link { flex-shrink: 0; color: var(--muted); text-decoration: none; font-size: 10px; }
+    .rss-open-link:hover { color: var(--blue); }
     .rss-sep { border: none; border-top: 0.5px solid var(--border); margin: 0; }
     .rss-date { font-size: 10px; color: var(--muted); font-style: italic; }
+    .rss-desc { display: none; font-size: 10px; color: var(--muted); padding: 5px 0 2px 0; line-height: 1.55; white-space: pre-wrap; }
+    .rss-line.expanded .rss-desc { display: block; }
     @media (max-width: 900px) { #rss-sidebar { display: none; } #rss-collapse-btn { display: none; } #app { margin-left: 0; } }
     .mq-loading { font-size: 11px; color: var(--muted); }
 
@@ -1571,6 +1576,10 @@
   var feedCycleTimer = null;
   var rssRandom      = false;
 
+  function toggleRssItem(el) {
+    el.classList.toggle('expanded');
+  }
+
   function setRssOrder(random) {
     rssRandom = random;
   }
@@ -1641,8 +1650,14 @@
                 : {month: 'short', day: 'numeric', year: 'numeric'});
             }
           }
-          return '<div class="rss-line"><a href="' + esc(item.link || '#') + '" target="_blank">' + esc(item.title || '') + '</a>'
-            + (dateStr ? '<br><em class="rss-date">' + esc(dateStr) + '</em>' : '')
+          var desc = (item.description || '').trim();
+          return '<div class="rss-line" onclick="toggleRssItem(this)">'
+            + '<div class="rss-title-row">'
+            + '<span class="rss-title">' + esc(item.title || '') + '</span>'
+            + (item.link ? '<a class="rss-open-link" href="' + esc(item.link) + '" target="_blank" onclick="event.stopPropagation()">↗</a>' : '')
+            + '</div>'
+            + (dateStr ? '<em class="rss-date">' + esc(dateStr) + '</em>' : '')
+            + (desc ? '<div class="rss-desc">' + esc(desc) + '</div>' : '')
             + '</div>';
         }).join('<hr class="rss-sep">');
         durationMs = Math.max(15000, items.length * 1200);
