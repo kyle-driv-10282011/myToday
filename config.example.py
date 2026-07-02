@@ -34,3 +34,4 @@ MS_TENANT_ID         = 'your-azure-ad-tenant-id'
 AUTO_PULL            = True   # set to False to serve local files without fetching from GitHub
 PULL_INTERVAL        = 30     # seconds between background sync checks
 PORT                 = 8080   # change if 8080 is already in use on your machine
+ENABLE_DOWNLOAD      = False  # set to True to expose /download endpoint (zips runtime directory)

@@ -115,7 +115,8 @@ try:
         GITHUB_API_URL, GITHUB_FEEDS_URL, PAGERDUTY_TEAMS,
     )
     import config as _config
-    PORT = getattr(_config, 'PORT', 8080)
+    PORT            = getattr(_config, 'PORT', 8080)
+    ENABLE_DOWNLOAD = getattr(_config, 'ENABLE_DOWNLOAD', False)
     print(f'Config: {os.path.abspath(_config.__file__)}')
 except ModuleNotFoundError:
     print('ERROR: config.py not found.')
@@ -830,6 +831,34 @@ class Handler(http.server.BaseHTTPRequestHandler):
             self.send_header('Content-Length', str(len(body)))
             self.end_headers()
             self.wfile.write(body)
+            return
+
+        # ── Download runtime directory as zip ─────────────────────────────────
+        if parsed.path == '/download':
+            if not ENABLE_DOWNLOAD:
+                self.send_error(403, 'Download endpoint is disabled')
+                return
+            try:
+                import io, zipfile as _zf
+                buf = io.BytesIO()
+                skip = {'__pycache__', '.venv', 'build', 'dist'}
+                with _zf.ZipFile(buf, 'w', _zf.ZIP_DEFLATED) as zf:
+                    for fname in os.listdir(BASE_DIR):
+                        if fname in skip or fname.endswith('.pyc'):
+                            continue
+                        fpath = os.path.join(BASE_DIR, fname)
+                        if os.path.isfile(fpath):
+                            zf.write(fpath, fname)
+                data = buf.getvalue()
+                self.send_response(200)
+                self._cors()
+                self.send_header('Content-Type', 'application/zip')
+                self.send_header('Content-Disposition', 'attachment; filename="myToday.zip"')
+                self.send_header('Content-Length', str(len(data)))
+                self.end_headers()
+                self.wfile.write(data)
+            except Exception as e:
+                self.send_error(500, str(e))
             return
 
         self.send_error(404)
