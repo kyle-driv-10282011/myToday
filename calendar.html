@@ -628,8 +628,9 @@
     if (!dtObj) return null;
     var raw = dtObj.dateTime || '';
     if (!raw) return null;
-    var tz = dtObj.timeZone || '';
-    var d  = new Date(raw + (tz === 'UTC' ? 'Z' : ''));
+    // Graph calendarView always returns UTC datetimes regardless of the timeZone label
+    var utc = raw.replace(/Z$/, '').replace(/\.\d+$/, '') + 'Z';
+    var d = new Date(utc);
     return isNaN(d) ? null : d;
   }
 
@@ -1531,19 +1532,21 @@
     for (var i = 0; i < CLOCKS.length; i++) {
       var c = CLOCKS[i];
       try {
-        var resp = await fetch('https://api.open-meteo.com/v1/forecast?latitude=' + c.lat + '&longitude=' + c.lon + '&current=temperature_2m,relative_humidity_2m,dew_point_2m&current_weather=true');
+        var resp = await fetch('https://api.open-meteo.com/v1/forecast?latitude=' + c.lat + '&longitude=' + c.lon + '&current=temperature_2m,relative_humidity_2m&current_weather=true');
         var data = await resp.json();
         var cur = data.current || {};
         var tempC = cur.temperature_2m != null ? cur.temperature_2m : (data.current_weather && data.current_weather.temperature);
+        var humidity = cur.relative_humidity_2m;
         if (tempC != null) {
           var tempF = Math.round(tempC * 9 / 5 + 32);
           var el = document.getElementById(c.id + '-temp');
           if (el) el.textContent = tempF + '°F / ' + Math.round(tempC) + '°C';
         }
-        var humidity = cur.relative_humidity_2m;
-        var dewC = cur.dew_point_2m;
         var hEl = document.getElementById(c.id + '-humid');
-        if (hEl && humidity != null && dewC != null) {
+        if (hEl && humidity != null && tempC != null) {
+          var a = 17.625, b = 243.04;
+          var gamma = Math.log(humidity / 100) + a * tempC / (b + tempC);
+          var dewC = b * gamma / (a - gamma);
           var dewF = Math.round(dewC * 9 / 5 + 32);
           hEl.textContent = humidity + '% RH · dew ' + dewF + '°F / ' + Math.round(dewC) + '°C';
         }
