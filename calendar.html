@@ -140,7 +140,7 @@
     .rc-label { font-size:15px; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-weight:800; color:rgba(255,255,255,0.5); text-transform:uppercase; letter-spacing:.08em; }
     .rc-time { font-size:30px; font-family:'DM Mono',monospace; font-weight:500; color:#fff; white-space:nowrap; }
     .rc-temp { font-size:15px; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-weight:800; color:rgba(255,255,255,0.4); white-space:nowrap; }
-    .rc-humid { font-size:11px; font-family:'DM Mono',monospace; color:rgba(255,255,255,0.35); white-space:nowrap; }
+    .rc-humid { font-size:15px; font-family:'DM Mono',monospace; color:rgba(255,255,255,0.35); white-space:nowrap; }
     @media (max-width: 900px) { #regional-clocks { display:none; } }
 
     /* Teams */
@@ -1548,7 +1548,7 @@
           var gamma = Math.log(humidity / 100) + a * tempC / (b + tempC);
           var dewC = b * gamma / (a - gamma);
           var dewF = Math.round(dewC * 9 / 5 + 32);
-          hEl.textContent = humidity + '% RH · dew ' + dewF + '°F / ' + Math.round(dewC) + '°C';
+          hEl.textContent = humidity + '% RH · dew ' + Math.round(dewC);
         }
       } catch(e) { console.warn('weather fetch error for ' + c.label + ':', e); }
     }
