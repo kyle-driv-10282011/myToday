@@ -136,8 +136,8 @@
 
     /* Regional Clocks (header) */
     #regional-clocks { display:flex; gap:18px; align-items:center; }
-    .rc-clock { display:flex; flex-direction:column; align-items:center; gap:1px; border:0.5px solid var(--border2); border-radius:var(--r); padding:6px 12px; background:#000; }
-    .rc-label { font-size:15px; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-weight:800; color:rgba(255,255,255,0.5); text-transform:uppercase; letter-spacing:.08em; }
+    .rc-clock { display:flex; flex-direction:column; align-items:center; gap:1px; border:0.5px solid var(--border2); border-radius:var(--r); padding:6px 12px; background:#000; width:12rem; box-sizing:border-box; }
+    .rc-label { font-size:12px; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-weight:800; color:rgba(255,255,255,0.5); text-transform:uppercase; letter-spacing:.08em; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:100%; }
     .rc-time { font-size:30px; font-family:'DM Mono',monospace; font-weight:500; color:#fff; white-space:nowrap; }
     .rc-temp { font-size:15px; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-weight:800; color:rgba(255,255,255,0.4); white-space:nowrap; }
     .rc-humid { font-size:15px; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-weight:800; color:rgba(255,255,255,0.35); white-space:nowrap; }
