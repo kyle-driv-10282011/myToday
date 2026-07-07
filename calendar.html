@@ -601,7 +601,7 @@
         + '?startDateTime=' + start.toISOString() + '&endDateTime=' + end.toISOString()
         + '&$orderby=start/dateTime&$top=50'
         + '&$select=subject,start,end,location,onlineMeeting,onlineMeetingUrl,bodyPreview,isAllDay';
-      var resp = await fetch(url, { headers: { Authorization: 'Bearer ' + token } });
+      var resp = await fetch(url, { headers: { Authorization: 'Bearer ' + token, 'Prefer': 'outlook.timezone="UTC"' } });
       if (resp.status === 401) { setStatus('idle', 'Auth error - try signing out and back in.'); return; }
       if (!resp.ok) { setStatus('idle', 'Graph error ' + resp.status); return; }
       var data = await resp.json();
@@ -628,8 +628,8 @@
     if (!dtObj) return null;
     var raw = dtObj.dateTime || '';
     if (!raw) return null;
-    // Graph calendarView always returns UTC datetimes regardless of the timeZone label
-    var utc = raw.replace(/Z$/, '').replace(/\.\d+$/, '') + 'Z';
+    // Graph calendarView always returns UTC; strip fractional seconds and any offset then re-add Z
+    var utc = raw.replace(/(\.\d+)?(Z|[+-]\d{2}:\d{2})?$/, '') + 'Z';
     var d = new Date(utc);
     return isNaN(d) ? null : d;
   }
@@ -1532,10 +1532,10 @@
     for (var i = 0; i < CLOCKS.length; i++) {
       var c = CLOCKS[i];
       try {
-        var resp = await fetch('https://api.open-meteo.com/v1/forecast?latitude=' + c.lat + '&longitude=' + c.lon + '&current=temperature_2m,relative_humidity_2m&current_weather=true');
+        var resp = await fetch('https://api.open-meteo.com/v1/forecast?latitude=' + c.lat + '&longitude=' + c.lon + '&current=temperature_2m,relative_humidity_2m');
         var data = await resp.json();
         var cur = data.current || {};
-        var tempC = cur.temperature_2m != null ? cur.temperature_2m : (data.current_weather && data.current_weather.temperature);
+        var tempC = cur.temperature_2m != null ? cur.temperature_2m : null;
         var humidity = cur.relative_humidity_2m;
         if (tempC != null) {
           var tempF = Math.round(tempC * 9 / 5 + 32);
