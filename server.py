@@ -650,7 +650,9 @@ class Handler(http.server.BaseHTTPRequestHandler):
                     if not items:
                         for entry in root.findall('atom:entry', ns) or root.findall('{http://www.w3.org/2005/Atom}entry'):
                             title = entry.findtext('atom:title', namespaces=ns) or entry.findtext('{http://www.w3.org/2005/Atom}title') or ''
-                            link_el = entry.find('atom:link', ns) or entry.find('{http://www.w3.org/2005/Atom}link')
+                            link_el = entry.find('atom:link', ns)
+                            if link_el is None:
+                                link_el = entry.find('{http://www.w3.org/2005/Atom}link')
                             link = (link_el.get('href') if link_el is not None else '') or ''
                             date = (entry.findtext('atom:published', namespaces=ns)
                                     or entry.findtext('{http://www.w3.org/2005/Atom}published')
