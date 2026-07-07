@@ -140,6 +140,7 @@
     .rc-label { font-size:15px; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-weight:800; color:rgba(255,255,255,0.5); text-transform:uppercase; letter-spacing:.08em; }
     .rc-time { font-size:30px; font-family:'DM Mono',monospace; font-weight:500; color:#fff; white-space:nowrap; }
     .rc-temp { font-size:15px; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-weight:800; color:rgba(255,255,255,0.4); white-space:nowrap; }
+    .rc-humid { font-size:11px; font-family:'DM Mono',monospace; color:rgba(255,255,255,0.35); white-space:nowrap; }
     @media (max-width: 900px) { #regional-clocks { display:none; } }
 
     /* Teams */
@@ -1502,9 +1503,14 @@
       tempEl.className = 'rc-temp';
       tempEl.id = c.id + '-temp';
       tempEl.textContent = '';
+      var humidEl = document.createElement('div');
+      humidEl.className = 'rc-humid';
+      humidEl.id = c.id + '-humid';
+      humidEl.textContent = '';
       cell.appendChild(lbl);
       cell.appendChild(timeEl);
       cell.appendChild(tempEl);
+      cell.appendChild(humidEl);
       wrap.appendChild(cell);
     });
     updateClocks();
@@ -1525,15 +1531,21 @@
     for (var i = 0; i < CLOCKS.length; i++) {
       var c = CLOCKS[i];
       try {
-        var resp = await fetch('https://api.open-meteo.com/v1/forecast?latitude=' + c.lat + '&longitude=' + c.lon + '&current=temperature_2m&current_weather=true');
+        var resp = await fetch('https://api.open-meteo.com/v1/forecast?latitude=' + c.lat + '&longitude=' + c.lon + '&current=temperature_2m,relative_humidity_2m,dew_point_2m&current_weather=true');
         var data = await resp.json();
-        var tempC = (data.current && data.current.temperature_2m != null)
-          ? data.current.temperature_2m
-          : (data.current_weather && data.current_weather.temperature);
+        var cur = data.current || {};
+        var tempC = cur.temperature_2m != null ? cur.temperature_2m : (data.current_weather && data.current_weather.temperature);
         if (tempC != null) {
           var tempF = Math.round(tempC * 9 / 5 + 32);
           var el = document.getElementById(c.id + '-temp');
           if (el) el.textContent = tempF + '°F / ' + Math.round(tempC) + '°C';
+        }
+        var humidity = cur.relative_humidity_2m;
+        var dewC = cur.dew_point_2m;
+        var hEl = document.getElementById(c.id + '-humid');
+        if (hEl && humidity != null && dewC != null) {
+          var dewF = Math.round(dewC * 9 / 5 + 32);
+          hEl.textContent = humidity + '% RH · dew ' + dewF + '°F / ' + Math.round(dewC) + '°C';
         }
       } catch(e) { console.warn('weather fetch error for ' + c.label + ':', e); }
     }
