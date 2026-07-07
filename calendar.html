@@ -1420,9 +1420,17 @@
           }
           return b;
         }
-        counts.appendChild(mkBadge('open', open, 'open', null, true));
-        if (triggered)    counts.appendChild(mkBadge('trig', triggered, 'triggered', 'triggered', false));
-        if (acknowledged) counts.appendChild(mkBadge('ack', acknowledged, 'acknowledged', 'acknowledged', false));
+        if (!open) {
+          counts.appendChild(mkBadge('open', 0, 'open', null, true));
+        } else if (triggered && acknowledged) {
+          counts.appendChild(mkBadge('open', open, 'open', null, true));
+          counts.appendChild(mkBadge('trig', triggered, 'triggered', 'triggered', false));
+          counts.appendChild(mkBadge('ack', acknowledged, 'acknowledged', 'acknowledged', false));
+        } else if (triggered) {
+          counts.appendChild(mkBadge('trig', triggered, 'triggered', 'triggered', true));
+        } else {
+          counts.appendChild(mkBadge('ack', acknowledged, 'acknowledged', 'acknowledged', true));
+        }
 
         div.appendChild(nameEl);
         div.appendChild(personEl);
