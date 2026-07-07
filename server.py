@@ -38,11 +38,9 @@ if getattr(_sys, 'frozen', False):
     BASE_DIR   = os.path.dirname(_sys.executable)
     # config.py lives beside the exe, not inside _internal — add it to the path.
     _sys.path.insert(0, BASE_DIR)
-    # Playwright's bundled driver looks for browsers in .local-browsers relative
-    # to itself. Set this early so both --install and sync_playwright() agree.
-    os.environ['PLAYWRIGHT_BROWSERS_PATH'] = os.path.join(
-        BUNDLE_DIR, 'playwright', 'driver', 'package', '.local-browsers'
-    )
+    # Playwright browsers must live beside the executable (BASE_DIR), not in
+    # _MEIPASS which is a temp dir recreated on every run.
+    os.environ['PLAYWRIGHT_BROWSERS_PATH'] = os.path.join(BASE_DIR, '.local-browsers')
 else:
     BUNDLE_DIR = os.path.dirname(os.path.abspath(__file__))
     BASE_DIR   = BUNDLE_DIR
@@ -97,8 +95,21 @@ if '--install' in _sys.argv:
         _bin = 'myToday.exe' if os.name == 'nt' else 'myToday'
         print(f'Done. You can now run {_bin}')
     except Exception as _e:
-        print(f'Install failed: {_e}')
-        _sys.exit(1)
+        import shutil as _shutil
+        _sys_chrome = next(
+            (_shutil.which(n) for n in ('google-chrome', 'google-chrome-stable', 'chromium-browser', 'chromium')
+             if _shutil.which(n)), None)
+        if _sys_chrome:
+            print(f'Playwright does not support this OS — using system Chrome at: {_sys_chrome}')
+            _marker_dir = os.path.join(BASE_DIR, '.local-browsers')
+            os.makedirs(_marker_dir, exist_ok=True)
+            with open(os.path.join(_marker_dir, '.system-chrome'), 'w') as _mf:
+                _mf.write(_sys_chrome)
+            _bin = 'myToday.exe' if os.name == 'nt' else 'myToday'
+            print(f'Done. You can now run {_bin}')
+        else:
+            print(f'Install failed: {_e}')
+            _sys.exit(1)
     finally:
         if _ca_tmp:
             try:
@@ -250,8 +261,14 @@ def run_slack_playwright_login(email, password):
 
     extracted = {'token': None, 'version_ts': None, 'csid': None}
 
+    _launch_kwargs = {'headless': False, 'args': ['--no-sandbox']}
+    _sys_chrome_marker = os.path.join(BASE_DIR, '.local-browsers', '.system-chrome')
+    if os.path.isfile(_sys_chrome_marker):
+        with open(_sys_chrome_marker) as _mf:
+            _launch_kwargs['executable_path'] = _mf.read().strip()
+
     with sync_playwright() as pw:
-        browser = pw.chromium.launch(headless=False, args=['--no-sandbox'])
+        browser = pw.chromium.launch(**_launch_kwargs)
         context = browser.new_context()
         page    = context.new_page()
 
@@ -991,6 +1008,13 @@ class _ThreadedHTTPServer(socketserver.ThreadingMixIn, http.server.HTTPServer):
 
 
 if __name__ == '__main__':
+    if getattr(_sys, 'frozen', False):
+        _browsers_path = os.path.join(BASE_DIR, '.local-browsers')
+        if not os.path.isdir(_browsers_path) or not os.listdir(_browsers_path):
+            print('WARNING: Playwright browser not installed.')
+            print('  Run ./setup.sh (or ./myToday --install) before using Slack login.')
+            print()
+
     if AUTO_PULL:
         pull_calendar_html()
         check_and_pull()   # also pulls feeds.json on startup
