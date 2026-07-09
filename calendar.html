@@ -55,13 +55,6 @@
     #date-lbl   { font-size:15px; font-weight:700; }
     #version-lbl { font-size:10px; color:var(--muted); font-family:'DM Mono',monospace; opacity:.5; }
 
-    #status-bar { background:var(--surface2); border-radius:var(--r); padding:10px 14px; margin-bottom:1.2rem; font-size:12px; color:var(--muted); font-family:'DM Mono',monospace; display:flex; align-items:center; gap:8px; }
-    .dot { width:7px; height:7px; border-radius:50%; flex-shrink:0; }
-    .dot.live    { background:#4caf50; animation:pulse 2s infinite; }
-    .dot.idle    { background:var(--muted); }
-    .dot.loading { background:var(--blue); animation:pulse 1s infinite; }
-    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.35} }
-
     #login-panel { background:var(--surface); border:0.5px solid var(--border2); border-radius:var(--rlg); padding:2.5rem; text-align:center; }
     .login-icon { width:48px; height:48px; background:var(--blue); border-radius:12px; display:flex; align-items:center; justify-content:center; margin:0 auto 1.2rem; }
     .login-icon svg { width:26px; height:26px; }
@@ -362,7 +355,8 @@
     #moviequote-wrap { overflow: hidden; margin-bottom: 1.2rem; position: relative; height: 28px; }
     #moviequote-wrap.hidden { display: none; }
     #moviequote-inner { position: relative; height: 100%; }
-    .mq-quote { position: absolute; top: 0; left: 0; background: var(--surface); border: 0.5px solid var(--border); border-radius: var(--r); padding: 4px 12px; display: flex; align-items: baseline; gap: 6px; white-space: nowrap; font-size: 12px; box-sizing: border-box; transform: translateX(110%); transition: transform 900ms ease; }
+    .mq-batch { position: absolute; top: 0; left: 0; display: flex; gap: 6px; white-space: nowrap; transform: translateX(110%); transition: transform 900ms ease; }
+    .mq-quote { flex-shrink: 0; background: var(--surface); border: 0.5px solid var(--border); border-radius: var(--r); padding: 4px 12px; display: flex; align-items: baseline; gap: 6px; white-space: nowrap; font-size: 12px; box-sizing: border-box; }
     .mq-quote-text { font-weight: 700; color: var(--text); }
     .mq-quote-attr { font-style: italic; color: var(--muted); }
     #movie-toggle-btn { background: none; border: none; cursor: pointer; font-size: 15px; line-height: 1; padding: 4px; opacity: .35; border-radius: 4px; }
@@ -430,11 +424,6 @@
   <div id="stocks-wrap"><div id="stocks-inner"></div></div>
 
   <div id="moviequote-wrap"><div id="moviequote-inner"></div></div>
-
-  <div id="status-bar">
-    <span class="dot idle" id="dot"></span>
-    <span id="status-txt">Sign in to load your calendar</span>
-  </div>
 
   <div id="login-panel">
     <div class="login-icon">
@@ -908,8 +897,10 @@
   function dismissOverlay() { document.getElementById('overlay').classList.remove('visible'); overlayDismissed = true; }
 
   function setStatus(type, txt) {
-    document.getElementById('status-txt').textContent = txt;
-    document.getElementById('dot').className = 'dot ' + type;
+    var txtEl = document.getElementById('status-txt');
+    var dotEl = document.getElementById('dot');
+    if (txtEl) txtEl.textContent = txt;
+    if (dotEl) dotEl.className = 'dot ' + type;
   }
 
   // ── Teams ─────────────────────────────────────────────────────────────────
@@ -1751,15 +1742,19 @@
   }
 
   // ── Movie quotes ─────────────────────────────────────────────────────────
-  var QUOTE_HOLD_MS       = 2 * 60 * 1000; // how long a quote sits at rest
-  var QUOTE_TRANSITION_MS = 900;           // slide-in/slide-out duration
-  var movieQuotes  = [];
-  var mqShuffled   = [];
-  var mqIndex      = 0;
-  var mqCurrentEl  = null;
-  var mqTimer      = null;
+  var BATCH_HOLD_MS       = 60 * 1000; // how long a full batch sits at rest
+  var BATCH_TRANSITION_MS = 900;       // slide-in/slide-out duration
+  var movieQuotes    = [];
+  var mqPool         = [];   // shuffled quotes not yet used in the current pass
+  var mqCurrentBatch = null;
+  var mqTimer        = null;
 
   function shuffleQuotes(list) { return list.slice().sort(function() { return Math.random() - 0.5; }); }
+
+  function nextPoolQuote() {
+    if (!mqPool.length) mqPool = shuffleQuotes(movieQuotes);
+    return mqPool.shift();
+  }
 
   async function fetchMovieQuotes() {
     try {
@@ -1773,39 +1768,55 @@
 
   function startMovieQuoteCycle() {
     if (!movieQuotes.length) return;
-    mqShuffled = shuffleQuotes(movieQuotes);
-    mqIndex    = 0;
-    showQuote(mqShuffled[mqIndex]);
-    scheduleNextQuote();
+    mqPool = shuffleQuotes(movieQuotes);
+    showNextBatch();
   }
 
-  function scheduleNextQuote() {
-    if (mqTimer) clearTimeout(mqTimer);
-    mqTimer = setTimeout(function() {
-      mqIndex++;
-      if (mqIndex >= mqShuffled.length) { mqShuffled = shuffleQuotes(movieQuotes); mqIndex = 0; }
-      showQuote(mqShuffled[mqIndex]);
-      scheduleNextQuote();
-    }, QUOTE_HOLD_MS);
-  }
-
-  function showQuote(q) {
-    var inner = document.getElementById('moviequote-inner');
-    if (!inner || !q) return;
+  function makeQuoteTile(q) {
     var tile = document.createElement('div');
     tile.className = 'mq-quote';
     tile.innerHTML = '<span class="mq-quote-text">“' + esc(q.quote) + '”</span>'
       + '<span class="mq-quote-attr">— ' + esc(q.person) + (q.film ? ', ' + esc(q.film) : '') + '</span>';
-    inner.appendChild(tile);
-    void tile.offsetWidth; // force layout so the transition below actually animates
-    requestAnimationFrame(function() { tile.style.transform = 'translateX(0)'; });
+    return tile;
+  }
 
-    var prevEl = mqCurrentEl;
-    if (prevEl) {
-      requestAnimationFrame(function() { prevEl.style.transform = 'translateX(-110%)'; });
-      setTimeout(function() { if (prevEl.parentNode) prevEl.parentNode.removeChild(prevEl); }, QUOTE_TRANSITION_MS + 100);
+  function showNextBatch() {
+    var wrap  = document.getElementById('moviequote-wrap');
+    var inner = document.getElementById('moviequote-inner');
+    if (!wrap || !inner) return;
+    var maxWidth = wrap.clientWidth;
+
+    var batch = document.createElement('div');
+    batch.className = 'mq-batch';
+    inner.appendChild(batch); // attach off-screen (translateX(110%) from CSS) so we can measure widths
+
+    var used = [];
+    while (true) {
+      var q = nextPoolQuote();
+      if (!q) break;
+      var tile = makeQuoteTile(q);
+      batch.appendChild(tile);
+      if (batch.scrollWidth > maxWidth && used.length > 0) {
+        batch.removeChild(tile);
+        mqPool.unshift(q); // put it back for the next batch
+        break;
+      }
+      used.push(q);
+      if (batch.scrollWidth > maxWidth) break; // single quote already fills the frame
     }
-    mqCurrentEl = tile;
+
+    void batch.offsetWidth; // force layout so the transition below actually animates
+    requestAnimationFrame(function() { batch.style.transform = 'translateX(0)'; });
+
+    var prevBatch = mqCurrentBatch;
+    if (prevBatch) {
+      requestAnimationFrame(function() { prevBatch.style.transform = 'translateX(-110%)'; });
+      setTimeout(function() { if (prevBatch.parentNode) prevBatch.parentNode.removeChild(prevBatch); }, BATCH_TRANSITION_MS + 100);
+    }
+    mqCurrentBatch = batch;
+
+    if (mqTimer) clearTimeout(mqTimer);
+    mqTimer = setTimeout(showNextBatch, BATCH_HOLD_MS);
   }
 
   function applyMovieQuoteVisibility() {
