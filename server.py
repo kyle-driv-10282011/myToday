@@ -242,6 +242,84 @@ def finnhub_quotes(symbols):
             print(f'Finnhub error {sym}: {e}')
     return results
 
+MOVIEQUOTES_CACHE_TTL = 30 * 60  # 30 minutes
+_moviequotes_cache      = None  # (fetched_at, quotes)
+_moviequotes_cache_lock = threading.Lock()
+
+def _dig(obj, path):
+    """Resolve a dot-notation path (e.g. 'data.items' or 'a.0.b') against a JSON-decoded object."""
+    if not path:
+        return obj
+    cur = obj
+    for part in path.split('.'):
+        if isinstance(cur, list):
+            try:
+                cur = cur[int(part)]
+            except (ValueError, IndexError):
+                return None
+        elif isinstance(cur, dict):
+            cur = cur.get(part)
+        else:
+            return None
+        if cur is None:
+            return None
+    return cur
+
+def fetch_external_quotes(source):
+    """Fetch and normalize quotes from one externally configured JSON source.
+    source: {"url": ..., "path": "<dot-path to the array, optional>",
+              "map": {"quote": "<dot-path>", "person": "<dot-path>", "film": "<dot-path>"}}
+    """
+    url = source.get('url')
+    if not url:
+        return []
+    fmap = source.get('map', {}) or {}
+    ssl_ctx       = make_ssl_context()
+    https_handler = urllib.request.HTTPSHandler(context=ssl_ctx)
+    proxy_url     = os.environ.get('HTTPS_PROXY') or os.environ.get('https_proxy')
+    if proxy_url:
+        opener = urllib.request.build_opener(urllib.request.ProxyHandler({'https': proxy_url, 'http': proxy_url}), https_handler)
+    else:
+        opener = urllib.request.build_opener(https_handler)
+    req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
+    with opener.open(req, timeout=15) as r:
+        data = json.loads(r.read())
+    items = _dig(data, source.get('path', ''))
+    if not isinstance(items, list):
+        items = [items] if items else []
+    out = []
+    for item in items:
+        quote  = _dig(item, fmap.get('quote', 'quote'))
+        person = _dig(item, fmap.get('person', 'person'))
+        film   = _dig(item, fmap.get('film', 'film'))
+        if quote:
+            out.append({'quote': str(quote).strip(), 'person': str(person or '').strip(), 'film': str(film or '').strip()})
+    return out
+
+def get_movie_quotes():
+    """Combine the hardcoded feeds.json quote list with any configured external sources, cached for MOVIEQUOTES_CACHE_TTL."""
+    global _moviequotes_cache
+    now = time.time()
+    with _moviequotes_cache_lock:
+        if _moviequotes_cache and now - _moviequotes_cache[0] < MOVIEQUOTES_CACHE_TTL:
+            return _moviequotes_cache[1]
+    feeds_file = os.path.join(BASE_DIR, 'feeds.json')
+    try:
+        with open(feeds_file, 'r') as f:
+            feeds_data = json.load(f)
+        cfg = feeds_data.get('movieQuotes', {}) if isinstance(feeds_data, dict) else {}
+    except Exception:
+        cfg = {}
+    quotes = list(cfg.get('items', []) or [])
+    for source in cfg.get('sources', []) or []:
+        try:
+            quotes.extend(fetch_external_quotes(source))
+        except Exception as e:
+            print(f'Movie quote source error ({source.get("url")}): {e}')
+    with _moviequotes_cache_lock:
+        _moviequotes_cache = (now, quotes)
+    return quotes
+
 def run_slack_playwright_login(email, password):
     """
     Launches a visible Chromium browser, navigates to the Slack workspace,
@@ -717,6 +795,24 @@ class Handler(http.server.BaseHTTPRequestHandler):
                 self.wfile.write(body)
             except Exception as e:
                 print(f'Stocks proxy error: {e}')
+                self.send_response(502)
+                self._cors()
+                self.send_header('Content-Type', 'application/json')
+                self.end_headers()
+                self.wfile.write(json.dumps({'error': str(e)}).encode())
+            return
+
+        # ── Movie quotes ─────────────────────────────────────────────────────
+        if parsed.path == '/moviequotes':
+            try:
+                body = json.dumps(get_movie_quotes()).encode()
+                self.send_response(200)
+                self._cors()
+                self.send_header('Content-Type', 'application/json')
+                self.end_headers()
+                self.wfile.write(body)
+            except Exception as e:
+                print(f'Movie quotes error: {e}')
                 self.send_response(502)
                 self._cors()
                 self.send_header('Content-Type', 'application/json')

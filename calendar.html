@@ -357,6 +357,18 @@
     .stk-change { font-size: 10px; font-family: 'DM Mono', monospace; }
     .up   { color: #2e7d32; }
     .down { color: #b71c1c; }
+
+    /* ── movie quotes ── */
+    #moviequote-wrap { overflow: hidden; margin-bottom: 1.2rem; }
+    #moviequote-wrap.hidden { display: none; }
+    #moviequote-inner { display: flex; gap: 6px; width: max-content; animation: stocks-scroll 60s linear infinite; }
+    #moviequote-inner:hover { animation-play-state: paused; }
+    .mq-quote { background: var(--surface); border: 0.5px solid var(--border); border-radius: var(--r); padding: 4px 12px; display: flex; align-items: baseline; gap: 6px; white-space: nowrap; font-size: 12px; }
+    .mq-quote-text { font-weight: 700; color: var(--text); }
+    .mq-quote-attr { font-style: italic; color: var(--muted); }
+    #movie-toggle-btn { background: none; border: none; cursor: pointer; font-size: 15px; line-height: 1; padding: 4px; opacity: .35; border-radius: 4px; }
+    #movie-toggle-btn:hover { opacity: .7; background: var(--surface2); }
+    #movie-toggle-btn.active { opacity: 1; }
   </style>
 <meta name="version" content="2026-06-11 07:56"></head>
 <body>
@@ -403,6 +415,7 @@
     </div>
     <div id="regional-clocks"></div>
     <div style="display:flex;align-items:center;gap:12px;">
+<button id="movie-toggle-btn" onclick="toggleMovieQuotes()" title="Toggle movie quotes">&#127916;</button>
 <div id="user-bar">
         <div class="avatar" id="avatar"></div>
         <div style="display:flex;flex-direction:column;align-items:flex-start;gap:4px;">
@@ -416,6 +429,8 @@
   <div id="pagerduty-panel"><div id="pagerduty-inner"><span class="mq-loading" style="font-size:11px;color:var(--muted);font-family:'DM Mono',monospace;">Loading PagerDuty...</span></div></div>
 
   <div id="stocks-wrap"><div id="stocks-inner"></div></div>
+
+  <div id="moviequote-wrap"><div id="moviequote-inner"></div></div>
 
   <div id="status-bar">
     <span class="dot idle" id="dot"></span>
@@ -799,14 +814,13 @@
     all.forEach(function(m, i){ var c=document.getElementById('mc-'+i); if(c) list.appendChild(c); });
     empty.style.display = all.length ? 'none' : 'block';
 
-    var upcoming = active.length;
     if (isQuietHours()) {
       setStatus('idle', 'Quiet hours (5pm–7am) · refreshing paused');
       document.body.classList.remove('meeting-now');
       document.getElementById('overlay').classList.remove('visible');
       return;
     }
-    setStatus('live', upcoming + ' upcoming meeting' + (upcoming!==1?'s':'') + ' today · live');
+    setStatus('live', 'Live');
 
     var anyNow = meetings.some(function(m){ return getState(m)==='now' && !dismissedNowIds[m.id]; });
     document.body.classList.toggle('meeting-now', anyNow);
@@ -1737,6 +1751,48 @@
     } catch(e) { console.warn('stocks error:', e); }
   }
 
+  // ── Movie quotes ─────────────────────────────────────────────────────────
+  var movieQuotes = [];
+
+  async function fetchMovieQuotes() {
+    try {
+      var resp   = await fetch('/moviequotes');
+      var quotes = await resp.json();
+      if (!Array.isArray(quotes) || !quotes.length) return;
+      movieQuotes = quotes;
+      renderMovieQuotes();
+    } catch(e) { console.warn('movie quotes error:', e); }
+  }
+
+  function renderMovieQuotes() {
+    var inner = document.getElementById('moviequote-inner');
+    if (!inner || !movieQuotes.length) return;
+    var shuffled = movieQuotes.slice().sort(function() { return Math.random() - 0.5; });
+    function makeTile(q) {
+      var tile = document.createElement('div');
+      tile.className = 'mq-quote';
+      tile.innerHTML = '<span class="mq-quote-text">“' + esc(q.quote) + '”</span>'
+        + '<span class="mq-quote-attr">— ' + esc(q.person) + (q.film ? ', ' + esc(q.film) : '') + '</span>';
+      return tile;
+    }
+    inner.innerHTML = '';
+    // render twice so the -50% translateX loops seamlessly
+    shuffled.forEach(function(q) { inner.appendChild(makeTile(q)); });
+    shuffled.forEach(function(q) { inner.appendChild(makeTile(q)); });
+  }
+
+  function applyMovieQuoteVisibility() {
+    var hidden = localStorage.getItem('movie-quotes-hidden') === 'true';
+    document.getElementById('moviequote-wrap').classList.toggle('hidden', hidden);
+    document.getElementById('movie-toggle-btn').classList.toggle('active', !hidden);
+  }
+
+  function toggleMovieQuotes() {
+    var hidden = localStorage.getItem('movie-quotes-hidden') === 'true';
+    localStorage.setItem('movie-quotes-hidden', !hidden);
+    applyMovieQuoteVisibility();
+  }
+
   document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('date-lbl').textContent = new Date().toLocaleDateString([],{weekday:'long',month:'long',day:'numeric'});
     function updateEpoch() { document.getElementById('epoch-lbl').textContent = Math.floor(Date.now() / 1000); }
@@ -1754,6 +1810,9 @@
     initMarquee();
     if (isMarketHours()) fetchStocks();
     setInterval(function() { if (isMarketHours()) fetchStocks(); }, 60 * 1000);
+    applyMovieQuoteVisibility();
+    fetchMovieQuotes();
+    setInterval(fetchMovieQuotes, 30 * 60 * 1000);
     fetchPagerDuty();
     // wake-up check: if we cross 8am, trigger a fresh fetch
     var wasQuiet = isQuietHours();

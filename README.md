@@ -173,7 +173,19 @@ All feeds configuration lives in `feeds.json` alongside the exe. A template is p
   ],
   "feeds": [
     {"name": "TechCrunch", "url": "https://techcrunch.com/feed/"}
-  ]
+  ],
+  "movieQuotes": {
+    "items": [
+      {"quote": "May the Force be with you.", "person": "Obi-Wan Kenobi", "film": "Star Wars"}
+    ],
+    "sources": [
+      {
+        "url": "https://example.com/api/quotes.json",
+        "path": "data.quotes",
+        "map": {"quote": "text", "person": "author", "film": "movie.title"}
+      }
+    ]
+  }
 }
 ```
 
@@ -182,6 +194,7 @@ All feeds configuration lives in `feeds.json` alongside the exe. A template is p
 | `stocks` | List of ticker symbols shown in the stock ticker |
 | `pagerduty` | List of teams — `name` is display name, `schedule` and `service` are PagerDuty IDs found in the PagerDuty URL when viewing that schedule/service |
 | `feeds` | List of RSS/Atom feeds — `name` is display name, `url` is the feed URL |
+| `movieQuotes` | Feeds the movie-quote marquee. `items` is a hand-curated list of `{quote, person, film}` objects, always included. `sources` (optional) are external JSON APIs to pull additional quotes from at runtime — each entry's `path` is a dot-path to the array of quote objects in that API's response (omit if the response *is* the array), and `map` gives the dot-path to each field (`quote`, `person`, `film`) within one of those objects. Both are merged into a single list served from `/moviequotes`, cached for 30 minutes. |
 
 ---
 
