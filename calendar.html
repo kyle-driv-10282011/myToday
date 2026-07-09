@@ -359,11 +359,10 @@
     .down { color: #b71c1c; }
 
     /* ── movie quotes ── */
-    #moviequote-wrap { overflow: hidden; margin-bottom: 1.2rem; }
+    #moviequote-wrap { overflow: hidden; margin-bottom: 1.2rem; position: relative; height: 28px; }
     #moviequote-wrap.hidden { display: none; }
-    #moviequote-inner { display: flex; gap: 6px; width: max-content; animation: stocks-scroll 60s linear infinite; }
-    #moviequote-inner:hover { animation-play-state: paused; }
-    .mq-quote { background: var(--surface); border: 0.5px solid var(--border); border-radius: var(--r); padding: 4px 12px; display: flex; align-items: baseline; gap: 6px; white-space: nowrap; font-size: 12px; }
+    #moviequote-inner { position: relative; height: 100%; }
+    .mq-quote { position: absolute; top: 0; left: 0; background: var(--surface); border: 0.5px solid var(--border); border-radius: var(--r); padding: 4px 12px; display: flex; align-items: baseline; gap: 6px; white-space: nowrap; font-size: 12px; box-sizing: border-box; transform: translateX(110%); transition: transform 900ms ease; }
     .mq-quote-text { font-weight: 700; color: var(--text); }
     .mq-quote-attr { font-style: italic; color: var(--muted); }
     #movie-toggle-btn { background: none; border: none; cursor: pointer; font-size: 15px; line-height: 1; padding: 4px; opacity: .35; border-radius: 4px; }
@@ -1752,7 +1751,15 @@
   }
 
   // ── Movie quotes ─────────────────────────────────────────────────────────
-  var movieQuotes = [];
+  var QUOTE_HOLD_MS       = 2 * 60 * 1000; // how long a quote sits at rest
+  var QUOTE_TRANSITION_MS = 900;           // slide-in/slide-out duration
+  var movieQuotes  = [];
+  var mqShuffled   = [];
+  var mqIndex      = 0;
+  var mqCurrentEl  = null;
+  var mqTimer      = null;
+
+  function shuffleQuotes(list) { return list.slice().sort(function() { return Math.random() - 0.5; }); }
 
   async function fetchMovieQuotes() {
     try {
@@ -1760,25 +1767,45 @@
       var quotes = await resp.json();
       if (!Array.isArray(quotes) || !quotes.length) return;
       movieQuotes = quotes;
-      renderMovieQuotes();
+      if (!mqTimer) startMovieQuoteCycle();
     } catch(e) { console.warn('movie quotes error:', e); }
   }
 
-  function renderMovieQuotes() {
+  function startMovieQuoteCycle() {
+    if (!movieQuotes.length) return;
+    mqShuffled = shuffleQuotes(movieQuotes);
+    mqIndex    = 0;
+    showQuote(mqShuffled[mqIndex]);
+    scheduleNextQuote();
+  }
+
+  function scheduleNextQuote() {
+    if (mqTimer) clearTimeout(mqTimer);
+    mqTimer = setTimeout(function() {
+      mqIndex++;
+      if (mqIndex >= mqShuffled.length) { mqShuffled = shuffleQuotes(movieQuotes); mqIndex = 0; }
+      showQuote(mqShuffled[mqIndex]);
+      scheduleNextQuote();
+    }, QUOTE_HOLD_MS);
+  }
+
+  function showQuote(q) {
     var inner = document.getElementById('moviequote-inner');
-    if (!inner || !movieQuotes.length) return;
-    var shuffled = movieQuotes.slice().sort(function() { return Math.random() - 0.5; });
-    function makeTile(q) {
-      var tile = document.createElement('div');
-      tile.className = 'mq-quote';
-      tile.innerHTML = '<span class="mq-quote-text">“' + esc(q.quote) + '”</span>'
-        + '<span class="mq-quote-attr">— ' + esc(q.person) + (q.film ? ', ' + esc(q.film) : '') + '</span>';
-      return tile;
+    if (!inner || !q) return;
+    var tile = document.createElement('div');
+    tile.className = 'mq-quote';
+    tile.innerHTML = '<span class="mq-quote-text">“' + esc(q.quote) + '”</span>'
+      + '<span class="mq-quote-attr">— ' + esc(q.person) + (q.film ? ', ' + esc(q.film) : '') + '</span>';
+    inner.appendChild(tile);
+    void tile.offsetWidth; // force layout so the transition below actually animates
+    requestAnimationFrame(function() { tile.style.transform = 'translateX(0)'; });
+
+    var prevEl = mqCurrentEl;
+    if (prevEl) {
+      requestAnimationFrame(function() { prevEl.style.transform = 'translateX(-110%)'; });
+      setTimeout(function() { if (prevEl.parentNode) prevEl.parentNode.removeChild(prevEl); }, QUOTE_TRANSITION_MS + 100);
     }
-    inner.innerHTML = '';
-    // render twice so the -50% translateX loops seamlessly
-    shuffled.forEach(function(q) { inner.appendChild(makeTile(q)); });
-    shuffled.forEach(function(q) { inner.appendChild(makeTile(q)); });
+    mqCurrentEl = tile;
   }
 
   function applyMovieQuoteVisibility() {
