@@ -1585,6 +1585,9 @@
     btn.classList.toggle('collapsed', collapsed);
     btn.innerHTML = collapsed ? '&#9654;' : '&#9664;';
     localStorage.setItem('feedsSidebarCollapsed', collapsed ? '1' : '');
+    if (!collapsed && FEEDS.length && !feedCycleTimer) {
+      loadFeed(currentFeedIdx);
+    }
   }
 
   (function() {
@@ -1702,7 +1705,10 @@
       durationMs = 5000;
     }
     _setNavEnabled(true);
-    feedCycleTimer = setTimeout(advanceFeed, durationMs);
+    var sidebar = document.getElementById('rss-sidebar');
+    if (!sidebar || !sidebar.classList.contains('collapsed')) {
+      feedCycleTimer = setTimeout(advanceFeed, durationMs);
+    }
   }
 
   async function initMarquee() {
