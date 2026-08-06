@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+*.pyc
+build/
+dist/
+*.exe
+*.spec
+.git/
+.gitignore
+config.py
+feeds.json

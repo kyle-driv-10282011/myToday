@@ -160,6 +160,36 @@ All settings live in `config.py` alongside the exe. A template is provided in `c
 | `AUTO_PULL` | `True` to auto-sync `calendar.html` and `feeds.json` from GitHub on startup | Set to `False` to use local files only |
 | `PULL_INTERVAL` | Seconds between background GitHub sync checks | Default: `30` |
 | `PORT` | Port the server listens on | Default: `8080`. Change if that port is in use on your machine. |
+| `SYNERGY_ROLE` | `'host'`, `'client'`, or `'none'` — see [Synergy-lock](#synergy-lock) below | Default: `'none'` (disabled) |
+| `SYNERGY_HOST_PORT` | Host only: port to listen on for client connections | Default: `8765` |
+| `SYNERGY_CLIENT_HOST` | Client only: the host machine's `address:port` | e.g. `192.168.1.10:8765` |
+| `SYNERGY_TOKEN` | Optional shared secret; same value on host and every client | Blank disables the check |
+
+## Synergy-lock
+
+If you use [Synergy](https://symless.com/synergy) to share one keyboard/mouse
+across multiple computers, myToday can keep them all locked together: when
+you lock your Synergy server machine, every machine running myToday as a
+Synergy client locks itself too.
+
+- Set `SYNERGY_ROLE = 'host'` in `config.py` on your Synergy server machine.
+  It watches for the OS lock/unlock event (Windows only for real detection —
+  other OSes fall back to a stdin dev-mode stub for local testing) and
+  broadcasts it over WebSocket to connected clients on `SYNERGY_HOST_PORT`.
+- Set `SYNERGY_ROLE = 'client'` and `SYNERGY_CLIENT_HOST = 'host-ip:port'` on
+  every other machine. It connects to the host and locks itself on receiving
+  a lock event. Works on Windows, macOS, and Linux.
+- Unlock never propagates — clients only use the "unlock" event to release
+  a keep-awake hold on their own display (kept on while the host is
+  unlocked, so the screen doesn't sleep just because Synergy input isn't
+  currently pointed at it). No credentials are ever stored or bypassed.
+- Traffic is plain, unencrypted WebSocket, meant for a trusted LAN alongside
+  Synergy itself — don't expose the host's port to the internet. `SYNERGY_TOKEN`
+  is a shared secret, not strong auth; it just keeps stray clients on the
+  same network from connecting.
+
+This is a Python port of the standalone [synergy-lock](../synergy-lock) Go
+project, folded in so only one script needs to run per machine.
 
 ## Feeds reference
 
@@ -197,6 +227,59 @@ All feeds configuration lives in `feeds.json` alongside the exe. A template is p
 | `movieQuotes` | Feeds the movie-quote marquee. `items` is a hand-curated list of `{quote, person, film}` objects, always included. `sources` (optional) are external JSON APIs to pull additional quotes from at runtime — each entry's `path` is a dot-path to the array of quote objects in that API's response (omit if the response *is* the array), and `map` gives the dot-path to each field (`quote`, `person`, `film`) within one of those objects. Both are merged into a single list served from `/moviequotes`, cached for 30 minutes. |
 
 ---
+
+## Running in Docker
+
+Lets you host myToday on one machine (e.g. your Synergy server PC) and
+browse it from any other device on your LAN, instead of running it locally
+on the machine you're viewing it from.
+
+**1. Create your config** (same as the non-Docker setup): copy
+`config.example.py` → `config.py` and `feeds.example.json` → `feeds.json`
+in this folder, and fill them in. These are bind-mounted into the
+container, not baked into the image, so you can edit them without
+rebuilding.
+
+**2. Build and run**
+
+```
+docker compose up --build -d
+```
+
+**3. Open the dashboard** from any device on your LAN at
+`http://<docker-host-ip-or-hostname>:8080`.
+
+**4. Update your Azure app registration's redirect URI.** MSAL's
+Microsoft sign-in popup validates against an exact redirect URI registered
+in Azure AD. If it's currently set to `http://localhost:8080`, add
+`http://<docker-host-ip-or-hostname>:8080` too (portal.azure.com → your app
+registration → Authentication → Redirect URIs) — otherwise sign-in will
+fail with a redirect URI mismatch.
+
+**5. Slack login.** The container has no physical display, so the
+interactive Slack login (a visible Chromium window for manual MFA) is
+exposed through [noVNC](https://github.com/novnc/noVNC) instead:
+
+- Open `http://<docker-host-ip-or-hostname>:6080/vnc.html` in a separate
+  tab and connect.
+- In the myToday tab, click the gear icon in the Slack column → **Open
+  Login Browser**.
+- Switch to the noVNC tab — the Chromium window will appear there. Sign in
+  and complete MFA as usual.
+
+You only need to do this when the Slack session actually expires — the
+browser caches the resulting token in `localStorage` and restores it via
+`/slack/restore` automatically on every page load, container restart
+included.
+
+By default the noVNC viewer has no password (matching this project's
+existing unencrypted-LAN trust model — see synergy-lock's security notes).
+Set a `VNC_PASSWORD` environment variable (e.g. in a `.env` file next to
+`docker-compose.yml`) if you want to require one.
+
+**Security note:** as elsewhere in this project, traffic is plain HTTP —
+fine for a trusted LAN, not for exposing to the internet. Put it behind a
+VPN (e.g. Tailscale) if you need remote access.
 
 ## Troubleshooting
 

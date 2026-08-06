@@ -1,0 +1,15 @@
+services:
+  mytoday:
+    build: .
+    ports:
+      - "8080:8080"   # dashboard
+      - "6080:6080"   # noVNC — open http://<docker-host>:6080/vnc.html to view/control the Slack login browser
+    volumes:
+      - ./config.py:/app/config.py:ro
+      - ./feeds.json:/app/feeds.json
+    environment:
+      # Optional: set a VNC password so the login browser isn't wide open to
+      # anyone on the LAN who finds port 6080. Leave unset to match this
+      # project's existing unencrypted-LAN trust model.
+      - VNC_PASSWORD=${VNC_PASSWORD:-}
+    restart: unless-stopped

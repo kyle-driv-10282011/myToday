@@ -126,7 +126,11 @@ try:
         GITHUB_API_URL, GITHUB_FEEDS_URL, PAGERDUTY_TEAMS,
     )
     import config as _config
-    PORT            = getattr(_config, 'PORT', 8080)
+    PORT                = getattr(_config, 'PORT', 8080)
+    SYNERGY_ROLE        = getattr(_config, 'SYNERGY_ROLE', 'none')
+    SYNERGY_HOST_PORT   = getattr(_config, 'SYNERGY_HOST_PORT', 8765)
+    SYNERGY_CLIENT_HOST = getattr(_config, 'SYNERGY_CLIENT_HOST', '')
+    SYNERGY_TOKEN       = getattr(_config, 'SYNERGY_TOKEN', '')
     print(f'Config: {os.path.abspath(_config.__file__)}')
 except ModuleNotFoundError:
     print('ERROR: config.py not found.')
@@ -339,7 +343,12 @@ def run_slack_playwright_login(email, password):
 
     extracted = {'token': None, 'version_ts': None, 'csid': None}
 
-    _launch_kwargs = {'headless': False, 'args': ['--no-sandbox']}
+    # Explicit env, not Playwright's default -- the browser subprocess doesn't
+    # reliably inherit the parent process's environment (observed under Xvfb
+    # in Docker: DISPLAY never reached Chromium without this, even though
+    # os.environ had it), so DISPLAY (and everything else) must be passed
+    # through by hand.
+    _launch_kwargs = {'headless': False, 'args': ['--no-sandbox'], 'env': dict(os.environ)}
     _sys_chrome_marker = os.path.join(BASE_DIR, '.local-browsers', '.system-chrome')
     if os.path.isfile(_sys_chrome_marker):
         with open(_sys_chrome_marker) as _mf:
@@ -912,6 +921,9 @@ class Handler(http.server.BaseHTTPRequestHandler):
             try:
                 with open(HTML_FILE, 'rb') as f:
                     body = f.read()
+                ts = datetime.datetime.fromtimestamp(os.path.getmtime(HTML_FILE)).strftime('%Y-%m-%d %H:%M')
+                body = re.sub(rb'<meta name="version"[^>]*>', b'', body)
+                body = body.replace(b'</head>', f'<meta name="version" content="{ts}"></head>'.encode())
                 self.send_response(200)
                 self.send_header('Content-Type', 'text/html; charset=utf-8')
                 self.send_header('Content-Length', str(len(body)))
@@ -1118,6 +1130,18 @@ if __name__ == '__main__':
         t.start()
     else:
         print('Auto-pull disabled — serving local files.')
+
+    if SYNERGY_ROLE == 'host':
+        import synergy_lock
+        synergy_lock.start_host(SYNERGY_HOST_PORT, SYNERGY_TOKEN)
+    elif SYNERGY_ROLE == 'client':
+        if not SYNERGY_CLIENT_HOST:
+            print('ERROR: SYNERGY_ROLE is "client" but SYNERGY_CLIENT_HOST is not set in config.py.')
+            sys.exit(1)
+        import synergy_lock
+        synergy_lock.start_client(SYNERGY_CLIENT_HOST, SYNERGY_TOKEN)
+        print(f'synergy-lock: client mode, connecting to {SYNERGY_CLIENT_HOST}')
+
     os.chdir(BASE_DIR)
     port = PORT
     while True:

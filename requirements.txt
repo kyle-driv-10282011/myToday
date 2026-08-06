@@ -1,2 +1,4 @@
 msal==1.37.0
 playwright==1.60.0
+websockets>=13.1
+pywin32==310; sys_platform == 'win32'

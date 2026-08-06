@@ -363,7 +363,7 @@
     #movie-toggle-btn:hover { opacity: .7; background: var(--surface2); }
     #movie-toggle-btn.active { opacity: 1; }
   </style>
-<meta name="version" content="2026-06-11 07:56"></head>
+</head>
 <body>
 
 <div id="slack-auth-modal" onclick="if(event.target===this)closeSlackAuth()">
@@ -1838,8 +1838,16 @@
   }
 
   document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('date-lbl').textContent = new Date().toLocaleDateString([],{weekday:'long',month:'long',day:'numeric'});
-    function updateEpoch() { document.getElementById('epoch-lbl').textContent = Math.floor(Date.now() / 1000); }
+    var currentDateStr = new Date().toDateString();
+    function updateDateLabel() {
+      document.getElementById('date-lbl').textContent = new Date().toLocaleDateString([],{weekday:'long',month:'long',day:'numeric'});
+    }
+    updateDateLabel();
+    function updateEpoch() {
+      document.getElementById('epoch-lbl').textContent = Math.floor(Date.now() / 1000);
+      var nowDateStr = new Date().toDateString();
+      if (nowDateStr !== currentDateStr) { currentDateStr = nowDateStr; updateDateLabel(); }
+    }
     updateEpoch();
     setInterval(updateEpoch, 1000);
     var verMetas = document.querySelectorAll('meta[name="version"]');
