@@ -34,18 +34,3 @@ MS_TENANT_ID         = 'your-azure-ad-tenant-id'
 AUTO_PULL            = True   # set to False to serve local files without fetching from GitHub
 PULL_INTERVAL        = 30     # seconds between background sync checks
 PORT                 = 8080   # change if 8080 is already in use on your machine
-
-# Synergy-lock — keeps every Synergy-connected machine locked together.
-# 'host'   — this is your Synergy server machine. Watches for the local lock/
-#            unlock event and broadcasts it to connected clients. Real
-#            detection is Windows-only (other OSes fall back to a stdin
-#            dev-mode stub — type lock/unlock + Enter to simulate it).
-# 'client' — this is a Synergy client machine. Connects to the host and locks
-#            itself on "lock" (never auto-unlocks — see synergy-lock's README
-#            for why). Also keeps its display awake while the host is
-#            unlocked. Works on Windows, macOS, and Linux.
-# 'none'   — feature disabled (default).
-SYNERGY_ROLE         = 'none'
-SYNERGY_HOST_PORT    = 8765                    # host: port to listen on
-SYNERGY_CLIENT_HOST  = '192.168.1.10:8765'     # client: host's address:port to connect to
-SYNERGY_TOKEN        = ''                      # optional shared secret, same value on host and all clients
