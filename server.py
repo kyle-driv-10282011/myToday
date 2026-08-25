@@ -912,6 +912,9 @@ class Handler(http.server.BaseHTTPRequestHandler):
             try:
                 with open(HTML_FILE, 'rb') as f:
                     body = f.read()
+                ts = datetime.datetime.fromtimestamp(os.path.getmtime(HTML_FILE)).strftime('%Y-%m-%d %H:%M')
+                body = re.sub(rb'<meta name="version"[^>]*>', b'', body)
+                body = body.replace(b'</head>', f'<meta name="version" content="{ts}"></head>'.encode())
                 self.send_response(200)
                 self.send_header('Content-Type', 'text/html; charset=utf-8')
                 self.send_header('Content-Length', str(len(body)))
