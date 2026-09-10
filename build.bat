@@ -35,6 +35,10 @@ if exist Images (
 copy config.example.py  dist\myToday\config.example.py
 copy feeds.example.json dist\myToday\feeds.example.json
 copy setup.bat          dist\myToday\setup.bat
+if exist eggcorns.json (
+    copy eggcorns.json dist\myToday\eggcorns.json
+    echo Copied eggcorns.json
+)
 if exist config.py (
     copy config.py dist\myToday\config.py
     echo Copied config.py

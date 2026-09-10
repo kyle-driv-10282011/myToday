@@ -333,6 +333,16 @@
     .pd-tip-title { font-size:11px; font-family:'DM Mono',monospace; flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
     .pd-tip-age { font-size:10px; color:var(--muted); font-family:'DM Mono',monospace; white-space:nowrap; }
 
+    /* ── regional clock hover tooltip ── */
+    .rc-clock { cursor: default; }
+    #tz-tooltip { display:none; position:fixed; z-index:2000; background:var(--surface); border:0.5px solid var(--border2); border-radius:var(--r); box-shadow:0 4px 16px rgba(0,0,0,.18); padding:8px 10px; font-family:'DM Mono',monospace; min-width:200px; }
+    .tz-tip-title { font-size:10px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); margin-bottom:6px; }
+    .tz-tip-head { display:flex; gap:18px; font-size:10px; color:var(--muted); padding-bottom:3px; border-bottom:0.5px solid var(--border); margin-bottom:3px; }
+    .tz-tip-head span { flex:1; text-align:center; }
+    .tz-tip-row { display:flex; gap:18px; font-size:11px; padding:2px 0; }
+    .tz-tip-row span { flex:1; text-align:center; white-space:nowrap; color:var(--text); }
+    .tz-tip-row.tz-tip-now { background:var(--surface2); border-radius:4px; font-weight:700; }
+
     /* ── stocks ── */
     #stocks-wrap { overflow: hidden; margin-bottom: 1.2rem; }
     #stocks-inner { display: flex; gap: 6px; width: max-content; animation: stocks-scroll 35s linear infinite; }
@@ -352,10 +362,11 @@
     .down { color: #b71c1c; }
 
     /* ── movie quotes ── */
-    #moviequote-wrap { overflow: hidden; margin-bottom: 1.2rem; position: relative; height: 28px; }
+    #moviequote-wrap { overflow: hidden; margin-bottom: 1.2rem; }
     #moviequote-wrap.hidden { display: none; }
-    #moviequote-inner { position: relative; height: 100%; }
-    .mq-batch { position: absolute; top: 0; left: 0; display: flex; gap: 6px; white-space: nowrap; transform: translateX(110%); transition: transform 900ms ease; }
+    #moviequote-inner { display: flex; gap: 6px; width: max-content; animation: moviequote-scroll 60s linear infinite; }
+    #moviequote-inner:hover { animation-play-state: paused; }
+    @keyframes moviequote-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
     .mq-quote { flex-shrink: 0; background: var(--surface); border: 0.5px solid var(--border); border-radius: var(--r); padding: 4px 12px; display: flex; align-items: baseline; gap: 6px; white-space: nowrap; font-size: 12px; box-sizing: border-box; }
     .mq-quote-text { font-weight: 700; color: var(--text); }
     .mq-quote-attr { font-style: italic; color: var(--muted); }
@@ -1516,10 +1527,62 @@
       cell.appendChild(timeEl);
       cell.appendChild(tempEl);
       cell.appendChild(humidEl);
+      cell.addEventListener('mouseenter', function(zone) {
+        return function() { showTzTooltip(cell, zone); };
+      }(c));
+      cell.addEventListener('mouseleave', hideTzTooltip);
       wrap.appendChild(cell);
     });
     updateClocks();
     setInterval(updateClocks, 1000);
+  }
+
+  function formatHour12(h, m) {
+    var period = h < 12 ? 'am' : 'pm';
+    var h12 = h % 12; if (h12 === 0) h12 = 12;
+    return m ? (h12 + ':' + pad(m) + period) : (h12 + period);
+  }
+
+  function tzHourParts(date, tz) {
+    var parts = {};
+    new Intl.DateTimeFormat('en-US', { timeZone: tz, hour: 'numeric', minute: 'numeric', hour12: false })
+      .formatToParts(date).forEach(function(p) { if (p.type !== 'literal') parts[p.type] = parseInt(p.value, 10); });
+    return { h: parts.hour % 24, m: parts.minute || 0 };
+  }
+
+  function showTzTooltip(anchor, zone) {
+    var tip = document.getElementById('tz-tooltip');
+    var localTz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    var now = new Date();
+    var localTop = new Date(now);
+    localTop.setMinutes(0, 0, 0); // snap to top of the local hour (approximate across DST edges)
+    var currentLocalHour = tzHourParts(now, localTz).h;
+
+    var rows = '';
+    for (var h = 6; h <= 18; h++) {
+      var diff = h - currentLocalHour;
+      var t = new Date(localTop.getTime() + diff * 3600000);
+      var local = tzHourParts(t, localTz);
+      var zoneTime = tzHourParts(t, zone.tz);
+      rows += '<div class="tz-tip-row' + (h === currentLocalHour ? ' tz-tip-now' : '') + '">'
+        + '<span>' + formatHour12(local.h, local.m) + '</span>'
+        + '<span>' + formatHour12(zoneTime.h, zoneTime.m) + '</span>'
+        + '</div>';
+    }
+
+    tip.innerHTML = '<div class="tz-tip-title">Your time → ' + esc(zone.label) + '</div>'
+      + '<div class="tz-tip-head"><span>You</span><span>' + esc(zone.label) + '</span></div>'
+      + rows;
+
+    var rect = anchor.getBoundingClientRect();
+    var left = Math.min(rect.left, window.innerWidth - 260);
+    tip.style.left = left + 'px';
+    tip.style.top  = (rect.bottom + 6) + 'px';
+    tip.style.display = 'block';
+  }
+
+  function hideTzTooltip() {
+    document.getElementById('tz-tooltip').style.display = 'none';
   }
 
   function updateClocks() {
@@ -1720,6 +1783,10 @@
   }
 
   // ── Stocks ────────────────────────────────────────────────────────────
+  var STOCKS_DURATION_S   = 35; // must match the #stocks-inner CSS animation-duration
+  var FALLBACK_PX_PER_SEC = 18; // used if stocks haven't rendered (e.g. market closed)
+  var stockPxPerSec       = null;
+
   async function fetchStocks() {
     try {
       var resp   = await fetch('/stocks');
@@ -1744,23 +1811,16 @@
       // render twice so the -50% translateX loops seamlessly
       quotes.forEach(function(q) { inner.appendChild(makeTile(q)); });
       quotes.forEach(function(q) { inner.appendChild(makeTile(q)); });
+      // the marquee travels half of scrollWidth (one full set) over STOCKS_DURATION_S
+      if (inner.scrollWidth > 0) stockPxPerSec = (inner.scrollWidth / 2) / STOCKS_DURATION_S;
     } catch(e) { console.warn('stocks error:', e); }
   }
 
   // ── Movie quotes ─────────────────────────────────────────────────────────
-  var BATCH_HOLD_MS       = 60 * 1000; // how long a full batch sits at rest
-  var BATCH_TRANSITION_MS = 900;       // slide-in/slide-out duration
-  var movieQuotes    = [];
-  var mqPool         = [];   // shuffled quotes not yet used in the current pass
-  var mqCurrentBatch = null;
-  var mqTimer        = null;
+  var MOVIEQUOTE_SPEED_FACTOR = 0.8; // fraction of the stock ticker's speed — keeps it slightly slower
+  var movieQuotes = [];
 
   function shuffleQuotes(list) { return list.slice().sort(function() { return Math.random() - 0.5; }); }
-
-  function nextPoolQuote() {
-    if (!mqPool.length) mqPool = shuffleQuotes(movieQuotes);
-    return mqPool.shift();
-  }
 
   async function fetchMovieQuotes() {
     try {
@@ -1768,14 +1828,8 @@
       var quotes = await resp.json();
       if (!Array.isArray(quotes) || !quotes.length) return;
       movieQuotes = quotes;
-      if (!mqTimer) startMovieQuoteCycle();
+      renderMovieQuotes();
     } catch(e) { console.warn('movie quotes error:', e); }
-  }
-
-  function startMovieQuoteCycle() {
-    if (!movieQuotes.length) return;
-    mqPool = shuffleQuotes(movieQuotes);
-    showNextBatch();
   }
 
   function makeQuoteTile(q) {
@@ -1786,43 +1840,19 @@
     return tile;
   }
 
-  function showNextBatch() {
-    var wrap  = document.getElementById('moviequote-wrap');
+  function renderMovieQuotes() {
     var inner = document.getElementById('moviequote-inner');
-    if (!wrap || !inner) return;
-    var maxWidth = wrap.clientWidth;
-
-    var batch = document.createElement('div');
-    batch.className = 'mq-batch';
-    inner.appendChild(batch); // attach off-screen (translateX(110%) from CSS) so we can measure widths
-
-    var used = [];
-    while (true) {
-      var q = nextPoolQuote();
-      if (!q) break;
-      var tile = makeQuoteTile(q);
-      batch.appendChild(tile);
-      if (batch.scrollWidth > maxWidth && used.length > 0) {
-        batch.removeChild(tile);
-        mqPool.unshift(q); // put it back for the next batch
-        break;
-      }
-      used.push(q);
-      if (batch.scrollWidth > maxWidth) break; // single quote already fills the frame
-    }
-
-    void batch.offsetWidth; // force layout so the transition below actually animates
-    requestAnimationFrame(function() { batch.style.transform = 'translateX(0)'; });
-
-    var prevBatch = mqCurrentBatch;
-    if (prevBatch) {
-      requestAnimationFrame(function() { prevBatch.style.transform = 'translateX(-110%)'; });
-      setTimeout(function() { if (prevBatch.parentNode) prevBatch.parentNode.removeChild(prevBatch); }, BATCH_TRANSITION_MS + 100);
-    }
-    mqCurrentBatch = batch;
-
-    if (mqTimer) clearTimeout(mqTimer);
-    mqTimer = setTimeout(showNextBatch, BATCH_HOLD_MS);
+    if (!inner) return;
+    inner.innerHTML = '';
+    var shuffled = shuffleQuotes(movieQuotes);
+    // render twice so the -50% translateX loops seamlessly
+    shuffled.forEach(function(q) { inner.appendChild(makeQuoteTile(q)); });
+    shuffled.forEach(function(q) { inner.appendChild(makeQuoteTile(q)); });
+    // pace the marquee by speed (px/s), not a fixed duration, so it stays
+    // consistent regardless of how many/long the quotes are
+    var speed    = (stockPxPerSec || FALLBACK_PX_PER_SEC) * MOVIEQUOTE_SPEED_FACTOR;
+    var duration = (inner.scrollWidth / 2) / speed;
+    inner.style.animationDuration = duration.toFixed(2) + 's';
   }
 
   function applyMovieQuoteVisibility() {
@@ -1881,5 +1911,6 @@
   });
 </script>
 <div id="pd-tooltip"></div>
+<div id="tz-tooltip"></div>
 </body>
 </html>

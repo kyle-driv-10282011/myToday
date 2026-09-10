@@ -1,0 +1,3232 @@
+[
+  {
+    "eggcorn": "(curled up) in the feeble position",
+    "target": "fetal",
+    "url": "https://eggcorns.lascribe.net/english/1102/feeble/"
+  },
+  {
+    "eggcorn": "(go (at it)) hammer and thongs",
+    "target": "tongs",
+    "url": "https://eggcorns.lascribe.net/english/671/thongs/"
+  },
+  {
+    "eggcorn": "a hair's breath",
+    "target": "breadth",
+    "url": "https://eggcorns.lascribe.net/english/256/breath/"
+  },
+  {
+    "eggcorn": "a hare's breadth",
+    "target": "hair",
+    "url": "https://eggcorns.lascribe.net/english/52/hare/"
+  },
+  {
+    "eggcorn": "a mood point",
+    "target": "moot",
+    "url": "https://eggcorns.lascribe.net/english/42/mood/"
+  },
+  {
+    "eggcorn": "a mute point",
+    "target": "moot",
+    "url": "https://eggcorns.lascribe.net/english/41/mute/"
+  },
+  {
+    "eggcorn": "a pigment of so.'s imagination",
+    "target": "figment",
+    "url": "https://eggcorns.lascribe.net/english/578/pigment/"
+  },
+  {
+    "eggcorn": "a posable thumb",
+    "target": "opposable",
+    "url": "https://eggcorns.lascribe.net/english/630/a-posable/"
+  },
+  {
+    "eggcorn": "a shoe-in",
+    "target": "shoo",
+    "url": "https://eggcorns.lascribe.net/english/47/shoe/"
+  },
+  {
+    "eggcorn": "a shot over the bough",
+    "target": "bow",
+    "url": "https://eggcorns.lascribe.net/english/528/bough/"
+  },
+  {
+    "eggcorn": "a tough road to hoe",
+    "target": "row",
+    "url": "https://eggcorns.lascribe.net/english/73/road/"
+  },
+  {
+    "eggcorn": "above/beyond approach",
+    "target": "reproach",
+    "url": "https://eggcorns.lascribe.net/english/726/approach/"
+  },
+  {
+    "eggcorn": "ad homonym",
+    "target": "hominem",
+    "url": "https://eggcorns.lascribe.net/english/684/homonym/"
+  },
+  {
+    "eggcorn": "adverse to",
+    "target": "averse",
+    "url": "https://eggcorns.lascribe.net/english/585/adverse/"
+  },
+  {
+    "eggcorn": "airways",
+    "target": "airwaves",
+    "url": "https://eggcorns.lascribe.net/english/586/airways/"
+  },
+  {
+    "eggcorn": "all be darned",
+    "target": "I'll be darned",
+    "url": "https://eggcorns.lascribe.net/english/610/all-be-darned/"
+  },
+  {
+    "eggcorn": "all goes well (for)",
+    "target": "augurs",
+    "url": "https://eggcorns.lascribe.net/english/318/all-goes/"
+  },
+  {
+    "eggcorn": "all ready",
+    "target": "already",
+    "url": "https://eggcorns.lascribe.net/english/255/all-ready/"
+  },
+  {
+    "eggcorn": "all total",
+    "target": "told",
+    "url": "https://eggcorns.lascribe.net/english/559/total/"
+  },
+  {
+    "eggcorn": "alterior motive",
+    "target": "ulterior",
+    "url": "https://eggcorns.lascribe.net/english/961/alterior/"
+  },
+  {
+    "eggcorn": "amature",
+    "target": "amateur",
+    "url": "https://eggcorns.lascribe.net/english/392/amature/"
+  },
+  {
+    "eggcorn": "another words",
+    "target": "in other",
+    "url": "https://eggcorns.lascribe.net/english/128/another/"
+  },
+  {
+    "eggcorn": "ansister",
+    "target": "ancestor",
+    "url": "https://eggcorns.lascribe.net/english/631/ansister/"
+  },
+  {
+    "eggcorn": "antidotal evidence",
+    "target": "anecdotal",
+    "url": "https://eggcorns.lascribe.net/english/114/antidotal/"
+  },
+  {
+    "eggcorn": "armature",
+    "target": "amateur",
+    "url": "https://eggcorns.lascribe.net/english/215/armature/"
+  },
+  {
+    "eggcorn": "at nauseam",
+    "target": "ad",
+    "url": "https://eggcorns.lascribe.net/english/1129/at/"
+  },
+  {
+    "eggcorn": "auger well (for)",
+    "target": "augur",
+    "url": "https://eggcorns.lascribe.net/english/317/auger/"
+  },
+  {
+    "eggcorn": "averse",
+    "target": "adverse",
+    "url": "https://eggcorns.lascribe.net/english/592/averse/"
+  },
+  {
+    "eggcorn": "awkword",
+    "target": "awkward",
+    "url": "https://eggcorns.lascribe.net/english/276/awkword/"
+  },
+  {
+    "eggcorn": "axle",
+    "target": "Axel",
+    "url": "https://eggcorns.lascribe.net/english/307/axle/"
+  },
+  {
+    "eggcorn": "back and call",
+    "target": "beck",
+    "url": "https://eggcorns.lascribe.net/english/518/back/"
+  },
+  {
+    "eggcorn": "backpeddle",
+    "target": "backpedal",
+    "url": "https://eggcorns.lascribe.net/english/175/backpeddle/"
+  },
+  {
+    "eggcorn": "bailing wire",
+    "target": "baling",
+    "url": "https://eggcorns.lascribe.net/english/386/bailing/"
+  },
+  {
+    "eggcorn": "baited breath",
+    "target": "bated",
+    "url": "https://eggcorns.lascribe.net/english/53/baited/"
+  },
+  {
+    "eggcorn": "balked down",
+    "target": "bogged down",
+    "url": "https://eggcorns.lascribe.net/english/29/balked-down/"
+  },
+  {
+    "eggcorn": "ball one's eyes out",
+    "target": "bawl",
+    "url": "https://eggcorns.lascribe.net/english/538/ball/"
+  },
+  {
+    "eggcorn": "ban together",
+    "target": "band",
+    "url": "https://eggcorns.lascribe.net/english/424/ban/"
+  },
+  {
+    "eggcorn": "bantied about",
+    "target": "bandy",
+    "url": "https://eggcorns.lascribe.net/english/501/banty/"
+  },
+  {
+    "eggcorn": "barred wire",
+    "target": "barbed",
+    "url": "https://eggcorns.lascribe.net/english/626/barred/"
+  },
+  {
+    "eggcorn": "base",
+    "target": "bass",
+    "url": "https://eggcorns.lascribe.net/english/62/base/"
+  },
+  {
+    "eggcorn": "batter an eyelid",
+    "target": "bat",
+    "url": "https://eggcorns.lascribe.net/english/464/batter/"
+  },
+  {
+    "eggcorn": "be who of",
+    "target": "behoove",
+    "url": "https://eggcorns.lascribe.net/english/641/be-who-of/"
+  },
+  {
+    "eggcorn": "beacon call",
+    "target": "beck and call",
+    "url": "https://eggcorns.lascribe.net/english/456/beacon-call/"
+  },
+  {
+    "eggcorn": "bearbacking",
+    "target": "bare",
+    "url": "https://eggcorns.lascribe.net/english/83/bear/"
+  },
+  {
+    "eggcorn": "beckon call",
+    "target": "beck and call",
+    "url": "https://eggcorns.lascribe.net/english/450/beckon-call/"
+  },
+  {
+    "eggcorn": "beckon the question",
+    "target": "beg",
+    "url": "https://eggcorns.lascribe.net/english/379/beckon/"
+  },
+  {
+    "eggcorn": "beckoned call",
+    "target": "beck and call",
+    "url": "https://eggcorns.lascribe.net/english/77/beckoned-call/"
+  },
+  {
+    "eggcorn": "bedside manor",
+    "target": "manner",
+    "url": "https://eggcorns.lascribe.net/english/182/manor/"
+  },
+  {
+    "eggcorn": "beknighted",
+    "target": "benighted",
+    "url": "https://eggcorns.lascribe.net/english/534/beknighted/"
+  },
+  {
+    "eggcorn": "bellweather",
+    "target": "bellwether",
+    "url": "https://eggcorns.lascribe.net/english/533/bellweather/"
+  },
+  {
+    "eggcorn": "bemused",
+    "target": "amused",
+    "url": "https://eggcorns.lascribe.net/english/9/bemused/"
+  },
+  {
+    "eggcorn": "besiege",
+    "target": "beseech",
+    "url": "https://eggcorns.lascribe.net/english/483/besiege/"
+  },
+  {
+    "eggcorn": "beyond the pail",
+    "target": "pale",
+    "url": "https://eggcorns.lascribe.net/english/947/pail/"
+  },
+  {
+    "eggcorn": "bi-election",
+    "target": "by-election",
+    "url": "https://eggcorns.lascribe.net/english/529/bi-election/"
+  },
+  {
+    "eggcorn": "bi-law",
+    "target": "bylaw",
+    "url": "https://eggcorns.lascribe.net/english/341/bi-law/"
+  },
+  {
+    "eggcorn": "bi-product",
+    "target": "byproduct",
+    "url": "https://eggcorns.lascribe.net/english/949/bi-product/"
+  },
+  {
+    "eggcorn": "black and red fish",
+    "target": "blackened",
+    "url": "https://eggcorns.lascribe.net/english/141/black-and/"
+  },
+  {
+    "eggcorn": "blackmale",
+    "target": "blackmail",
+    "url": "https://eggcorns.lascribe.net/english/78/blackmale/"
+  },
+  {
+    "eggcorn": "bloodgeon",
+    "target": "bludgeon",
+    "url": "https://eggcorns.lascribe.net/english/1091/bloodgeon/"
+  },
+  {
+    "eggcorn": "bobwire",
+    "target": "barbed wire",
+    "url": "https://eggcorns.lascribe.net/english/65/bobwire/"
+  },
+  {
+    "eggcorn": "boggled down",
+    "target": "bogged",
+    "url": "https://eggcorns.lascribe.net/english/727/boggled/"
+  },
+  {
+    "eggcorn": "bold-faced lie",
+    "target": "bald",
+    "url": "https://eggcorns.lascribe.net/english/82/bold/"
+  },
+  {
+    "eggcorn": "Bombay chest",
+    "target": "bombé",
+    "url": "https://eggcorns.lascribe.net/english/460/bombay/"
+  },
+  {
+    "eggcorn": "bonified",
+    "target": "bona fide",
+    "url": "https://eggcorns.lascribe.net/english/25/bonified/"
+  },
+  {
+    "eggcorn": "boots-trap",
+    "target": "boot(-)strap",
+    "url": "https://eggcorns.lascribe.net/english/516/boots-trap/"
+  },
+  {
+    "eggcorn": "bran-new",
+    "target": "brand-new",
+    "url": "https://eggcorns.lascribe.net/english/1087/bran-new/"
+  },
+  {
+    "eggcorn": "branded about",
+    "target": "bandied",
+    "url": "https://eggcorns.lascribe.net/english/612/branded/"
+  },
+  {
+    "eggcorn": "bread and breakfast",
+    "target": "bed",
+    "url": "https://eggcorns.lascribe.net/english/334/bread/"
+  },
+  {
+    "eggcorn": "bullion cube",
+    "target": "bouillon",
+    "url": "https://eggcorns.lascribe.net/english/277/bullion/"
+  },
+  {
+    "eggcorn": "bumpetta-bumpetta",
+    "target": "bumper to bumper",
+    "url": "https://eggcorns.lascribe.net/english/214/bumpetta-bumpetta/"
+  },
+  {
+    "eggcorn": "busting tables",
+    "target": "bus",
+    "url": "https://eggcorns.lascribe.net/english/565/bust/"
+  },
+  {
+    "eggcorn": "butt naked",
+    "target": "buck",
+    "url": "https://eggcorns.lascribe.net/english/369/butt/"
+  },
+  {
+    "eggcorn": "buy one's time",
+    "target": "bide",
+    "url": "https://eggcorns.lascribe.net/english/553/buy/"
+  },
+  {
+    "eggcorn": "by enlarge",
+    "target": "by and large",
+    "url": "https://eggcorns.lascribe.net/english/234/by-enlarge/"
+  },
+  {
+    "eggcorn": "by in large",
+    "target": "by and large",
+    "url": "https://eggcorns.lascribe.net/english/447/by-in-large/"
+  },
+  {
+    "eggcorn": "bye and bye",
+    "target": "by and by",
+    "url": "https://eggcorns.lascribe.net/english/503/bye-and-bye/"
+  },
+  {
+    "eggcorn": "cacoughany",
+    "target": "cacophony",
+    "url": "https://eggcorns.lascribe.net/english/1104/cacoughany/"
+  },
+  {
+    "eggcorn": "Cadillac converter",
+    "target": "catalytic",
+    "url": "https://eggcorns.lascribe.net/english/91/cadillac/"
+  },
+  {
+    "eggcorn": "car links",
+    "target": "lengths",
+    "url": "https://eggcorns.lascribe.net/english/1098/links/"
+  },
+  {
+    "eggcorn": "case and point",
+    "target": "case in point",
+    "url": "https://eggcorns.lascribe.net/english/444/case-and-point/"
+  },
+  {
+    "eggcorn": "cat flat",
+    "target": "flap",
+    "url": "https://eggcorns.lascribe.net/english/694/flat/"
+  },
+  {
+    "eggcorn": "catchitore",
+    "target": "cacciatore",
+    "url": "https://eggcorns.lascribe.net/english/670/catchitore-catchitori-catchatore-catchatori/"
+  },
+  {
+    "eggcorn": "catchnap",
+    "target": "catnap",
+    "url": "https://eggcorns.lascribe.net/english/216/catchnap/"
+  },
+  {
+    "eggcorn": "Catillac",
+    "target": "Cadillac",
+    "url": "https://eggcorns.lascribe.net/english/556/catillac/"
+  },
+  {
+    "eggcorn": "caused someone his/her job, life, etc.",
+    "target": "cost",
+    "url": "https://eggcorns.lascribe.net/english/636/caused/"
+  },
+  {
+    "eggcorn": "cease and decease",
+    "target": "desist",
+    "url": "https://eggcorns.lascribe.net/english/107/decease/"
+  },
+  {
+    "eggcorn": "cease the opportunity",
+    "target": "seize",
+    "url": "https://eggcorns.lascribe.net/english/452/cease/"
+  },
+  {
+    "eggcorn": "censor",
+    "target": "sensor",
+    "url": "https://eggcorns.lascribe.net/english/587/censor/"
+  },
+  {
+    "eggcorn": "centrifical force",
+    "target": "centrifugal",
+    "url": "https://eggcorns.lascribe.net/english/225/centrifical/"
+  },
+  {
+    "eggcorn": "centripedal force",
+    "target": "centripetal",
+    "url": "https://eggcorns.lascribe.net/english/226/centripedal/"
+  },
+  {
+    "eggcorn": "chaise lounge",
+    "target": "chaise longue",
+    "url": "https://eggcorns.lascribe.net/english/194/chaise-lounge/"
+  },
+  {
+    "eggcorn": "chalk(ed) full, chalk-filled",
+    "target": "chock",
+    "url": "https://eggcorns.lascribe.net/english/945/chalked/"
+  },
+  {
+    "eggcorn": "chewy nugget",
+    "target": "nougat",
+    "url": "https://eggcorns.lascribe.net/english/372/nugget/"
+  },
+  {
+    "eggcorn": "chickens come home to roast",
+    "target": "roost",
+    "url": "https://eggcorns.lascribe.net/english/576/roast/"
+  },
+  {
+    "eggcorn": "chock (it) up (to)",
+    "target": "chalk",
+    "url": "https://eggcorns.lascribe.net/english/1112/chock/"
+  },
+  {
+    "eggcorn": "cholester oil",
+    "target": "cholesterol",
+    "url": "https://eggcorns.lascribe.net/english/24/cholester-oil/"
+  },
+  {
+    "eggcorn": "chomp at the bit",
+    "target": "champ at the bit",
+    "url": "https://eggcorns.lascribe.net/english/269/chomp-at-the-bit/"
+  },
+  {
+    "eggcorn": "chuck (it) up (to)",
+    "target": "chalk",
+    "url": "https://eggcorns.lascribe.net/english/1113/chuck/"
+  },
+  {
+    "eggcorn": "click",
+    "target": "clique",
+    "url": "https://eggcorns.lascribe.net/english/535/click/"
+  },
+  {
+    "eggcorn": "cling and clatter",
+    "target": "clink",
+    "url": "https://eggcorns.lascribe.net/english/377/cling/"
+  },
+  {
+    "eggcorn": "co-op",
+    "target": "co-opt",
+    "url": "https://eggcorns.lascribe.net/english/584/co-op/"
+  },
+  {
+    "eggcorn": "coal-hearted",
+    "target": "cold",
+    "url": "https://eggcorns.lascribe.net/english/1069/coal/"
+  },
+  {
+    "eggcorn": "cognitive dissidence",
+    "target": "dissonance",
+    "url": "https://eggcorns.lascribe.net/english/919/dissidence/"
+  },
+  {
+    "eggcorn": "cold harded",
+    "target": "cold-hearted",
+    "url": "https://eggcorns.lascribe.net/english/292/cold-harded/"
+  },
+  {
+    "eggcorn": "cold slaw",
+    "target": "cole slaw",
+    "url": "https://eggcorns.lascribe.net/english/1120/cold-slaw/"
+  },
+  {
+    "eggcorn": "collaborating evidence",
+    "target": "corroborate",
+    "url": "https://eggcorns.lascribe.net/english/139/collaborate/"
+  },
+  {
+    "eggcorn": "color-coated",
+    "target": "coded",
+    "url": "https://eggcorns.lascribe.net/english/544/color-coated/"
+  },
+  {
+    "eggcorn": "come to knot",
+    "target": "naught",
+    "url": "https://eggcorns.lascribe.net/english/479/knot/"
+  },
+  {
+    "eggcorn": "come to not",
+    "target": "naught",
+    "url": "https://eggcorns.lascribe.net/english/113/not/"
+  },
+  {
+    "eggcorn": "come to turns with",
+    "target": "term",
+    "url": "https://eggcorns.lascribe.net/english/540/turn/"
+  },
+  {
+    "eggcorn": "coming down the pipe",
+    "target": "pike",
+    "url": "https://eggcorns.lascribe.net/english/437/pipe/"
+  },
+  {
+    "eggcorn": "commander and chief",
+    "target": "commander-in-chief",
+    "url": "https://eggcorns.lascribe.net/english/638/commander-and-chief/"
+  },
+  {
+    "eggcorn": "common guys",
+    "target": "come on",
+    "url": "https://eggcorns.lascribe.net/english/211/common/"
+  },
+  {
+    "eggcorn": "conjunctive heart failure",
+    "target": "congestive",
+    "url": "https://eggcorns.lascribe.net/english/125/conjunctive/"
+  },
+  {
+    "eggcorn": "content with",
+    "target": "contend",
+    "url": "https://eggcorns.lascribe.net/english/30/content/"
+  },
+  {
+    "eggcorn": "copyrighter",
+    "target": "copy writer",
+    "url": "https://eggcorns.lascribe.net/english/156/copyrighter/"
+  },
+  {
+    "eggcorn": "copywrite",
+    "target": "copyright",
+    "url": "https://eggcorns.lascribe.net/english/154/copywrite/"
+  },
+  {
+    "eggcorn": "cornroll",
+    "target": "row",
+    "url": "https://eggcorns.lascribe.net/english/563/roll/"
+  },
+  {
+    "eggcorn": "cow-tow",
+    "target": "kowtow",
+    "url": "https://eggcorns.lascribe.net/english/987/cow-tow/"
+  },
+  {
+    "eggcorn": "crow's ear",
+    "target": "crosier",
+    "url": "https://eggcorns.lascribe.net/english/328/crows-ear/"
+  },
+  {
+    "eggcorn": "crutch of the matter",
+    "target": "crux",
+    "url": "https://eggcorns.lascribe.net/english/470/crutch/"
+  },
+  {
+    "eggcorn": "cuddlefish",
+    "target": "cuttlefish",
+    "url": "https://eggcorns.lascribe.net/english/442/cuddlefish/"
+  },
+  {
+    "eggcorn": "curtsey of",
+    "target": "courtesy",
+    "url": "https://eggcorns.lascribe.net/english/405/curtsey/"
+  },
+  {
+    "eggcorn": "curve one's hunger",
+    "target": "curb",
+    "url": "https://eggcorns.lascribe.net/english/1072/curve/"
+  },
+  {
+    "eggcorn": "cut off one's nose despite one's face",
+    "target": "to spite",
+    "url": "https://eggcorns.lascribe.net/english/425/despite/"
+  },
+  {
+    "eggcorn": "cut to the cheese",
+    "target": "chase",
+    "url": "https://eggcorns.lascribe.net/english/686/cheese/"
+  },
+  {
+    "eggcorn": "cutting age",
+    "target": "edge",
+    "url": "https://eggcorns.lascribe.net/english/468/age/"
+  },
+  {
+    "eggcorn": "cyanothus",
+    "target": "ceanothus",
+    "url": "https://eggcorns.lascribe.net/english/68/cyanothus/"
+  },
+  {
+    "eggcorn": "cyberstocking",
+    "target": "stalk",
+    "url": "https://eggcorns.lascribe.net/english/481/stock/"
+  },
+  {
+    "eggcorn": "damp squid",
+    "target": "squib",
+    "url": "https://eggcorns.lascribe.net/english/416/squid/"
+  },
+  {
+    "eggcorn": "daring-do",
+    "target": "derring-do",
+    "url": "https://eggcorns.lascribe.net/english/650/daring-do/"
+  },
+  {
+    "eggcorn": "darn right",
+    "target": "downright",
+    "url": "https://eggcorns.lascribe.net/english/384/darn-right/"
+  },
+  {
+    "eggcorn": "dashboard stomach",
+    "target": "washboard",
+    "url": "https://eggcorns.lascribe.net/english/381/dashboard/"
+  },
+  {
+    "eggcorn": "Dashound",
+    "target": "Dachshund",
+    "url": "https://eggcorns.lascribe.net/english/239/dashound/"
+  },
+  {
+    "eggcorn": "dawn",
+    "target": "don",
+    "url": "https://eggcorns.lascribe.net/english/677/dawn/"
+  },
+  {
+    "eggcorn": "day in age",
+    "target": "day and age",
+    "url": "https://eggcorns.lascribe.net/english/451/day-in-age/"
+  },
+  {
+    "eggcorn": "dead wringer",
+    "target": "ringer",
+    "url": "https://eggcorns.lascribe.net/english/110/wringer/"
+  },
+  {
+    "eggcorn": "death charge",
+    "target": "depth",
+    "url": "https://eggcorns.lascribe.net/english/568/death/"
+  },
+  {
+    "eggcorn": "death nail",
+    "target": "knell",
+    "url": "https://eggcorns.lascribe.net/english/1130/nail/"
+  },
+  {
+    "eggcorn": "deep-seeded",
+    "target": "seat",
+    "url": "https://eggcorns.lascribe.net/english/46/seed/"
+  },
+  {
+    "eggcorn": "deformation of character",
+    "target": "defamation",
+    "url": "https://eggcorns.lascribe.net/english/92/deformation/"
+  },
+  {
+    "eggcorn": "defunked",
+    "target": "defunct",
+    "url": "https://eggcorns.lascribe.net/english/600/defunked/"
+  },
+  {
+    "eggcorn": "deign worthy (of)",
+    "target": "deem",
+    "url": "https://eggcorns.lascribe.net/english/171/deign/"
+  },
+  {
+    "eggcorn": "demure",
+    "target": "demur",
+    "url": "https://eggcorns.lascribe.net/english/177/demure/"
+  },
+  {
+    "eggcorn": "diarrhetic",
+    "target": "diuretic",
+    "url": "https://eggcorns.lascribe.net/english/729/diarrhetic/"
+  },
+  {
+    "eggcorn": "die-hearted",
+    "target": "die-hard",
+    "url": "https://eggcorns.lascribe.net/english/401/die-hearted/"
+  },
+  {
+    "eggcorn": "diffuse",
+    "target": "defuse",
+    "url": "https://eggcorns.lascribe.net/english/33/diffuse/"
+  },
+  {
+    "eggcorn": "diluted",
+    "target": "deluded",
+    "url": "https://eggcorns.lascribe.net/english/440/diluted/"
+  },
+  {
+    "eggcorn": "disguard",
+    "target": "discard",
+    "url": "https://eggcorns.lascribe.net/english/383/disguard/"
+  },
+  {
+    "eggcorn": "disingenuine",
+    "target": "disingenuous",
+    "url": "https://eggcorns.lascribe.net/english/1110/disingenuine/"
+  },
+  {
+    "eggcorn": "dissolutioned",
+    "target": "disillusioned",
+    "url": "https://eggcorns.lascribe.net/english/918/dissolutioned/"
+  },
+  {
+    "eggcorn": "diswrought",
+    "target": "distraught",
+    "url": "https://eggcorns.lascribe.net/english/167/diswrought/"
+  },
+  {
+    "eggcorn": "djinn up",
+    "target": "gin",
+    "url": "https://eggcorns.lascribe.net/english/469/djinn/"
+  },
+  {
+    "eggcorn": "doggy-dog world",
+    "target": "dog-eat-dog",
+    "url": "https://eggcorns.lascribe.net/english/348/doggy-dog/"
+  },
+  {
+    "eggcorn": "don on (someone)",
+    "target": "dawn",
+    "url": "https://eggcorns.lascribe.net/english/480/don/"
+  },
+  {
+    "eggcorn": "don't know buttkiss",
+    "target": "bupkis, bupkus, bupkiss",
+    "url": "https://eggcorns.lascribe.net/english/371/buttkiss/"
+  },
+  {
+    "eggcorn": "dong on s.o.",
+    "target": "dawn",
+    "url": "https://eggcorns.lascribe.net/english/754/dong/"
+  },
+  {
+    "eggcorn": "dough-eyed",
+    "target": "doe",
+    "url": "https://eggcorns.lascribe.net/english/1068/dough/"
+  },
+  {
+    "eggcorn": "dusk off",
+    "target": "dust",
+    "url": "https://eggcorns.lascribe.net/english/1124/dusk/"
+  },
+  {
+    "eggcorn": "eardrop",
+    "target": "eavesdrop",
+    "url": "https://eggcorns.lascribe.net/english/1100/eardrop/"
+  },
+  {
+    "eggcorn": "ease drop",
+    "target": "eavesdrop",
+    "url": "https://eggcorns.lascribe.net/english/1099/ease-drop/"
+  },
+  {
+    "eggcorn": "eggclair",
+    "target": "eclair",
+    "url": "https://eggcorns.lascribe.net/english/170/eggclair/"
+  },
+  {
+    "eggcorn": "eggcorn",
+    "target": "acorn",
+    "url": "https://eggcorns.lascribe.net/english/2/eggcorn/"
+  },
+  {
+    "eggcorn": "eggtopic pregnancy",
+    "target": "ectopic",
+    "url": "https://eggcorns.lascribe.net/english/237/eggtopic/"
+  },
+  {
+    "eggcorn": "elementary",
+    "target": "alimentary",
+    "url": "https://eggcorns.lascribe.net/english/624/elementary/"
+  },
+  {
+    "eggcorn": "elk",
+    "target": "ilk",
+    "url": "https://eggcorns.lascribe.net/english/1107/elk/"
+  },
+  {
+    "eggcorn": "empirical",
+    "target": "imperial",
+    "url": "https://eggcorns.lascribe.net/english/69/empirical/"
+  },
+  {
+    "eggcorn": "enact vengeance on",
+    "target": "exact",
+    "url": "https://eggcorns.lascribe.net/english/127/enact/"
+  },
+  {
+    "eggcorn": "escape goat",
+    "target": "scapegoat",
+    "url": "https://eggcorns.lascribe.net/english/242/escape-goat/"
+  },
+  {
+    "eggcorn": "eurologist",
+    "target": "urologist",
+    "url": "https://eggcorns.lascribe.net/english/695/eurologist/"
+  },
+  {
+    "eggcorn": "every since",
+    "target": "ever",
+    "url": "https://eggcorns.lascribe.net/english/201/every-since/"
+  },
+  {
+    "eggcorn": "exercise",
+    "target": "exorcise",
+    "url": "https://eggcorns.lascribe.net/english/56/exercise/"
+  },
+  {
+    "eggcorn": "exorcise",
+    "target": "exercise",
+    "url": "https://eggcorns.lascribe.net/english/79/exorcise/"
+  },
+  {
+    "eggcorn": "expatriot",
+    "target": "expatriate",
+    "url": "https://eggcorns.lascribe.net/english/159/expatriot/"
+  },
+  {
+    "eggcorn": "explanation point",
+    "target": "exclamation",
+    "url": "https://eggcorns.lascribe.net/english/632/explanation/"
+  },
+  {
+    "eggcorn": "explicative deleted",
+    "target": "expletive",
+    "url": "https://eggcorns.lascribe.net/english/517/explicative/"
+  },
+  {
+    "eggcorn": "expotential",
+    "target": "exponential",
+    "url": "https://eggcorns.lascribe.net/english/926/exponential-expotential/"
+  },
+  {
+    "eggcorn": "expresso",
+    "target": "espresso",
+    "url": "https://eggcorns.lascribe.net/english/321/expresso/"
+  },
+  {
+    "eggcorn": "extract vengeance on",
+    "target": "exact",
+    "url": "https://eggcorns.lascribe.net/english/126/extract/"
+  },
+  {
+    "eggcorn": "exuberant prices",
+    "target": "exorbitant",
+    "url": "https://eggcorns.lascribe.net/english/836/exuberant/"
+  },
+  {
+    "eggcorn": "fair to midland",
+    "target": "middlin'",
+    "url": "https://eggcorns.lascribe.net/english/457/midland/"
+  },
+  {
+    "eggcorn": "far be it for me",
+    "target": "far be it from",
+    "url": "https://eggcorns.lascribe.net/english/230/far-be-it-for-me/"
+  },
+  {
+    "eggcorn": "far-gone conclusion",
+    "target": "foregone",
+    "url": "https://eggcorns.lascribe.net/english/506/far-gone/"
+  },
+  {
+    "eggcorn": "fartlick",
+    "target": "fartlek",
+    "url": "https://eggcorns.lascribe.net/english/402/fartlick/"
+  },
+  {
+    "eggcorn": "fast swathes",
+    "target": "vast",
+    "url": "https://eggcorns.lascribe.net/english/354/fast/"
+  },
+  {
+    "eggcorn": "fate accompli",
+    "target": "fait",
+    "url": "https://eggcorns.lascribe.net/english/459/fate/"
+  },
+  {
+    "eggcorn": "ferment trouble/fears/unrest",
+    "target": "foment",
+    "url": "https://eggcorns.lascribe.net/english/835/ferment/"
+  },
+  {
+    "eggcorn": "financial heartship",
+    "target": "hardship",
+    "url": "https://eggcorns.lascribe.net/english/421/heartship/"
+  },
+  {
+    "eggcorn": "firstable",
+    "target": "first of all",
+    "url": "https://eggcorns.lascribe.net/english/1125/firstable/"
+  },
+  {
+    "eggcorn": "flare",
+    "target": "flair",
+    "url": "https://eggcorns.lascribe.net/english/61/flare/"
+  },
+  {
+    "eggcorn": "flaunt",
+    "target": "flout",
+    "url": "https://eggcorns.lascribe.net/english/308/flaunt/"
+  },
+  {
+    "eggcorn": "flaw in the ointment",
+    "target": "fly",
+    "url": "https://eggcorns.lascribe.net/english/133/flaw/"
+  },
+  {
+    "eggcorn": "flesh against",
+    "target": "flush",
+    "url": "https://eggcorns.lascribe.net/english/589/flesh/"
+  },
+  {
+    "eggcorn": "floorless",
+    "target": "flawless",
+    "url": "https://eggcorns.lascribe.net/english/724/floorless/"
+  },
+  {
+    "eggcorn": "flounder",
+    "target": "founder",
+    "url": "https://eggcorns.lascribe.net/english/644/founder/"
+  },
+  {
+    "eggcorn": "flush out",
+    "target": "flesh",
+    "url": "https://eggcorns.lascribe.net/english/349/flush/"
+  },
+  {
+    "eggcorn": "flying a flag at half-mass",
+    "target": "mast",
+    "url": "https://eggcorns.lascribe.net/english/649/mass/"
+  },
+  {
+    "eggcorn": "font of wisdom",
+    "target": "fount",
+    "url": "https://eggcorns.lascribe.net/english/270/font/"
+  },
+  {
+    "eggcorn": "foolhearty",
+    "target": "hardy",
+    "url": "https://eggcorns.lascribe.net/english/560/hearty/"
+  },
+  {
+    "eggcorn": "for all intensive purposes",
+    "target": "intents and purposes",
+    "url": "https://eggcorns.lascribe.net/english/32/intensive-purposes/"
+  },
+  {
+    "eggcorn": "forward",
+    "target": "foreword",
+    "url": "https://eggcorns.lascribe.net/english/702/forward/"
+  },
+  {
+    "eggcorn": "French benefit",
+    "target": "fringe",
+    "url": "https://eggcorns.lascribe.net/english/137/french/"
+  },
+  {
+    "eggcorn": "French crawler",
+    "target": "cruller",
+    "url": "https://eggcorns.lascribe.net/english/344/crawler/"
+  },
+  {
+    "eggcorn": "from here on end",
+    "target": "in",
+    "url": "https://eggcorns.lascribe.net/english/458/end/"
+  },
+  {
+    "eggcorn": "from the gecko",
+    "target": "get-go",
+    "url": "https://eggcorns.lascribe.net/english/508/gecko/"
+  },
+  {
+    "eggcorn": "front in center",
+    "target": "front and center",
+    "url": "https://eggcorns.lascribe.net/english/1097/front-in-center/"
+  },
+  {
+    "eggcorn": "fullproof",
+    "target": "foolproof",
+    "url": "https://eggcorns.lascribe.net/english/845/fullproof/"
+  },
+  {
+    "eggcorn": "fullscape",
+    "target": "foolscap",
+    "url": "https://eggcorns.lascribe.net/english/236/fullscape/"
+  },
+  {
+    "eggcorn": "furled brow",
+    "target": "furrow",
+    "url": "https://eggcorns.lascribe.net/english/475/furl/"
+  },
+  {
+    "eggcorn": "gamefully employed",
+    "target": "gain",
+    "url": "https://eggcorns.lascribe.net/english/566/game/"
+  },
+  {
+    "eggcorn": "garbledygook",
+    "target": "gobbledygook",
+    "url": "https://eggcorns.lascribe.net/english/1073/garbledygook/"
+  },
+  {
+    "eggcorn": "gaul",
+    "target": "gall",
+    "url": "https://eggcorns.lascribe.net/english/557/gaul/"
+  },
+  {
+    "eggcorn": "get a beat on",
+    "target": "bead",
+    "url": "https://eggcorns.lascribe.net/english/19/beat/"
+  },
+  {
+    "eggcorn": "get one's dandruff up",
+    "target": "dander",
+    "url": "https://eggcorns.lascribe.net/english/740/dandruff/"
+  },
+  {
+    "eggcorn": "get one's gander up",
+    "target": "dander",
+    "url": "https://eggcorns.lascribe.net/english/15/gander/"
+  },
+  {
+    "eggcorn": "get one's nipples in a twist",
+    "target": "knickers",
+    "url": "https://eggcorns.lascribe.net/english/710/nipples/"
+  },
+  {
+    "eggcorn": "giga counter",
+    "target": "Geiger",
+    "url": "https://eggcorns.lascribe.net/english/967/giga/"
+  },
+  {
+    "eggcorn": "girdle one's loins",
+    "target": "gird",
+    "url": "https://eggcorns.lascribe.net/english/220/girdle/"
+  },
+  {
+    "eggcorn": "give credit where credit is do",
+    "target": "due",
+    "url": "https://eggcorns.lascribe.net/english/471/do/"
+  },
+  {
+    "eggcorn": "give free range",
+    "target": "rein",
+    "url": "https://eggcorns.lascribe.net/english/362/range/"
+  },
+  {
+    "eggcorn": "give so. the load down on sth.",
+    "target": "lowdown",
+    "url": "https://eggcorns.lascribe.net/english/520/load-down/"
+  },
+  {
+    "eggcorn": "give up the goat",
+    "target": "ghost",
+    "url": "https://eggcorns.lascribe.net/english/714/goat/"
+  },
+  {
+    "eggcorn": "goal standard",
+    "target": "gold",
+    "url": "https://eggcorns.lascribe.net/english/60/goal/"
+  },
+  {
+    "eggcorn": "god's end",
+    "target": "godsend",
+    "url": "https://eggcorns.lascribe.net/english/716/gods-end/"
+  },
+  {
+    "eggcorn": "granola oil",
+    "target": "canola",
+    "url": "https://eggcorns.lascribe.net/english/219/granola/"
+  },
+  {
+    "eggcorn": "grim and bear it",
+    "target": "grin",
+    "url": "https://eggcorns.lascribe.net/english/428/grim/"
+  },
+  {
+    "eggcorn": "grin and bare it",
+    "target": "bear",
+    "url": "https://eggcorns.lascribe.net/english/115/bare/"
+  },
+  {
+    "eggcorn": "grow like top seed",
+    "target": "Topsy",
+    "url": "https://eggcorns.lascribe.net/english/759/top-seed/"
+  },
+  {
+    "eggcorn": "Grumman's Chinese Theatre",
+    "target": "Grauman",
+    "url": "https://eggcorns.lascribe.net/english/232/grumman/"
+  },
+  {
+    "eggcorn": "gun-ho",
+    "target": "gung-ho",
+    "url": "https://eggcorns.lascribe.net/english/510/gun-ho/"
+  },
+  {
+    "eggcorn": "gutteral",
+    "target": "guttural",
+    "url": "https://eggcorns.lascribe.net/english/326/gutteral/"
+  },
+  {
+    "eggcorn": "hack-kneed",
+    "target": "hackneyed",
+    "url": "https://eggcorns.lascribe.net/english/189/hack-kneed/"
+  },
+  {
+    "eggcorn": "hailed into court, hailed before the court",
+    "target": "hale",
+    "url": "https://eggcorns.lascribe.net/english/268/hail/"
+  },
+  {
+    "eggcorn": "hairbrained",
+    "target": "harebrained",
+    "url": "https://eggcorns.lascribe.net/english/280/hairbrained/"
+  },
+  {
+    "eggcorn": "half-asked",
+    "target": "arsed (or assed)",
+    "url": "https://eggcorns.lascribe.net/english/422/asked/"
+  },
+  {
+    "eggcorn": "half-hazard",
+    "target": "haphazard",
+    "url": "https://eggcorns.lascribe.net/english/921/half-hazard/"
+  },
+  {
+    "eggcorn": "halter monitor",
+    "target": "Holter",
+    "url": "https://eggcorns.lascribe.net/english/603/halter/"
+  },
+  {
+    "eggcorn": "hand few",
+    "target": "handful",
+    "url": "https://eggcorns.lascribe.net/english/4/hand-few/"
+  },
+  {
+    "eggcorn": "hand fisted",
+    "target": "ham-fisted",
+    "url": "https://eggcorns.lascribe.net/english/648/hand-fisted/"
+  },
+  {
+    "eggcorn": "handsome cab",
+    "target": "Hansom",
+    "url": "https://eggcorns.lascribe.net/english/306/handsome/"
+  },
+  {
+    "eggcorn": "harbringer",
+    "target": "harbinger",
+    "url": "https://eggcorns.lascribe.net/english/298/harbringer/"
+  },
+  {
+    "eggcorn": "hare's breath",
+    "target": "hair's breadth",
+    "url": "https://eggcorns.lascribe.net/english/51/hares-breath/"
+  },
+  {
+    "eggcorn": "have/get something down packed",
+    "target": "pat",
+    "url": "https://eggcorns.lascribe.net/english/708/packed/"
+  },
+  {
+    "eggcorn": "he who plays the piper calls the tune",
+    "target": "pay",
+    "url": "https://eggcorns.lascribe.net/english/430/play/"
+  },
+  {
+    "eggcorn": "hearsay",
+    "target": "heresy",
+    "url": "https://eggcorns.lascribe.net/english/511/hearsay/"
+  },
+  {
+    "eggcorn": "heave scorn on",
+    "target": "heap",
+    "url": "https://eggcorns.lascribe.net/english/70/heave/"
+  },
+  {
+    "eggcorn": "hedgemoney",
+    "target": "hegemony",
+    "url": "https://eggcorns.lascribe.net/english/408/hedgemoney/"
+  },
+  {
+    "eggcorn": "here, here",
+    "target": "hear",
+    "url": "https://eggcorns.lascribe.net/english/499/here/"
+  },
+  {
+    "eggcorn": "high bred",
+    "target": "hybrid",
+    "url": "https://eggcorns.lascribe.net/english/335/high-bred-highbred-hi-bred-hibred/"
+  },
+  {
+    "eggcorn": "higher",
+    "target": "hire",
+    "url": "https://eggcorns.lascribe.net/english/467/higher/"
+  },
+  {
+    "eggcorn": "higherarchy",
+    "target": "hierarchy",
+    "url": "https://eggcorns.lascribe.net/english/461/higherarchy/"
+  },
+  {
+    "eggcorn": "Hobbesian choice",
+    "target": "Hobson's",
+    "url": "https://eggcorns.lascribe.net/english/593/hobbesian/"
+  },
+  {
+    "eggcorn": "hock",
+    "target": "hawk",
+    "url": "https://eggcorns.lascribe.net/english/329/hock/"
+  },
+  {
+    "eggcorn": "holiday(s) sauce",
+    "target": "hollandaise",
+    "url": "https://eggcorns.lascribe.net/english/1118/holland-day/"
+  },
+  {
+    "eggcorn": "holland day sauce",
+    "target": "hollandaise",
+    "url": "https://eggcorns.lascribe.net/english/1119/holland-day/"
+  },
+  {
+    "eggcorn": "Holloween",
+    "target": "Halloween",
+    "url": "https://eggcorns.lascribe.net/english/654/holloween/"
+  },
+  {
+    "eggcorn": "holy cow",
+    "target": "sacred cow",
+    "url": "https://eggcorns.lascribe.net/english/376/holy-cow/"
+  },
+  {
+    "eggcorn": "hone in on",
+    "target": "home",
+    "url": "https://eggcorns.lascribe.net/english/48/hone/"
+  },
+  {
+    "eggcorn": "hosted on/by one's own petard",
+    "target": "hoist",
+    "url": "https://eggcorns.lascribe.net/english/432/host/"
+  },
+  {
+    "eggcorn": "human cry",
+    "target": "hue and cry",
+    "url": "https://eggcorns.lascribe.net/english/502/human-cry/"
+  },
+  {
+    "eggcorn": "hurdle",
+    "target": "hurtle",
+    "url": "https://eggcorns.lascribe.net/english/1131/hurdle/"
+  },
+  {
+    "eggcorn": "hydroseal",
+    "target": "hydrocele",
+    "url": "https://eggcorns.lascribe.net/english/399/hydroseal/"
+  },
+  {
+    "eggcorn": "impremature",
+    "target": "imprimatur",
+    "url": "https://eggcorns.lascribe.net/english/1105/impremature/"
+  },
+  {
+    "eggcorn": "in able to",
+    "target": "order",
+    "url": "https://eggcorns.lascribe.net/english/339/able/"
+  },
+  {
+    "eggcorn": "in cohorts with",
+    "target": "cahoots",
+    "url": "https://eggcorns.lascribe.net/english/577/cohorts/"
+  },
+  {
+    "eggcorn": "in high dungeon",
+    "target": "dudgeon",
+    "url": "https://eggcorns.lascribe.net/english/922/dungeon/"
+  },
+  {
+    "eggcorn": "in lame man's terms",
+    "target": "layman",
+    "url": "https://eggcorns.lascribe.net/english/111/lame-man/"
+  },
+  {
+    "eggcorn": "in the mist of",
+    "target": "midst",
+    "url": "https://eggcorns.lascribe.net/english/217/mist/"
+  },
+  {
+    "eggcorn": "in the rears",
+    "target": "arrears",
+    "url": "https://eggcorns.lascribe.net/english/998/the-rears/"
+  },
+  {
+    "eggcorn": "in-term",
+    "target": "interim",
+    "url": "https://eggcorns.lascribe.net/english/658/in-term/"
+  },
+  {
+    "eggcorn": "inclimate",
+    "target": "inclement",
+    "url": "https://eggcorns.lascribe.net/english/36/inclimate/"
+  },
+  {
+    "eggcorn": "incourageable",
+    "target": "incorrigible",
+    "url": "https://eggcorns.lascribe.net/english/275/incourageable/"
+  },
+  {
+    "eggcorn": "inherit",
+    "target": "inherent",
+    "url": "https://eggcorns.lascribe.net/english/550/inherit/"
+  },
+  {
+    "eggcorn": "inpacked",
+    "target": "impact(ed)",
+    "url": "https://eggcorns.lascribe.net/english/500/inpacked/"
+  },
+  {
+    "eggcorn": "insectuous",
+    "target": "incestuous",
+    "url": "https://eggcorns.lascribe.net/english/634/insectuous/"
+  },
+  {
+    "eggcorn": "interfear",
+    "target": "interfere",
+    "url": "https://eggcorns.lascribe.net/english/18/interfear/"
+  },
+  {
+    "eggcorn": "intergrade",
+    "target": "integrate",
+    "url": "https://eggcorns.lascribe.net/english/1040/intergrade/"
+  },
+  {
+    "eggcorn": "internally grateful",
+    "target": "eternally",
+    "url": "https://eggcorns.lascribe.net/english/75/internally/"
+  },
+  {
+    "eggcorn": "irregardless",
+    "target": "regardless",
+    "url": "https://eggcorns.lascribe.net/english/358/irregardless/"
+  },
+  {
+    "eggcorn": "jack of all traits",
+    "target": "trade",
+    "url": "https://eggcorns.lascribe.net/english/476/trait/"
+  },
+  {
+    "eggcorn": "jar-dropping",
+    "target": "jaw",
+    "url": "https://eggcorns.lascribe.net/english/963/jar/"
+  },
+  {
+    "eggcorn": "jive",
+    "target": "jibe",
+    "url": "https://eggcorns.lascribe.net/english/420/jive/"
+  },
+  {
+    "eggcorn": "jointly and severely",
+    "target": "severally",
+    "url": "https://eggcorns.lascribe.net/english/103/severely/"
+  },
+  {
+    "eggcorn": "just assume",
+    "target": "as soon",
+    "url": "https://eggcorns.lascribe.net/english/122/assume/"
+  },
+  {
+    "eggcorn": "just desserts",
+    "target": "desert",
+    "url": "https://eggcorns.lascribe.net/english/599/dessert/"
+  },
+  {
+    "eggcorn": "kick but",
+    "target": "butt",
+    "url": "https://eggcorns.lascribe.net/english/575/but/"
+  },
+  {
+    "eggcorn": "kill over (and die)",
+    "target": "keel",
+    "url": "https://eggcorns.lascribe.net/english/489/kill/"
+  },
+  {
+    "eggcorn": "knotical mile",
+    "target": "nautical",
+    "url": "https://eggcorns.lascribe.net/english/962/knotical/"
+  },
+  {
+    "eggcorn": "know so. from atom",
+    "target": "Adam",
+    "url": "https://eggcorns.lascribe.net/english/507/atom/"
+  },
+  {
+    "eggcorn": "lack toast intolerant",
+    "target": "lactose",
+    "url": "https://eggcorns.lascribe.net/english/588/lack-toast/"
+  },
+  {
+    "eggcorn": "lactose and tolerant",
+    "target": "intolerant",
+    "url": "https://eggcorns.lascribe.net/english/590/and-tolerant/"
+  },
+  {
+    "eggcorn": "lagerheads",
+    "target": "loggerheads",
+    "url": "https://eggcorns.lascribe.net/english/80/lagerheads/"
+  },
+  {
+    "eggcorn": "lambash",
+    "target": "lambast(e)",
+    "url": "https://eggcorns.lascribe.net/english/717/lambash/"
+  },
+  {
+    "eggcorn": "lamblast",
+    "target": "lambast(e)",
+    "url": "https://eggcorns.lascribe.net/english/718/lamblast/"
+  },
+  {
+    "eggcorn": "LAN line",
+    "target": "landline",
+    "url": "https://eggcorns.lascribe.net/english/753/lan-line/"
+  },
+  {
+    "eggcorn": "landlover, land lover",
+    "target": "landlubber",
+    "url": "https://eggcorns.lascribe.net/english/526/landlover-land-lover/"
+  },
+  {
+    "eggcorn": "languistics",
+    "target": "linguistics",
+    "url": "https://eggcorns.lascribe.net/english/223/languistics/"
+  },
+  {
+    "eggcorn": "lapse into a comma",
+    "target": "coma",
+    "url": "https://eggcorns.lascribe.net/english/11/comma/"
+  },
+  {
+    "eggcorn": "last stitch",
+    "target": "last ditch",
+    "url": "https://eggcorns.lascribe.net/english/67/last-stitch/"
+  },
+  {
+    "eggcorn": "lazy-fare",
+    "target": "laissez-faire",
+    "url": "https://eggcorns.lascribe.net/english/347/lazy-fare/"
+  },
+  {
+    "eggcorn": "leadway",
+    "target": "leeway",
+    "url": "https://eggcorns.lascribe.net/english/719/leadway/"
+  },
+  {
+    "eggcorn": "learn by route",
+    "target": "rote",
+    "url": "https://eggcorns.lascribe.net/english/57/route/"
+  },
+  {
+    "eggcorn": "leech",
+    "target": "leach",
+    "url": "https://eggcorns.lascribe.net/english/613/leech/"
+  },
+  {
+    "eggcorn": "lemon-aid",
+    "target": "lemonade",
+    "url": "https://eggcorns.lascribe.net/english/505/lemon-aid/"
+  },
+  {
+    "eggcorn": "liable",
+    "target": "libel",
+    "url": "https://eggcorns.lascribe.net/english/43/liable/"
+  },
+  {
+    "eggcorn": "like a bowl in a china shop",
+    "target": "bull",
+    "url": "https://eggcorns.lascribe.net/english/676/bowl/"
+  },
+  {
+    "eggcorn": "limp edema",
+    "target": "lymph",
+    "url": "https://eggcorns.lascribe.net/english/1061/limp/"
+  },
+  {
+    "eggcorn": "lip-sing",
+    "target": "lip-sync(h)",
+    "url": "https://eggcorns.lascribe.net/english/731/lip-sing/"
+  },
+  {
+    "eggcorn": "little lone",
+    "target": "let alone",
+    "url": "https://eggcorns.lascribe.net/english/84/little-lone/"
+  },
+  {
+    "eggcorn": "livestalk",
+    "target": "stock",
+    "url": "https://eggcorns.lascribe.net/english/482/stalk/"
+  },
+  {
+    "eggcorn": "locust of control",
+    "target": "locus",
+    "url": "https://eggcorns.lascribe.net/english/142/locust/"
+  },
+  {
+    "eggcorn": "long behold",
+    "target": "lo and behold",
+    "url": "https://eggcorns.lascribe.net/english/131/long-behold/"
+  },
+  {
+    "eggcorn": "loose",
+    "target": "lose",
+    "url": "https://eggcorns.lascribe.net/english/179/loose/"
+  },
+  {
+    "eggcorn": "magnet",
+    "target": "magnate",
+    "url": "https://eggcorns.lascribe.net/english/637/magnet/"
+  },
+  {
+    "eggcorn": "make a pack with the devil",
+    "target": "pact",
+    "url": "https://eggcorns.lascribe.net/english/355/pack/"
+  },
+  {
+    "eggcorn": "make dew",
+    "target": "do",
+    "url": "https://eggcorns.lascribe.net/english/346/dew/"
+  },
+  {
+    "eggcorn": "make due",
+    "target": "do",
+    "url": "https://eggcorns.lascribe.net/english/342/due/"
+  },
+  {
+    "eggcorn": "make ends meat",
+    "target": "meet",
+    "url": "https://eggcorns.lascribe.net/english/88/meat/"
+  },
+  {
+    "eggcorn": "make heads or tales of sth.",
+    "target": "tail",
+    "url": "https://eggcorns.lascribe.net/english/466/tale/"
+  },
+  {
+    "eggcorn": "manner from heaven",
+    "target": "manna",
+    "url": "https://eggcorns.lascribe.net/english/725/manner/"
+  },
+  {
+    "eggcorn": "mano-on-mano",
+    "target": "mano a mano",
+    "url": "https://eggcorns.lascribe.net/english/370/mano-on-mano/"
+  },
+  {
+    "eggcorn": "marball",
+    "target": "marble",
+    "url": "https://eggcorns.lascribe.net/english/222/marball/"
+  },
+  {
+    "eggcorn": "marsh pit",
+    "target": "mosh",
+    "url": "https://eggcorns.lascribe.net/english/723/marsh/"
+  },
+  {
+    "eggcorn": "marshal(l) law",
+    "target": "martial",
+    "url": "https://eggcorns.lascribe.net/english/55/marshall/"
+  },
+  {
+    "eggcorn": "martial",
+    "target": "marshal",
+    "url": "https://eggcorns.lascribe.net/english/679/martial/"
+  },
+  {
+    "eggcorn": "metal",
+    "target": "medal",
+    "url": "https://eggcorns.lascribe.net/english/224/metal/"
+  },
+  {
+    "eggcorn": "metal",
+    "target": "mettle",
+    "url": "https://eggcorns.lascribe.net/english/453/metal/"
+  },
+  {
+    "eggcorn": "midrift",
+    "target": "midriff",
+    "url": "https://eggcorns.lascribe.net/english/944/midrift/"
+  },
+  {
+    "eggcorn": "mind due",
+    "target": "mind you",
+    "url": "https://eggcorns.lascribe.net/english/439/mind-due/"
+  },
+  {
+    "eggcorn": "mindgrain",
+    "target": "migraine",
+    "url": "https://eggcorns.lascribe.net/english/965/mindgrain/"
+  },
+  {
+    "eggcorn": "mine as well",
+    "target": "might",
+    "url": "https://eggcorns.lascribe.net/english/212/mine/"
+  },
+  {
+    "eggcorn": "minus well",
+    "target": "might as",
+    "url": "https://eggcorns.lascribe.net/english/129/minus/"
+  },
+  {
+    "eggcorn": "mitigate against",
+    "target": "militate",
+    "url": "https://eggcorns.lascribe.net/english/309/mitigate/"
+  },
+  {
+    "eggcorn": "mix words",
+    "target": "mince",
+    "url": "https://eggcorns.lascribe.net/english/860/mix/"
+  },
+  {
+    "eggcorn": "mixmash",
+    "target": "mishmash",
+    "url": "https://eggcorns.lascribe.net/english/1094/mixmash/"
+  },
+  {
+    "eggcorn": "mixmatch",
+    "target": "mismatched",
+    "url": "https://eggcorns.lascribe.net/english/1096/mixmatch/"
+  },
+  {
+    "eggcorn": "money is/was no option",
+    "target": "object",
+    "url": "https://eggcorns.lascribe.net/english/611/option/"
+  },
+  {
+    "eggcorn": "morever",
+    "target": "moreover",
+    "url": "https://eggcorns.lascribe.net/english/314/morever/"
+  },
+  {
+    "eggcorn": "morning dove",
+    "target": "mourning",
+    "url": "https://eggcorns.lascribe.net/english/119/morning/"
+  },
+  {
+    "eggcorn": "motherload",
+    "target": "mother lode",
+    "url": "https://eggcorns.lascribe.net/english/531/motherload/"
+  },
+  {
+    "eggcorn": "my as well",
+    "target": "might",
+    "url": "https://eggcorns.lascribe.net/english/964/my/"
+  },
+  {
+    "eggcorn": "naval(-)gazing",
+    "target": "navel",
+    "url": "https://eggcorns.lascribe.net/english/293/naval/"
+  },
+  {
+    "eggcorn": "neck in neck",
+    "target": "neck and neck",
+    "url": "https://eggcorns.lascribe.net/english/449/neck-in-neck/"
+  },
+  {
+    "eggcorn": "never regions",
+    "target": "nether",
+    "url": "https://eggcorns.lascribe.net/english/580/never/"
+  },
+  {
+    "eggcorn": "new leash on life",
+    "target": "lease",
+    "url": "https://eggcorns.lascribe.net/english/1122/leash/"
+  },
+  {
+    "eggcorn": "next store",
+    "target": "next door",
+    "url": "https://eggcorns.lascribe.net/english/94/store/"
+  },
+  {
+    "eggcorn": "nip in the butt",
+    "target": "bud",
+    "url": "https://eggcorns.lascribe.net/english/135/butt/"
+  },
+  {
+    "eggcorn": "no holds barrel",
+    "target": "barred",
+    "url": "https://eggcorns.lascribe.net/english/71/barrel/"
+  },
+  {
+    "eggcorn": "no holes barred",
+    "target": "holds",
+    "url": "https://eggcorns.lascribe.net/english/509/holes/"
+  },
+  {
+    "eggcorn": "no love loss",
+    "target": "lost",
+    "url": "https://eggcorns.lascribe.net/english/712/loss/"
+  },
+  {
+    "eggcorn": "no stings attached",
+    "target": "string",
+    "url": "https://eggcorns.lascribe.net/english/108/sting/"
+  },
+  {
+    "eggcorn": "Nobeloriate",
+    "target": "Nobel laureate",
+    "url": "https://eggcorns.lascribe.net/english/378/nobeloriate/"
+  },
+  {
+    "eggcorn": "off the beat and path",
+    "target": "off the beaten path",
+    "url": "https://eggcorns.lascribe.net/english/265/off-the-beat-and-path/"
+  },
+  {
+    "eggcorn": "off-times",
+    "target": "oft",
+    "url": "https://eggcorns.lascribe.net/english/87/off/"
+  },
+  {
+    "eggcorn": "offened",
+    "target": "offended",
+    "url": "https://eggcorns.lascribe.net/english/728/offened/"
+  },
+  {
+    "eggcorn": "old langsyne",
+    "target": "auld",
+    "url": "https://eggcorns.lascribe.net/english/336/old/"
+  },
+  {
+    "eggcorn": "old wise tail",
+    "target": "old wives' tale",
+    "url": "https://eggcorns.lascribe.net/english/120/old-wise-tail/"
+  },
+  {
+    "eggcorn": "Old-Timer's",
+    "target": "Alzheimer's",
+    "url": "https://eggcorns.lascribe.net/english/337/old-timers/"
+  },
+  {
+    "eggcorn": "on a whim and a prayer",
+    "target": "wing",
+    "url": "https://eggcorns.lascribe.net/english/95/whim/"
+  },
+  {
+    "eggcorn": "on a wink and a prayer",
+    "target": "wing",
+    "url": "https://eggcorns.lascribe.net/english/407/wink/"
+  },
+  {
+    "eggcorn": "on masse",
+    "target": "en",
+    "url": "https://eggcorns.lascribe.net/english/601/on-in/"
+  },
+  {
+    "eggcorn": "on tenderhooks",
+    "target": "tenterhooks",
+    "url": "https://eggcorns.lascribe.net/english/315/tenderhooks/"
+  },
+  {
+    "eggcorn": "on timely",
+    "target": "untimely",
+    "url": "https://eggcorns.lascribe.net/english/443/on-timely/"
+  },
+  {
+    "eggcorn": "once and a while",
+    "target": "once in a while",
+    "url": "https://eggcorns.lascribe.net/english/264/once-and-a-while/"
+  },
+  {
+    "eggcorn": "once such",
+    "target": "one such",
+    "url": "https://eggcorns.lascribe.net/english/1108/once-such/"
+  },
+  {
+    "eggcorn": "one foul swoop",
+    "target": "fell",
+    "url": "https://eggcorns.lascribe.net/english/547/foul/"
+  },
+  {
+    "eggcorn": "one fowl swoop",
+    "target": "fell",
+    "url": "https://eggcorns.lascribe.net/english/548/fowl/"
+  },
+  {
+    "eggcorn": "one in the same",
+    "target": "one and the same",
+    "url": "https://eggcorns.lascribe.net/english/448/one-in-the-same/"
+  },
+  {
+    "eggcorn": "one(-)of",
+    "target": "one(-)off",
+    "url": "https://eggcorns.lascribe.net/english/495/one-of/"
+  },
+  {
+    "eggcorn": "ontray",
+    "target": "entree",
+    "url": "https://eggcorns.lascribe.net/english/1090/ontray/"
+  },
+  {
+    "eggcorn": "open-mined",
+    "target": "mind",
+    "url": "https://eggcorns.lascribe.net/english/155/mined/"
+  },
+  {
+    "eggcorn": "our fours",
+    "target": "all fours",
+    "url": "https://eggcorns.lascribe.net/english/660/our-fours/"
+  },
+  {
+    "eggcorn": "out on a lurch",
+    "target": "limb",
+    "url": "https://eggcorns.lascribe.net/english/403/lurch/"
+  },
+  {
+    "eggcorn": "outer body experience",
+    "target": "out of",
+    "url": "https://eggcorns.lascribe.net/english/555/outer/"
+  },
+  {
+    "eggcorn": "overdo",
+    "target": "overdue",
+    "url": "https://eggcorns.lascribe.net/english/494/overdo/"
+  },
+  {
+    "eggcorn": "owning to",
+    "target": "owe",
+    "url": "https://eggcorns.lascribe.net/english/536/owning/"
+  },
+  {
+    "eggcorn": "pain-staking",
+    "target": "pains(-)taking",
+    "url": "https://eggcorns.lascribe.net/english/345/pain-staking/"
+  },
+  {
+    "eggcorn": "pansy-waist, pansy-waste",
+    "target": "panty",
+    "url": "https://eggcorns.lascribe.net/english/1117/pansy/"
+  },
+  {
+    "eggcorn": "paper-view",
+    "target": "pay-per-view",
+    "url": "https://eggcorns.lascribe.net/english/541/paper-view/"
+  },
+  {
+    "eggcorn": "part in parcel",
+    "target": "part and parcel",
+    "url": "https://eggcorns.lascribe.net/english/446/part-in-parcel/"
+  },
+  {
+    "eggcorn": "parting of the waves",
+    "target": "way",
+    "url": "https://eggcorns.lascribe.net/english/623/wave/"
+  },
+  {
+    "eggcorn": "partition",
+    "target": "petition",
+    "url": "https://eggcorns.lascribe.net/english/39/partition/"
+  },
+  {
+    "eggcorn": "party hardy",
+    "target": "hearty",
+    "url": "https://eggcorns.lascribe.net/english/134/hardy/"
+  },
+  {
+    "eggcorn": "pass mustard",
+    "target": "pass muster",
+    "url": "https://eggcorns.lascribe.net/english/260/pass-mustard/"
+  },
+  {
+    "eggcorn": "passed",
+    "target": "past",
+    "url": "https://eggcorns.lascribe.net/english/231/passed/"
+  },
+  {
+    "eggcorn": "past away",
+    "target": "passed",
+    "url": "https://eggcorns.lascribe.net/english/497/past/"
+  },
+  {
+    "eggcorn": "pawn off (on)",
+    "target": "palm",
+    "url": "https://eggcorns.lascribe.net/english/931/pawn/"
+  },
+  {
+    "eggcorn": "Peace Core",
+    "target": "corps",
+    "url": "https://eggcorns.lascribe.net/english/132/core/"
+  },
+  {
+    "eggcorn": "peak one's interest",
+    "target": "pique",
+    "url": "https://eggcorns.lascribe.net/english/86/peak/"
+  },
+  {
+    "eggcorn": "pedal to the medal",
+    "target": "metal",
+    "url": "https://eggcorns.lascribe.net/english/454/medal/"
+  },
+  {
+    "eggcorn": "pedastool",
+    "target": "pedestal",
+    "url": "https://eggcorns.lascribe.net/english/297/pedastool/"
+  },
+  {
+    "eggcorn": "pension",
+    "target": "penchant",
+    "url": "https://eggcorns.lascribe.net/english/485/pension/"
+  },
+  {
+    "eggcorn": "peon",
+    "target": "paean",
+    "url": "https://eggcorns.lascribe.net/english/102/peon/"
+  },
+  {
+    "eggcorn": "pepperika",
+    "target": "paprika",
+    "url": "https://eggcorns.lascribe.net/english/109/pepperika/"
+  },
+  {
+    "eggcorn": "per say",
+    "target": "per se",
+    "url": "https://eggcorns.lascribe.net/english/81/per-say/"
+  },
+  {
+    "eggcorn": "perspective",
+    "target": "prospective",
+    "url": "https://eggcorns.lascribe.net/english/642/perspective/"
+  },
+  {
+    "eggcorn": "phased, unphased",
+    "target": "faze",
+    "url": "https://eggcorns.lascribe.net/english/106/phase/"
+  },
+  {
+    "eggcorn": "physical year",
+    "target": "fiscal",
+    "url": "https://eggcorns.lascribe.net/english/1084/physical/"
+  },
+  {
+    "eggcorn": "pick knits",
+    "target": "nit",
+    "url": "https://eggcorns.lascribe.net/english/574/knit/"
+  },
+  {
+    "eggcorn": "pie-line",
+    "target": "pylon",
+    "url": "https://eggcorns.lascribe.net/english/595/pie-line/"
+  },
+  {
+    "eggcorn": "pier-to-pier network",
+    "target": "peer",
+    "url": "https://eggcorns.lascribe.net/english/121/pier/"
+  },
+  {
+    "eggcorn": "pigeon English (etc.)",
+    "target": "pidgin",
+    "url": "https://eggcorns.lascribe.net/english/54/pidgeon/"
+  },
+  {
+    "eggcorn": "pile-on",
+    "target": "pylon",
+    "url": "https://eggcorns.lascribe.net/english/596/pile-on/"
+  },
+  {
+    "eggcorn": "pincher",
+    "target": "pincer",
+    "url": "https://eggcorns.lascribe.net/english/614/pincher/"
+  },
+  {
+    "eggcorn": "Pipe Piper",
+    "target": "pied",
+    "url": "https://eggcorns.lascribe.net/english/436/pipe/"
+  },
+  {
+    "eggcorn": "pits and pieces",
+    "target": "bit",
+    "url": "https://eggcorns.lascribe.net/english/607/pit/"
+  },
+  {
+    "eggcorn": "plain geometry",
+    "target": "plane",
+    "url": "https://eggcorns.lascribe.net/english/116/plain/"
+  },
+  {
+    "eggcorn": "planter warts",
+    "target": "plantar",
+    "url": "https://eggcorns.lascribe.net/english/302/planter/"
+  },
+  {
+    "eggcorn": "play it by year",
+    "target": "by ear",
+    "url": "https://eggcorns.lascribe.net/english/414/by-year/"
+  },
+  {
+    "eggcorn": "playwrite",
+    "target": "playwright",
+    "url": "https://eggcorns.lascribe.net/english/146/playwrite/"
+  },
+  {
+    "eggcorn": "point of you",
+    "target": "view",
+    "url": "https://eggcorns.lascribe.net/english/279/you/"
+  },
+  {
+    "eggcorn": "poke-a-dot",
+    "target": "polka dot",
+    "url": "https://eggcorns.lascribe.net/english/488/poke-a-dot/"
+  },
+  {
+    "eggcorn": "posed to (do something)",
+    "target": "poise",
+    "url": "https://eggcorns.lascribe.net/english/272/pose/"
+  },
+  {
+    "eggcorn": "post-dramatic stress disorder",
+    "target": "traumatic",
+    "url": "https://eggcorns.lascribe.net/english/627/dramatic/"
+  },
+  {
+    "eggcorn": "post-pardon depression",
+    "target": "postpartum",
+    "url": "https://eggcorns.lascribe.net/english/124/post-pardon/"
+  },
+  {
+    "eggcorn": "pour over (a text)",
+    "target": "pore",
+    "url": "https://eggcorns.lascribe.net/english/59/pour/"
+  },
+  {
+    "eggcorn": "power mower",
+    "target": "paramour",
+    "url": "https://eggcorns.lascribe.net/english/26/power-mower/"
+  },
+  {
+    "eggcorn": "poweress",
+    "target": "prowess",
+    "url": "https://eggcorns.lascribe.net/english/668/poweress/"
+  },
+  {
+    "eggcorn": "powerhorse",
+    "target": "powerhouse",
+    "url": "https://eggcorns.lascribe.net/english/218/powerhorse/"
+  },
+  {
+    "eggcorn": "pre-emptory challenge",
+    "target": "peremptory",
+    "url": "https://eggcorns.lascribe.net/english/385/pre-emptory/"
+  },
+  {
+    "eggcorn": "pre-fix menu",
+    "target": "prix-fixe",
+    "url": "https://eggcorns.lascribe.net/english/233/pre-fix/"
+  },
+  {
+    "eggcorn": "pre-madonna",
+    "target": "prima donna",
+    "url": "https://eggcorns.lascribe.net/english/27/pre-madonna/"
+  },
+  {
+    "eggcorn": "preannual",
+    "target": "perennial",
+    "url": "https://eggcorns.lascribe.net/english/968/preannual/"
+  },
+  {
+    "eggcorn": "president",
+    "target": "precedent",
+    "url": "https://eggcorns.lascribe.net/english/261/president/"
+  },
+  {
+    "eggcorn": "preying mantis",
+    "target": "pray",
+    "url": "https://eggcorns.lascribe.net/english/675/prey/"
+  },
+  {
+    "eggcorn": "pus jewel",
+    "target": "pustule",
+    "url": "https://eggcorns.lascribe.net/english/751/pus-jewel/"
+  },
+  {
+    "eggcorn": "put the cat before the horse",
+    "target": "cart",
+    "url": "https://eggcorns.lascribe.net/english/689/cat/"
+  },
+  {
+    "eggcorn": "quaffed",
+    "target": "coif(f)ed",
+    "url": "https://eggcorns.lascribe.net/english/598/quaffed/"
+  },
+  {
+    "eggcorn": "queue",
+    "target": "cue",
+    "url": "https://eggcorns.lascribe.net/english/44/queue/"
+  },
+  {
+    "eggcorn": "quick claim (quickclaim) deed",
+    "target": "quitclaim",
+    "url": "https://eggcorns.lascribe.net/english/869/quickclaim/"
+  },
+  {
+    "eggcorn": "quorum",
+    "target": "qualm",
+    "url": "https://eggcorns.lascribe.net/english/474/quorum/"
+  },
+  {
+    "eggcorn": "quote on quote",
+    "target": "quote unquote",
+    "url": "https://eggcorns.lascribe.net/english/253/quote-on-quote/"
+  },
+  {
+    "eggcorn": "radify",
+    "target": "ratify",
+    "url": "https://eggcorns.lascribe.net/english/554/radify/"
+  },
+  {
+    "eggcorn": "rain supreme",
+    "target": "reign",
+    "url": "https://eggcorns.lascribe.net/english/37/rain/"
+  },
+  {
+    "eggcorn": "ranking file",
+    "target": "rank and file",
+    "url": "https://eggcorns.lascribe.net/english/579/ranking-file/"
+  },
+  {
+    "eggcorn": "rapid fan",
+    "target": "rabid",
+    "url": "https://eggcorns.lascribe.net/english/608/rapid/"
+  },
+  {
+    "eggcorn": "raucous",
+    "target": "ruckus",
+    "url": "https://eggcorns.lascribe.net/english/946/raucous/"
+  },
+  {
+    "eggcorn": "reap what you sew",
+    "target": "sow",
+    "url": "https://eggcorns.lascribe.net/english/310/sew/"
+  },
+  {
+    "eggcorn": "rebel rouser",
+    "target": "rabble",
+    "url": "https://eggcorns.lascribe.net/english/98/rebel/"
+  },
+  {
+    "eggcorn": "reductio and absurdum",
+    "target": "ad",
+    "url": "https://eggcorns.lascribe.net/english/582/and/"
+  },
+  {
+    "eggcorn": "reek havoc",
+    "target": "wreak",
+    "url": "https://eggcorns.lascribe.net/english/163/reek/"
+  },
+  {
+    "eggcorn": "reel its (ugly) head",
+    "target": "rear",
+    "url": "https://eggcorns.lascribe.net/english/1055/reel/"
+  },
+  {
+    "eggcorn": "reknowned",
+    "target": "renowned",
+    "url": "https://eggcorns.lascribe.net/english/524/reknowned/"
+  },
+  {
+    "eggcorn": "riff",
+    "target": "rift",
+    "url": "https://eggcorns.lascribe.net/english/543/riff/"
+  },
+  {
+    "eggcorn": "right as reign",
+    "target": "rain",
+    "url": "https://eggcorns.lascribe.net/english/38/reign/"
+  },
+  {
+    "eggcorn": "right away",
+    "target": "right of way",
+    "url": "https://eggcorns.lascribe.net/english/523/right-away/"
+  },
+  {
+    "eggcorn": "right of passage",
+    "target": "rite",
+    "url": "https://eggcorns.lascribe.net/english/3/right/"
+  },
+  {
+    "eggcorn": "rimming with",
+    "target": "brim",
+    "url": "https://eggcorns.lascribe.net/english/621/rim/"
+  },
+  {
+    "eggcorn": "ring so.'s neck",
+    "target": "wring",
+    "url": "https://eggcorns.lascribe.net/english/311/ring/"
+  },
+  {
+    "eggcorn": "ringer",
+    "target": "wringer",
+    "url": "https://eggcorns.lascribe.net/english/105/ringer/"
+  },
+  {
+    "eggcorn": "ripe with",
+    "target": "rife",
+    "url": "https://eggcorns.lascribe.net/english/266/ripe/"
+  },
+  {
+    "eggcorn": "rod iron",
+    "target": "wrought",
+    "url": "https://eggcorns.lascribe.net/english/305/rod/"
+  },
+  {
+    "eggcorn": "role call",
+    "target": "roll",
+    "url": "https://eggcorns.lascribe.net/english/406/role/"
+  },
+  {
+    "eggcorn": "roll-a-coaster",
+    "target": "roller coaster",
+    "url": "https://eggcorns.lascribe.net/english/380/roll-a-coaster/"
+  },
+  {
+    "eggcorn": "rot iron",
+    "target": "wrought",
+    "url": "https://eggcorns.lascribe.net/english/304/rot/"
+  },
+  {
+    "eggcorn": "route cause",
+    "target": "root",
+    "url": "https://eggcorns.lascribe.net/english/602/route/"
+  },
+  {
+    "eggcorn": "rubble-rousing",
+    "target": "rabble",
+    "url": "https://eggcorns.lascribe.net/english/409/rubble/"
+  },
+  {
+    "eggcorn": "run rapid",
+    "target": "rampant",
+    "url": "https://eggcorns.lascribe.net/english/427/rapid/"
+  },
+  {
+    "eggcorn": "run roughshot",
+    "target": "roughshod",
+    "url": "https://eggcorns.lascribe.net/english/158/roughshot/"
+  },
+  {
+    "eggcorn": "run the gambit",
+    "target": "gamut",
+    "url": "https://eggcorns.lascribe.net/english/174/gambit/"
+  },
+  {
+    "eggcorn": "run the gamete",
+    "target": "gamut",
+    "url": "https://eggcorns.lascribe.net/english/572/gamete/"
+  },
+  {
+    "eggcorn": "rye",
+    "target": "wry",
+    "url": "https://eggcorns.lascribe.net/english/136/rye/"
+  },
+  {
+    "eggcorn": "s.o.'s lips are steeled",
+    "target": "sealed",
+    "url": "https://eggcorns.lascribe.net/english/552/steeled/"
+  },
+  {
+    "eggcorn": "sacreligious",
+    "target": "sacrilegious",
+    "url": "https://eggcorns.lascribe.net/english/320/sacreligious/"
+  },
+  {
+    "eggcorn": "sail (someone) down the river",
+    "target": "sell",
+    "url": "https://eggcorns.lascribe.net/english/465/sail/"
+  },
+  {
+    "eggcorn": "sand-blind",
+    "target": "samblind",
+    "url": "https://eggcorns.lascribe.net/english/364/sand-blind/"
+  },
+  {
+    "eggcorn": "sandscript",
+    "target": "Sanskrit",
+    "url": "https://eggcorns.lascribe.net/english/709/sandscript/"
+  },
+  {
+    "eggcorn": "sartastic",
+    "target": "sarcastic",
+    "url": "https://eggcorns.lascribe.net/english/193/sartastic/"
+  },
+  {
+    "eggcorn": "say one's peace",
+    "target": "piece",
+    "url": "https://eggcorns.lascribe.net/english/23/peace/"
+  },
+  {
+    "eggcorn": "scarred the heck out of",
+    "target": "scare",
+    "url": "https://eggcorns.lascribe.net/english/413/scar/"
+  },
+  {
+    "eggcorn": "scrapegoat",
+    "target": "scapegoat",
+    "url": "https://eggcorns.lascribe.net/english/325/scrapegoat/"
+  },
+  {
+    "eggcorn": "segway",
+    "target": "segue",
+    "url": "https://eggcorns.lascribe.net/english/527/segway/"
+  },
+  {
+    "eggcorn": "seize fire",
+    "target": "cease",
+    "url": "https://eggcorns.lascribe.net/english/351/seize/"
+  },
+  {
+    "eggcorn": "self-phone",
+    "target": "cell-phone",
+    "url": "https://eggcorns.lascribe.net/english/715/self-phone/"
+  },
+  {
+    "eggcorn": "self-richeous",
+    "target": "self-righteous",
+    "url": "https://eggcorns.lascribe.net/english/622/self-richeous/"
+  },
+  {
+    "eggcorn": "sheik",
+    "target": "chic",
+    "url": "https://eggcorns.lascribe.net/english/90/sheik/"
+  },
+  {
+    "eggcorn": "Shiffer robe",
+    "target": "chifforobe",
+    "url": "https://eggcorns.lascribe.net/english/1095/shiffer-robe/"
+  },
+  {
+    "eggcorn": "shoot",
+    "target": "chute",
+    "url": "https://eggcorns.lascribe.net/english/704/shoot/"
+  },
+  {
+    "eggcorn": "shore-term",
+    "target": "short",
+    "url": "https://eggcorns.lascribe.net/english/429/shore/"
+  },
+  {
+    "eggcorn": "short shift",
+    "target": "shrift",
+    "url": "https://eggcorns.lascribe.net/english/581/shift/"
+  },
+  {
+    "eggcorn": "short-sided",
+    "target": "short-sighted",
+    "url": "https://eggcorns.lascribe.net/english/435/short-sided/"
+  },
+  {
+    "eggcorn": "shutter",
+    "target": "shudder",
+    "url": "https://eggcorns.lascribe.net/english/375/shutter/"
+  },
+  {
+    "eggcorn": "signal out",
+    "target": "single",
+    "url": "https://eggcorns.lascribe.net/english/1121/signal/"
+  },
+  {
+    "eggcorn": "sing-a-long",
+    "target": "sing-along",
+    "url": "https://eggcorns.lascribe.net/english/666/sing-a-long/"
+  },
+  {
+    "eggcorn": "sirname",
+    "target": "surname",
+    "url": "https://eggcorns.lascribe.net/english/259/sirname/"
+  },
+  {
+    "eggcorn": "skeletal staff",
+    "target": "skeleton",
+    "url": "https://eggcorns.lascribe.net/english/228/skeletal/"
+  },
+  {
+    "eggcorn": "skew",
+    "target": "skewer",
+    "url": "https://eggcorns.lascribe.net/english/248/skew/"
+  },
+  {
+    "eggcorn": "skimp milk",
+    "target": "skimmed",
+    "url": "https://eggcorns.lascribe.net/english/1085/skimp/"
+  },
+  {
+    "eggcorn": "skin milk",
+    "target": "skim",
+    "url": "https://eggcorns.lascribe.net/english/391/skin/"
+  },
+  {
+    "eggcorn": "slack (one's) thirst",
+    "target": "slake",
+    "url": "https://eggcorns.lascribe.net/english/989/slack/"
+  },
+  {
+    "eggcorn": "slight of hand",
+    "target": "sleight",
+    "url": "https://eggcorns.lascribe.net/english/117/slight/"
+  },
+  {
+    "eggcorn": "slither",
+    "target": "sliver",
+    "url": "https://eggcorns.lascribe.net/english/283/slither/"
+  },
+  {
+    "eggcorn": "sliver",
+    "target": "slither",
+    "url": "https://eggcorns.lascribe.net/english/290/sliver/"
+  },
+  {
+    "eggcorn": "slow-eyed",
+    "target": "sloe",
+    "url": "https://eggcorns.lascribe.net/english/303/slow/"
+  },
+  {
+    "eggcorn": "smother on",
+    "target": "slather",
+    "url": "https://eggcorns.lascribe.net/english/493/smother/"
+  },
+  {
+    "eggcorn": "snob",
+    "target": "snub",
+    "url": "https://eggcorns.lascribe.net/english/652/snob/"
+  },
+  {
+    "eggcorn": "soak and wet",
+    "target": "soaking",
+    "url": "https://eggcorns.lascribe.net/english/567/soak-and/"
+  },
+  {
+    "eggcorn": "soak one's wild oats",
+    "target": "sow",
+    "url": "https://eggcorns.lascribe.net/english/229/soak/"
+  },
+  {
+    "eggcorn": "soaping wet",
+    "target": "sopping, soaking",
+    "url": "https://eggcorns.lascribe.net/english/1077/soaping-wet/"
+  },
+  {
+    "eggcorn": "social leopard",
+    "target": "leper",
+    "url": "https://eggcorns.lascribe.net/english/1066/leopard/"
+  },
+  {
+    "eggcorn": "social morays",
+    "target": "mores",
+    "url": "https://eggcorns.lascribe.net/english/140/morays/"
+  },
+  {
+    "eggcorn": "soft-peddle",
+    "target": "soft-pedal",
+    "url": "https://eggcorns.lascribe.net/english/455/soft-peddle/"
+  },
+  {
+    "eggcorn": "something or rather",
+    "target": "or other",
+    "url": "https://eggcorns.lascribe.net/english/561/or-rather/"
+  },
+  {
+    "eggcorn": "sort for",
+    "target": "sought",
+    "url": "https://eggcorns.lascribe.net/english/130/sort/"
+  },
+  {
+    "eggcorn": "sort of speak",
+    "target": "so to speak",
+    "url": "https://eggcorns.lascribe.net/english/235/sort-of-speak/"
+  },
+  {
+    "eggcorn": "sorted",
+    "target": "sordid",
+    "url": "https://eggcorns.lascribe.net/english/49/sorted/"
+  },
+  {
+    "eggcorn": "soul rights",
+    "target": "sole",
+    "url": "https://eggcorns.lascribe.net/english/583/soul/"
+  },
+  {
+    "eggcorn": "sound byte",
+    "target": "bite",
+    "url": "https://eggcorns.lascribe.net/english/546/sound-byte/"
+  },
+  {
+    "eggcorn": "Southern brawl",
+    "target": "drawl",
+    "url": "https://eggcorns.lascribe.net/english/361/brawl/"
+  },
+  {
+    "eggcorn": "Southern draw",
+    "target": "drawl",
+    "url": "https://eggcorns.lascribe.net/english/486/draw/"
+  },
+  {
+    "eggcorn": "southmore",
+    "target": "sophomore",
+    "url": "https://eggcorns.lascribe.net/english/985/southmore/"
+  },
+  {
+    "eggcorn": "sow one's wild oaks",
+    "target": "oats",
+    "url": "https://eggcorns.lascribe.net/english/713/oaks/"
+  },
+  {
+    "eggcorn": "sowchow",
+    "target": "salchow",
+    "url": "https://eggcorns.lascribe.net/english/274/sowchow/"
+  },
+  {
+    "eggcorn": "sowcow",
+    "target": "salchow",
+    "url": "https://eggcorns.lascribe.net/english/273/sowcow/"
+  },
+  {
+    "eggcorn": "spade cat",
+    "target": "spayed",
+    "url": "https://eggcorns.lascribe.net/english/388/spade/"
+  },
+  {
+    "eggcorn": "sparkle protests (etc.)",
+    "target": "spark",
+    "url": "https://eggcorns.lascribe.net/english/594/sparkle/"
+  },
+  {
+    "eggcorn": "spear of influence",
+    "target": "sphere",
+    "url": "https://eggcorns.lascribe.net/english/281/spear/"
+  },
+  {
+    "eggcorn": "spitting image",
+    "target": "spit and image",
+    "url": "https://eggcorns.lascribe.net/english/332/spitting-image/"
+  },
+  {
+    "eggcorn": "spread like wildflowers",
+    "target": "wildfire",
+    "url": "https://eggcorns.lascribe.net/english/353/wildflowers/"
+  },
+  {
+    "eggcorn": "sprout",
+    "target": "spout",
+    "url": "https://eggcorns.lascribe.net/english/389/sprout/"
+  },
+  {
+    "eggcorn": "spurn",
+    "target": "spur",
+    "url": "https://eggcorns.lascribe.net/english/138/spurn/"
+  },
+  {
+    "eggcorn": "spurt of the moment",
+    "target": "spur",
+    "url": "https://eggcorns.lascribe.net/english/431/spurt/"
+  },
+  {
+    "eggcorn": "square quotes",
+    "target": "scare",
+    "url": "https://eggcorns.lascribe.net/english/63/square/"
+  },
+  {
+    "eggcorn": "squirmish",
+    "target": "squeamish",
+    "url": "https://eggcorns.lascribe.net/english/664/squirmish/"
+  },
+  {
+    "eggcorn": "stalk raving mad",
+    "target": "stark raving",
+    "url": "https://eggcorns.lascribe.net/english/412/stalk-raving/"
+  },
+  {
+    "eggcorn": "stalk-still",
+    "target": "stock",
+    "url": "https://eggcorns.lascribe.net/english/923/stalk/"
+  },
+  {
+    "eggcorn": "star-craving mad",
+    "target": "stark raving",
+    "url": "https://eggcorns.lascribe.net/english/410/star-craving/"
+  },
+  {
+    "eggcorn": "stark raven mad",
+    "target": "stark raving",
+    "url": "https://eggcorns.lascribe.net/english/411/stark-raven/"
+  },
+  {
+    "eggcorn": "statue",
+    "target": "statute",
+    "url": "https://eggcorns.lascribe.net/english/301/statue/"
+  },
+  {
+    "eggcorn": "step foot",
+    "target": "set foot",
+    "url": "https://eggcorns.lascribe.net/english/101/step-foot/"
+  },
+  {
+    "eggcorn": "stings and arrows",
+    "target": "slings",
+    "url": "https://eggcorns.lascribe.net/english/144/stings-and-arrows/"
+  },
+  {
+    "eggcorn": "stole away",
+    "target": "stow",
+    "url": "https://eggcorns.lascribe.net/english/487/stole/"
+  },
+  {
+    "eggcorn": "straddled with",
+    "target": "saddle",
+    "url": "https://eggcorns.lascribe.net/english/1114/straddle/"
+  },
+  {
+    "eggcorn": "straight as a narrow",
+    "target": "arrow",
+    "url": "https://eggcorns.lascribe.net/english/434/narrow/"
+  },
+  {
+    "eggcorn": "straightjacket, straight-laced, Straight(s) of X",
+    "target": "strait",
+    "url": "https://eggcorns.lascribe.net/english/319/straight/"
+  },
+  {
+    "eggcorn": "strings and arrows",
+    "target": "slings",
+    "url": "https://eggcorns.lascribe.net/english/1071/strings/"
+  },
+  {
+    "eggcorn": "stripe me pink",
+    "target": "strike",
+    "url": "https://eggcorns.lascribe.net/english/438/stripe/"
+  },
+  {
+    "eggcorn": "strong suite",
+    "target": "suit",
+    "url": "https://eggcorns.lascribe.net/english/327/suite/"
+  },
+  {
+    "eggcorn": "strum up support",
+    "target": "drum up",
+    "url": "https://eggcorns.lascribe.net/english/928/strum-up/"
+  },
+  {
+    "eggcorn": "Summer Teenager",
+    "target": "Tanager",
+    "url": "https://eggcorns.lascribe.net/english/50/teenager/"
+  },
+  {
+    "eggcorn": "suped-up",
+    "target": "soup",
+    "url": "https://eggcorns.lascribe.net/english/647/supe/"
+  },
+  {
+    "eggcorn": "symbol",
+    "target": "cymbal",
+    "url": "https://eggcorns.lascribe.net/english/571/symbol/"
+  },
+  {
+    "eggcorn": "synch",
+    "target": "cinch",
+    "url": "https://eggcorns.lascribe.net/english/591/synch/"
+  },
+  {
+    "eggcorn": "ta-do",
+    "target": "to-do",
+    "url": "https://eggcorns.lascribe.net/english/813/ta-do/"
+  },
+  {
+    "eggcorn": "tack",
+    "target": "tact",
+    "url": "https://eggcorns.lascribe.net/english/515/tack/"
+  },
+  {
+    "eggcorn": "take another tact",
+    "target": "tack",
+    "url": "https://eggcorns.lascribe.net/english/76/tact/"
+  },
+  {
+    "eggcorn": "take for granite",
+    "target": "granted",
+    "url": "https://eggcorns.lascribe.net/english/64/granite/"
+  },
+  {
+    "eggcorn": "take the reigns of power",
+    "target": "rein",
+    "url": "https://eggcorns.lascribe.net/english/34/reign/"
+  },
+  {
+    "eggcorn": "take with a grain assault",
+    "target": "of salt",
+    "url": "https://eggcorns.lascribe.net/english/45/assault/"
+  },
+  {
+    "eggcorn": "tarter sauce",
+    "target": "tartar",
+    "url": "https://eggcorns.lascribe.net/english/1076/tarter/"
+  },
+  {
+    "eggcorn": "tattermedallion",
+    "target": "tatterdemalion",
+    "url": "https://eggcorns.lascribe.net/english/1070/tattermedallion/"
+  },
+  {
+    "eggcorn": "team",
+    "target": "teem",
+    "url": "https://eggcorns.lascribe.net/english/1128/team/"
+  },
+  {
+    "eggcorn": "teem up with",
+    "target": "team",
+    "url": "https://eggcorns.lascribe.net/english/1127/teem/"
+  },
+  {
+    "eggcorn": "ten-year track position",
+    "target": "tenure(d)",
+    "url": "https://eggcorns.lascribe.net/english/721/ten-year/"
+  },
+  {
+    "eggcorn": "tenant",
+    "target": "tenet",
+    "url": "https://eggcorns.lascribe.net/english/300/tenant/"
+  },
+  {
+    "eggcorn": "tenderbox",
+    "target": "tinderbox",
+    "url": "https://eggcorns.lascribe.net/english/338/tenderbox/"
+  },
+  {
+    "eggcorn": "tent",
+    "target": "tenet",
+    "url": "https://eggcorns.lascribe.net/english/294/tent/"
+  },
+  {
+    "eggcorn": "term of speech",
+    "target": "turn",
+    "url": "https://eggcorns.lascribe.net/english/542/term/"
+  },
+  {
+    "eggcorn": "the bud of someone's jokes",
+    "target": "butt",
+    "url": "https://eggcorns.lascribe.net/english/291/bud/"
+  },
+  {
+    "eggcorn": "the dye is cast",
+    "target": "die",
+    "url": "https://eggcorns.lascribe.net/english/628/dye/"
+  },
+  {
+    "eggcorn": "the invincible hand",
+    "target": "invisible",
+    "url": "https://eggcorns.lascribe.net/english/278/invincible/"
+  },
+  {
+    "eggcorn": "the Monday world",
+    "target": "mundane",
+    "url": "https://eggcorns.lascribe.net/english/651/monday/"
+  },
+  {
+    "eggcorn": "the straight and arrow",
+    "target": "narrow",
+    "url": "https://eggcorns.lascribe.net/english/433/arrow/"
+  },
+  {
+    "eggcorn": "throngs of passion",
+    "target": "throes",
+    "url": "https://eggcorns.lascribe.net/english/366/throngs/"
+  },
+  {
+    "eggcorn": "through (someone) for a loop",
+    "target": "threw",
+    "url": "https://eggcorns.lascribe.net/english/558/through/"
+  },
+  {
+    "eggcorn": "throws of passion",
+    "target": "throes",
+    "url": "https://eggcorns.lascribe.net/english/250/throws/"
+  },
+  {
+    "eggcorn": "thumps up",
+    "target": "thumbs up",
+    "url": "https://eggcorns.lascribe.net/english/707/thumps-up/"
+  },
+  {
+    "eggcorn": "tidy-whitey",
+    "target": "tighty-whitey",
+    "url": "https://eggcorns.lascribe.net/english/240/tidy-whitey/"
+  },
+  {
+    "eggcorn": "tie one over",
+    "target": "tide",
+    "url": "https://eggcorns.lascribe.net/english/426/tie/"
+  },
+  {
+    "eggcorn": "time in memorial",
+    "target": "immemorial",
+    "url": "https://eggcorns.lascribe.net/english/350/in-memorial/"
+  },
+  {
+    "eggcorn": "to each's own",
+    "target": "each his",
+    "url": "https://eggcorns.lascribe.net/english/333/eachs/"
+  },
+  {
+    "eggcorn": "to name a view",
+    "target": "few",
+    "url": "https://eggcorns.lascribe.net/english/894/view/"
+  },
+  {
+    "eggcorn": "toe-headed",
+    "target": "tow",
+    "url": "https://eggcorns.lascribe.net/english/100/toe/"
+  },
+  {
+    "eggcorn": "tongue and cheek",
+    "target": "tongue in cheek",
+    "url": "https://eggcorns.lascribe.net/english/445/tongue-and-cheek/"
+  },
+  {
+    "eggcorn": "torch paper",
+    "target": "touch",
+    "url": "https://eggcorns.lascribe.net/english/441/torch/"
+  },
+  {
+    "eggcorn": "touch a cord",
+    "target": "chord",
+    "url": "https://eggcorns.lascribe.net/english/373/cord/"
+  },
+  {
+    "eggcorn": "tow the line",
+    "target": "toe",
+    "url": "https://eggcorns.lascribe.net/english/72/tow/"
+  },
+  {
+    "eggcorn": "track",
+    "target": "tract",
+    "url": "https://eggcorns.lascribe.net/english/514/track/"
+  },
+  {
+    "eggcorn": "tract",
+    "target": "track",
+    "url": "https://eggcorns.lascribe.net/english/698/track/"
+  },
+  {
+    "eggcorn": "trader",
+    "target": "traitor",
+    "url": "https://eggcorns.lascribe.net/english/12/trader/"
+  },
+  {
+    "eggcorn": "trawl",
+    "target": "thrall",
+    "url": "https://eggcorns.lascribe.net/english/1083/trawl/"
+  },
+  {
+    "eggcorn": "treasure cove",
+    "target": "trove",
+    "url": "https://eggcorns.lascribe.net/english/254/cove/"
+  },
+  {
+    "eggcorn": "trite and true",
+    "target": "tried",
+    "url": "https://eggcorns.lascribe.net/english/462/trite/"
+  },
+  {
+    "eggcorn": "try one's hat at sth.",
+    "target": "hand",
+    "url": "https://eggcorns.lascribe.net/english/390/hat/"
+  },
+  {
+    "eggcorn": "two sense worth",
+    "target": "cents",
+    "url": "https://eggcorns.lascribe.net/english/398/sense/"
+  },
+  {
+    "eggcorn": "un-suite",
+    "target": "en-suite",
+    "url": "https://eggcorns.lascribe.net/english/697/un-suite/"
+  },
+  {
+    "eggcorn": "unchartered",
+    "target": "uncharted",
+    "url": "https://eggcorns.lascribe.net/english/173/unchartered/"
+  },
+  {
+    "eggcorn": "underline",
+    "target": "underlying",
+    "url": "https://eggcorns.lascribe.net/english/118/underline/"
+  },
+  {
+    "eggcorn": "underlining",
+    "target": "underlying",
+    "url": "https://eggcorns.lascribe.net/english/66/underlining/"
+  },
+  {
+    "eggcorn": "undo",
+    "target": "undue",
+    "url": "https://eggcorns.lascribe.net/english/343/undo/"
+  },
+  {
+    "eggcorn": "untolled",
+    "target": "told",
+    "url": "https://eggcorns.lascribe.net/english/966/tolled/"
+  },
+  {
+    "eggcorn": "untracked",
+    "target": "on track",
+    "url": "https://eggcorns.lascribe.net/english/28/untracked/"
+  },
+  {
+    "eggcorn": "unvaluable",
+    "target": "invaluable",
+    "url": "https://eggcorns.lascribe.net/english/257/unvaluable/"
+  },
+  {
+    "eggcorn": "up incoming",
+    "target": "up and coming",
+    "url": "https://eggcorns.lascribe.net/english/423/up-incoming/"
+  },
+  {
+    "eggcorn": "up to day",
+    "target": "date",
+    "url": "https://eggcorns.lascribe.net/english/720/day/"
+  },
+  {
+    "eggcorn": "up to stuff",
+    "target": "snuff",
+    "url": "https://eggcorns.lascribe.net/english/655/stuff/"
+  },
+  {
+    "eggcorn": "uphauling",
+    "target": "appall",
+    "url": "https://eggcorns.lascribe.net/english/352/uphauled/"
+  },
+  {
+    "eggcorn": "upmost",
+    "target": "utmost",
+    "url": "https://eggcorns.lascribe.net/english/1067/upmost/"
+  },
+  {
+    "eggcorn": "valevictorian",
+    "target": "valedictorian",
+    "url": "https://eggcorns.lascribe.net/english/513/valevictorian/"
+  },
+  {
+    "eggcorn": "veil of tears",
+    "target": "vale",
+    "url": "https://eggcorns.lascribe.net/english/484/veil/"
+  },
+  {
+    "eggcorn": "verses",
+    "target": "versus",
+    "url": "https://eggcorns.lascribe.net/english/463/verses/"
+  },
+  {
+    "eggcorn": "Via de la Rosa",
+    "target": "Via Dolorosa",
+    "url": "https://eggcorns.lascribe.net/english/1060/via-de-la-rosa/"
+  },
+  {
+    "eggcorn": "vintage point",
+    "target": "vantage",
+    "url": "https://eggcorns.lascribe.net/english/176/vintage/"
+  },
+  {
+    "eggcorn": "vocal chords",
+    "target": "cord",
+    "url": "https://eggcorns.lascribe.net/english/340/chord/"
+  },
+  {
+    "eggcorn": "voiceterous",
+    "target": "boisterous",
+    "url": "https://eggcorns.lascribe.net/english/396/voiceterous/"
+  },
+  {
+    "eggcorn": "wail away at",
+    "target": "whale",
+    "url": "https://eggcorns.lascribe.net/english/374/wail/"
+  },
+  {
+    "eggcorn": "walk down the isle",
+    "target": "aisle",
+    "url": "https://eggcorns.lascribe.net/english/282/isle/"
+  },
+  {
+    "eggcorn": "want",
+    "target": "wont",
+    "url": "https://eggcorns.lascribe.net/english/123/want/"
+  },
+  {
+    "eggcorn": "wasteband",
+    "target": "waist",
+    "url": "https://eggcorns.lascribe.net/english/85/waste/"
+  },
+  {
+    "eggcorn": "way in (on)",
+    "target": "weigh",
+    "url": "https://eggcorns.lascribe.net/english/58/way/"
+  },
+  {
+    "eggcorn": "weigh-lay",
+    "target": "way",
+    "url": "https://eggcorns.lascribe.net/english/478/weigh/"
+  },
+  {
+    "eggcorn": "well-healed",
+    "target": "heel",
+    "url": "https://eggcorns.lascribe.net/english/477/heal/"
+  },
+  {
+    "eggcorn": "wet one's appetite",
+    "target": "whet",
+    "url": "https://eggcorns.lascribe.net/english/89/wet/"
+  },
+  {
+    "eggcorn": "what   in/the/in the   Sand Hill",
+    "target": "Sam Hill",
+    "url": "https://eggcorns.lascribe.net/english/363/sand-hill/"
+  },
+  {
+    "eggcorn": "wheedle down",
+    "target": "whittle",
+    "url": "https://eggcorns.lascribe.net/english/400/wheedle/"
+  },
+  {
+    "eggcorn": "wheel barrel",
+    "target": "barrow",
+    "url": "https://eggcorns.lascribe.net/english/10/barrel/"
+  },
+  {
+    "eggcorn": "when/after all is set and done",
+    "target": "said",
+    "url": "https://eggcorns.lascribe.net/english/1123/set/"
+  },
+  {
+    "eggcorn": "whenst",
+    "target": "whence",
+    "url": "https://eggcorns.lascribe.net/english/382/whenst/"
+  },
+  {
+    "eggcorn": "Whoa is me!, the whoas of ...",
+    "target": "woe",
+    "url": "https://eggcorns.lascribe.net/english/40/whoa/"
+  },
+  {
+    "eggcorn": "whole-scale",
+    "target": "wholesale",
+    "url": "https://eggcorns.lascribe.net/english/404/whole-scale/"
+  },
+  {
+    "eggcorn": "wholemark",
+    "target": "hallmark",
+    "url": "https://eggcorns.lascribe.net/english/625/wholemark/"
+  },
+  {
+    "eggcorn": "whorefrost",
+    "target": "hoarfrost",
+    "url": "https://eggcorns.lascribe.net/english/530/whorefrost/"
+  },
+  {
+    "eggcorn": "wild awake",
+    "target": "wide",
+    "url": "https://eggcorns.lascribe.net/english/539/wild/"
+  },
+  {
+    "eggcorn": "willow the wisp",
+    "target": "will o'",
+    "url": "https://eggcorns.lascribe.net/english/653/willow/"
+  },
+  {
+    "eggcorn": "Winchell factor",
+    "target": "wind chill",
+    "url": "https://eggcorns.lascribe.net/english/153/winchell-factor/"
+  },
+  {
+    "eggcorn": "wind turban",
+    "target": "turbine",
+    "url": "https://eggcorns.lascribe.net/english/722/turban/"
+  },
+  {
+    "eggcorn": "wind-nut",
+    "target": "wing",
+    "url": "https://eggcorns.lascribe.net/english/629/wind/"
+  },
+  {
+    "eggcorn": "windshield factor",
+    "target": "wind chill",
+    "url": "https://eggcorns.lascribe.net/english/162/windshield/"
+  },
+  {
+    "eggcorn": "winfall",
+    "target": "windfall",
+    "url": "https://eggcorns.lascribe.net/english/609/winfall/"
+  },
+  {
+    "eggcorn": "wise tale",
+    "target": "wives",
+    "url": "https://eggcorns.lascribe.net/english/99/wise/"
+  },
+  {
+    "eggcorn": "with flying collars",
+    "target": "colors (colours)",
+    "url": "https://eggcorns.lascribe.net/english/920/collars/"
+  },
+  {
+    "eggcorn": "without further adieu",
+    "target": "ado",
+    "url": "https://eggcorns.lascribe.net/english/93/adieu/"
+  },
+  {
+    "eggcorn": "without further to do",
+    "target": "ado",
+    "url": "https://eggcorns.lascribe.net/english/703/to-do/"
+  },
+  {
+    "eggcorn": "wives tail",
+    "target": "tale",
+    "url": "https://eggcorns.lascribe.net/english/112/tail/"
+  },
+  {
+    "eggcorn": "woeth me",
+    "target": "woe is",
+    "url": "https://eggcorns.lascribe.net/english/504/woeth/"
+  },
+  {
+    "eggcorn": "wonder",
+    "target": "wander",
+    "url": "https://eggcorns.lascribe.net/english/200/wonder/"
+  },
+  {
+    "eggcorn": "works like a champ",
+    "target": "charm",
+    "url": "https://eggcorns.lascribe.net/english/151/champ/"
+  },
+  {
+    "eggcorn": "worth your wild",
+    "target": "while",
+    "url": "https://eggcorns.lascribe.net/english/252/worth-your-wild/"
+  },
+  {
+    "eggcorn": "worthwild",
+    "target": "worthwhile",
+    "url": "https://eggcorns.lascribe.net/english/296/worthwild/"
+  },
+  {
+    "eggcorn": "wrangle an invitation",
+    "target": "wangle",
+    "url": "https://eggcorns.lascribe.net/english/532/wrangle/"
+  },
+  {
+    "eggcorn": "wrapped",
+    "target": "rapt",
+    "url": "https://eggcorns.lascribe.net/english/238/wrapped/"
+  },
+  {
+    "eggcorn": "wreck havoc",
+    "target": "wreak",
+    "url": "https://eggcorns.lascribe.net/english/164/wreck/"
+  },
+  {
+    "eggcorn": "wreckless driving, wreckless driver",
+    "target": "reckless",
+    "url": "https://eggcorns.lascribe.net/english/988/wreckless/"
+  },
+  {
+    "eggcorn": "wring the changes",
+    "target": "ring",
+    "url": "https://eggcorns.lascribe.net/english/312/wring/"
+  },
+  {
+    "eggcorn": "youthamism",
+    "target": "euphemism",
+    "url": "https://eggcorns.lascribe.net/english/1106/youthamism/"
+  },
+  {
+    "eggcorn": "zero-sum gain",
+    "target": "game",
+    "url": "https://eggcorns.lascribe.net/english/165/zero-sum-gain-zero-sum-game/"
+  }
+]

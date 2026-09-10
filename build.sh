@@ -33,6 +33,11 @@ cp feeds.example.json dist/myToday/feeds.example.json
 cp setup.sh           dist/myToday/setup.sh
 chmod +x dist/myToday/setup.sh
 
+if [ -f eggcorns.json ]; then
+    cp eggcorns.json dist/myToday/eggcorns.json
+    echo "Copied eggcorns.json"
+fi
+
 if [ -f config.py ]; then
     cp config.py dist/myToday/config.py
     echo "Copied config.py"

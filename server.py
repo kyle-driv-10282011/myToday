@@ -10,6 +10,7 @@ Then open http://localhost:8080 in your browser.
 
 import base64
 import http.server
+import random
 import re
 import subprocess
 import sys
@@ -319,6 +320,9 @@ def get_movie_quotes():
     with _moviequotes_cache_lock:
         _moviequotes_cache = (now, quotes)
     return quotes
+
+EGGCORNS_FILE = os.path.join(BASE_DIR, 'eggcorns.json')
+EGGCORNS_SAMPLE_SIZE = 5
 
 def run_slack_playwright_login(email, password):
     """
@@ -818,6 +822,23 @@ class Handler(http.server.BaseHTTPRequestHandler):
                 self.send_header('Content-Type', 'application/json')
                 self.end_headers()
                 self.wfile.write(json.dumps({'error': str(e)}).encode())
+            return
+
+        # ── Eggcorns ─────────────────────────────────────────────────────────
+        if parsed.path == '/eggcorns':
+            try:
+                with open(EGGCORNS_FILE, 'r', encoding='utf-8') as f:
+                    eggcorns = json.load(f)
+                if isinstance(eggcorns, list) and len(eggcorns) > EGGCORNS_SAMPLE_SIZE:
+                    eggcorns = random.sample(eggcorns, EGGCORNS_SAMPLE_SIZE)
+                body = json.dumps(eggcorns).encode()
+            except FileNotFoundError:
+                body = b'[]'
+            self.send_response(200)
+            self._cors()
+            self.send_header('Content-Type', 'application/json')
+            self.end_headers()
+            self.wfile.write(body)
             return
 
         # ── PagerDuty proxy ───────────────────────────────────────────────────
