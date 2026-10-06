@@ -15,23 +15,26 @@
       --border: rgba(0,0,0,0.09); --border2: rgba(0,0,0,0.17);
       --blue: #0078d4; --blue-dk: #005fa3;
       --r: 8px; --rlg: 12px;
+      --scrim: rgba(238,237,233,0.55);
     }
     @media (prefers-color-scheme: dark) {
       :root {
         --bg: #1a1a18; --surface: #242422; --surface2: #2e2e2b;
         --text: #f0efeb; --muted: #9a9a95;
         --border: rgba(255,255,255,0.08); --border2: rgba(255,255,255,0.15);
+        --scrim: rgba(26,26,24,0.35);
       }
     }
-    body { font-family: 'Syne', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; padding: 1.5rem 1rem 3rem; }
+    html { background: linear-gradient(var(--scrim), var(--scrim)), url('Images/background.jpg') center / cover no-repeat fixed, var(--bg); }
+    body { font-family: 'Syne', sans-serif; background: transparent; color: var(--text); min-height: 100vh; padding: 1.5rem 1rem 3rem; }
     #app { max-width: 1300px; margin: 0 auto; }
     #columns { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; align-items: start; min-width: 0; }
     #columns > * { min-width: 0; overflow-wrap: break-word; word-break: break-word; }
     @media (max-width: 1000px) { #columns { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 600px)  { #columns { grid-template-columns: 1fr; } }
 
-    @keyframes bg-flash { 0%,100%{background-color:var(--bg)} 50%{background-color:#ffd6d6} }
-    @media (prefers-color-scheme: dark) { @keyframes bg-flash { 0%,100%{background-color:var(--bg)} 50%{background-color:#3a1a1a} } }
+    @keyframes bg-flash { 0%,100%{background-color:transparent} 50%{background-color:rgba(255,214,214,0.85)} }
+    @media (prefers-color-scheme: dark) { @keyframes bg-flash { 0%,100%{background-color:transparent} 50%{background-color:rgba(58,26,26,0.85)} } }
     body.meeting-now { animation: bg-flash 2s step-end infinite; }
 
     #overlay { display:none; position:fixed; inset:0; z-index:999; background:rgba(0,0,0,0.82); flex-direction:column; align-items:center; justify-content:center; text-align:center; cursor:pointer; }
@@ -46,7 +49,10 @@
     #overlay-dismiss { margin-top:16px; background:none; border:none; color:rgba(255,255,255,0.35); font-family:'DM Mono',monospace; font-size:11px; cursor:pointer; letter-spacing:.06em; }
     #overlay-dismiss:hover { color:rgba(255,255,255,0.6); }
 
-    .header { display:flex; align-items:center; justify-content:space-between; margin-bottom:1.4rem; padding-bottom:1rem; border-bottom:0.5px solid var(--border2); }
+    .header { display:flex; justify-content:center; margin-bottom:.6rem; padding-bottom:.6rem; border-bottom:0.5px solid var(--border2); }
+    .header-stack { display:flex; flex-direction:column; gap:6px; }
+    .time-row { display:flex; justify-content:space-between; align-items:center; gap:18px; }
+    .time-box { border:0.5px solid var(--border2); border-radius:var(--r); padding:3px 12px; text-align:center; white-space:nowrap; }
     .brand { display:flex; align-items:center; gap:10px; }
     .brand-icon { width:32px; height:32px; background:var(--blue); border-radius:7px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
     .brand-icon svg { width:17px; height:17px; }
@@ -67,12 +73,6 @@
     .ms-icon span { display:block; border-radius:1px; }
     .ms-icon span:nth-child(1){background:#f25022;} .ms-icon span:nth-child(2){background:#7fba00;}
     .ms-icon span:nth-child(3){background:#00a4ef;} .ms-icon span:nth-child(4){background:#ffb900;}
-
-    #user-bar { display:none; align-items:center; gap:10px; }
-    .avatar { width:30px; height:30px; border-radius:50%; background:var(--blue); color:#fff; font-size:12px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
-    .user-name { font-size:13px; font-weight:600; }
-    .sign-out-btn { background:transparent; border:0.5px solid var(--border2); color:var(--muted); border-radius:var(--r); padding:5px 12px; font-family:'Syne',sans-serif; font-size:12px; cursor:pointer; }
-    .sign-out-btn:hover { background:var(--surface2); }
 
     #meetings-wrap { display:none; }
     .sec-label { font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin-bottom:8px; font-family:'DM Mono',monospace; }
@@ -363,16 +363,12 @@
 
     /* ── movie quotes ── */
     #moviequote-wrap { overflow: hidden; margin-bottom: 1.2rem; }
-    #moviequote-wrap.hidden { display: none; }
     #moviequote-inner { display: flex; gap: 6px; width: max-content; animation: moviequote-scroll 60s linear infinite; }
     #moviequote-inner:hover { animation-play-state: paused; }
     @keyframes moviequote-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
     .mq-quote { flex-shrink: 0; background: var(--surface); border: 0.5px solid var(--border); border-radius: var(--r); padding: 4px 12px; display: flex; align-items: baseline; gap: 6px; white-space: nowrap; font-size: 12px; box-sizing: border-box; }
     .mq-quote-text { font-weight: 700; color: var(--text); }
     .mq-quote-attr { font-style: italic; color: var(--muted); }
-    #movie-toggle-btn { background: none; border: none; cursor: pointer; font-size: 15px; line-height: 1; padding: 4px; opacity: .35; border-radius: 4px; }
-    #movie-toggle-btn:hover { opacity: .7; background: var(--surface2); }
-    #movie-toggle-btn.active { opacity: 1; }
   </style>
 </head>
 <body>
@@ -411,30 +407,21 @@
 
 <div id="app">
   <div class="header">
-    <div class="brand">
-      <div>
-        <div class="brand-sub" id="date-lbl"></div>
-        <div class="brand-sub" id="epoch-lbl"></div>
-      </div>
-    </div>
-    <div id="regional-clocks"></div>
-    <div style="display:flex;align-items:center;gap:12px;">
-<button id="movie-toggle-btn" onclick="toggleMovieQuotes()" title="Toggle movie quotes">&#127916;</button>
-<div id="user-bar">
-        <div class="avatar" id="avatar"></div>
-        <div style="display:flex;flex-direction:column;align-items:flex-start;gap:4px;">
-          <div class="user-name" id="user-name"></div>
-          <button class="sign-out-btn" onclick="signOut()">Sign out</button>
-        </div>
+    <div class="header-stack">
+      <div id="regional-clocks"></div>
+      <div class="time-row">
+        <div class="time-box brand-sub" id="epoch-lbl"></div>
+        <div class="time-box" id="date-lbl"></div>
+        <div class="time-box brand-sub" id="gmt-lbl"></div>
       </div>
     </div>
   </div>
 
   <div id="pagerduty-panel"><div id="pagerduty-inner"><span class="mq-loading" style="font-size:11px;color:var(--muted);font-family:'DM Mono',monospace;">Loading PagerDuty...</span></div></div>
 
-  <div id="stocks-wrap"><div id="stocks-inner"></div></div>
-
   <div id="moviequote-wrap"><div id="moviequote-inner"></div></div>
+
+  <div id="stocks-wrap"><div id="stocks-inner"></div></div>
 
   <div id="login-panel">
     <div class="login-icon">
@@ -546,7 +533,7 @@
     });
     await pca.initialize();
     var accounts = pca.getAllAccounts();
-    if (accounts.length > 0) { currentAccount = accounts[0]; showUserBar(currentAccount); fetchCalendar(); }
+    if (accounts.length > 0) { currentAccount = accounts[0]; setUserId(currentAccount); fetchCalendar(); }
   });
 
   async function signIn() {
@@ -556,7 +543,7 @@
     try {
       var resp = await pca.loginPopup({ scopes: SCOPES });
       currentAccount = resp.account;
-      showUserBar(currentAccount);
+      setUserId(currentAccount);
       fetchCalendar();
     } catch (e) {
       var msg = e.message || '';
@@ -565,33 +552,8 @@
     }
   }
 
-  function signOut() {
-    if (!pca) return;
-    pca.logoutPopup({ account: currentAccount }).then(function () {
-      currentAccount = null; meetings = [];
-      if (ticker) clearInterval(ticker);
-      if (refreshTimer) clearInterval(refreshTimer);
-      if (teamsRefreshTimer) clearInterval(teamsRefreshTimer);
-      if (slackRefreshTimer) clearInterval(slackRefreshTimer);
-      document.getElementById('login-panel').style.display   = 'block';
-      document.getElementById('columns').style.display       = 'none';
-      document.getElementById('user-bar').style.display      = 'none';
-      document.body.classList.remove('meeting-now');
-      dismissedMsgIds = []; lastCheckedTime = 0; readTimes2 = {};
-      localStorage.removeItem('dismissed-msgs'); localStorage.removeItem('last-checked-time'); localStorage.removeItem('read-times');
-      localStorage.removeItem('dismissed-slack2');
-      slackChannelData = []; dismissedSlack = {};
-      setStatus('idle', 'Sign in to load your calendar');
-    });
-  }
-
-  function showUserBar(account) {
+  function setUserId(account) {
     window._myUserId = account.localAccountId || account.homeAccountId || '';
-    var name = account.name || account.username || 'You';
-    var ini  = name.split(' ').map(function(w){return w[0];}).join('').slice(0,2).toUpperCase();
-    document.getElementById('avatar').textContent    = ini;
-    document.getElementById('user-name').textContent = name;
-    document.getElementById('user-bar').style.display = 'flex';
   }
 
   async function getToken() {
@@ -1855,26 +1817,15 @@
     inner.style.animationDuration = duration.toFixed(2) + 's';
   }
 
-  function applyMovieQuoteVisibility() {
-    var hidden = localStorage.getItem('movie-quotes-hidden') === 'true';
-    document.getElementById('moviequote-wrap').classList.toggle('hidden', hidden);
-    document.getElementById('movie-toggle-btn').classList.toggle('active', !hidden);
-  }
-
-  function toggleMovieQuotes() {
-    var hidden = localStorage.getItem('movie-quotes-hidden') === 'true';
-    localStorage.setItem('movie-quotes-hidden', !hidden);
-    applyMovieQuoteVisibility();
-  }
-
   document.addEventListener('DOMContentLoaded', function() {
     var currentDateStr = new Date().toDateString();
     function updateDateLabel() {
-      document.getElementById('date-lbl').textContent = new Date().toLocaleDateString([],{weekday:'long',month:'long',day:'numeric'});
+      document.getElementById('date-lbl').textContent = new Date().toLocaleDateString([],{weekday:'long',month:'long',day:'numeric',year:'numeric'});
     }
     updateDateLabel();
     function updateEpoch() {
       document.getElementById('epoch-lbl').textContent = Math.floor(Date.now() / 1000);
+      document.getElementById('gmt-lbl').textContent = new Date().toISOString().slice(11, 19) + ' GMT';
       var nowDateStr = new Date().toDateString();
       if (nowDateStr !== currentDateStr) { currentDateStr = nowDateStr; updateDateLabel(); }
     }
@@ -1892,7 +1843,6 @@
     initMarquee();
     if (isMarketHours()) fetchStocks();
     setInterval(function() { if (isMarketHours()) fetchStocks(); }, 60 * 1000);
-    applyMovieQuoteVisibility();
     fetchMovieQuotes();
     setInterval(fetchMovieQuotes, 30 * 60 * 1000);
     fetchPagerDuty();
