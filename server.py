@@ -147,13 +147,20 @@ _rss_cache_lock = threading.Lock()
 _ssl_ctx      = None
 _ssl_ctx_lock = threading.Lock()
 
+def _default_ctx():
+    ctx = ssl.create_default_context()
+    # Python 3.13+ enables VERIFY_X509_STRICT by default, which rejects Zscaler's
+    # root CA ("Basic Constraints of CA cert not marked critical"). Relax just that flag.
+    ctx.verify_flags &= ~getattr(ssl, 'VERIFY_X509_STRICT', 0)
+    return ctx
+
 def make_ssl_context():
     global _ssl_ctx
     with _ssl_ctx_lock:
         if _ssl_ctx is not None:
             return _ssl_ctx
         if os.name != 'nt':
-            ctx = ssl.create_default_context()
+            ctx = _default_ctx()
             # When running in a venv, Python may use certifi's CA bundle instead of
             # the system store, so Zscaler's corporate root CA won't be trusted.
             # Explicitly load from system CA paths so the Zscaler cert is included.
@@ -195,7 +202,7 @@ def make_ssl_context():
                 capture_output=True, text=True, timeout=30
             )
             if result.returncode == 0 and result.stdout.strip():
-                ctx = ssl.create_default_context()
+                ctx = _default_ctx()
                 pem_lines = []
                 for b64 in result.stdout.strip().split('\n'):
                     b64 = b64.strip()
@@ -218,7 +225,7 @@ def make_ssl_context():
                 return ctx
         except Exception as e:
             print(f'Windows cert store load failed: {e}, using default SSL')
-        ctx = ssl.create_default_context()
+        ctx = _default_ctx()
         _ssl_ctx = ctx
         return ctx
 
