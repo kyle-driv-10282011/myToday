@@ -311,10 +311,10 @@
     /* ── pagerduty panel ── */
     #pagerduty-panel { background: var(--surface); border: 0.5px solid var(--border); border-radius: var(--r); margin-bottom: 1.2rem; padding: 5px 14px; overflow: hidden; transition: background 0.3s, border-color 0.3s; }
     #pagerduty-panel.has-open { background: #fce4e4; border-color: #e57373; }
-    #pagerduty-inner { display: flex; flex-wrap: nowrap; gap: 4px 16px; align-items: center; justify-content: center; width: fit-content; min-width: 100%; }
-    #pagerduty-inner.marquee { animation: pd-scroll var(--pd-dur, 30s) linear infinite; justify-content: flex-start; min-width: unset; }
-    #pagerduty-inner.marquee:hover { animation-play-state: paused; }
-    @keyframes pd-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .pd-view { display: flex; flex-wrap: nowrap; gap: 4px 16px; align-items: center; width: 100%; will-change: transform; }
+    .pd-view.team { justify-content: center; }
+    .pd-p1-viewport { flex: 1; min-width: 0; overflow: hidden; }
+    .pd-p1-track { display: flex; gap: 16px; align-items: center; width: max-content; will-change: transform; }
     .pd-team { display: flex; align-items: baseline; gap: 7px; font-family: 'DM Mono', monospace; font-size: 11px; white-space: nowrap; }
     .pd-team-name { font-weight: 700; color: var(--text); }
     .pd-person { color: var(--muted); max-width: 120px; overflow: hidden; text-overflow: ellipsis; }
@@ -324,6 +324,12 @@
     .pd-count.triggered   { background: #fce4e4; color: #b71c1c; }
     .pd-count.acknowledged { background: #e8f4fd; color: #0d47a1; }
     .pd-count.zero        { background: var(--surface2); color: var(--muted); }
+    .pd-p1 { display: flex; align-items: baseline; gap: 7px; font-family: 'DM Mono', monospace; font-size: 11px; white-space: nowrap; }
+    .pd-p1-label { font-weight: 700; color: #b71c1c; }
+    .pd-p1-item { color: var(--text); text-decoration: none; }
+    a.pd-p1-item:hover { text-decoration: underline; }
+    .pd-p1-meta { color: var(--muted); }
+    .pd-p1-none { color: var(--muted); }
     .pd-divider { width: 0.5px; background: var(--border2); align-self: stretch; min-height: 18px; }
     #pd-tooltip { display:none; position:fixed; z-index:2000; background:var(--surface); border:0.5px solid var(--border2); border-radius:var(--r); box-shadow:0 4px 16px rgba(0,0,0,.18); padding:4px; min-width:280px; max-width:420px; }
     .pd-tip-row { display:flex; align-items:center; gap:8px; padding:5px 8px; border-radius:4px; text-decoration:none; color:var(--text); }
@@ -418,7 +424,7 @@
     </div>
   </div>
 
-  <div id="pagerduty-panel"><div id="pagerduty-inner"><span class="mq-loading" style="font-size:11px;color:var(--muted);font-family:'DM Mono',monospace;">Loading PagerDuty...</span></div></div>
+  <div id="pagerduty-panel"><div class="pd-view team"><span class="mq-loading" style="font-size:11px;color:var(--muted);font-family:'DM Mono',monospace;">Loading PagerDuty...</span></div></div>
 
   <div id="moviequote-wrap"><div id="moviequote-inner"></div></div>
 
@@ -1309,14 +1315,20 @@
 
   // ── PagerDuty ─────────────────────────────────────────────────────────
   var pagerdutyData = [];
+  var pagerdutyP1   = [];   // account-wide P1 incidents, any service
   var pagerdutyRefreshTimer = null;
 
   async function fetchPagerDuty() {
     try {
       var resp = await fetch('/pagerduty');
       if (!resp.ok) { console.warn('PagerDuty fetch error:', resp.status); return; }
-      pagerdutyData = await resp.json();
-      renderPagerDutyMarquee();
+      var data = await resp.json();
+      pagerdutyData = data.teams || [];
+      pagerdutyP1   = data.p1 || [];
+      var panel = document.getElementById('pagerduty-panel');
+      if (panel) panel.classList.toggle('has-open', pagerdutyData.some(function(item) { return (item.triggered || 0) + (item.acknowledged || 0) > 0; }));
+      // the rotator rebuilds each view from the latest data as it comes round
+      if (!pdRotating && pagerdutyData.length) { pdRotating = true; pdRotate(); }
       if (pagerdutyRefreshTimer) clearInterval(pagerdutyRefreshTimer);
       pagerdutyRefreshTimer = setInterval(fetchPagerDuty, 60 * 1000);
     } catch(e) {
@@ -1353,98 +1365,191 @@
     tip.style.display = 'block';
   }
 
+  function pdFmtDate(iso) {
+    if (!iso) return '';
+    var d = new Date(iso);
+    return d.toLocaleDateString([], { month: 'short', day: 'numeric' }) + ' '
+      + d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  }
+
+  var PD_RESOLVED_DAYS = 7;   // how far back resolved P1s are shown
+  var PD_RESOLVED_MAX  = 5;
+
+  // account-wide P1 incidents grouped into the three ticker views
+  function pdP1Groups() {
+    var all = pagerdutyP1;
+    var cutoff = Date.now() - PD_RESOLVED_DAYS * 86400000;
+    var open = all.filter(function(inc) { return inc.status === 'triggered' || inc.status === 'acknowledged'; });
+    var resolved = all
+      .filter(function(inc) { return inc.status === 'resolved' && new Date(inc.resolved_at) >= cutoff; })
+      .sort(function(a, b) { return new Date(b.resolved_at) - new Date(a.resolved_at); })
+      .slice(0, PD_RESOLVED_MAX);
+    return [
+      { label: 'P1 - Open',          items: open,     dateKey: 'created_at' },
+      { label: 'P1 - Triggered/Ack', items: open,     dateKey: 'created_at' },
+      { label: 'P1 - Resolved',      items: resolved, dateKey: 'resolved_at' },
+    ];
+  }
+
   function hidePdTooltip() {
     document.getElementById('pd-tooltip').style.display = 'none';
   }
 
-  function renderPagerDutyMarquee() {
-    var panel = document.getElementById('pagerduty-panel');
-    if (!panel) return;
-    if (!pagerdutyData.length) { panel.innerHTML = '<span style="font-size:11px;color:var(--muted);font-family:\'DM Mono\',monospace;">No data</span>'; return; }
+  var PD_SLIDE_S     = 2.5;  // view slide in / out duration
+  var PD_TEAM_HOLD_S = 15;   // how long view 1 (teams) stays put
+  var PD_P1_PAUSE_S  = 2;    // pause before / after scrolling a P1 view's incidents
+  var PD_P1_HOLD_S   = 6;    // hold when a P1 view's incidents all fit
+  var pdRotating     = false;
 
-    var anyOpen = pagerdutyData.some(function(item) { return (item.triggered || 0) + (item.acknowledged || 0) > 0; });
-    panel.classList.toggle('has-open', anyOpen);
-    panel.innerHTML = '';
-    var inner = document.createElement('div');
-    inner.id = 'pagerduty-inner';
+  function pdWait(secs) { return new Promise(function(r) { setTimeout(r, secs * 1000); }); }
 
-    function addItems(container, live) {
-      pagerdutyData.forEach(function(item, i) {
-        var open         = (item.triggered || 0) + (item.acknowledged || 0);
-        var triggered    = item.triggered   || 0;
-        var acknowledged = item.acknowledged || 0;
-
-        var div = document.createElement('div');
-        div.className = 'pd-team';
-
-        var nameEl = document.createElement('span');
-        nameEl.className = 'pd-team-name';
-        nameEl.textContent = item.team;
-
-        var personEl = document.createElement('span');
-        personEl.className = 'pd-person';
-        personEl.textContent = item.person;
-
-        var counts = document.createElement('div');
-        counts.className = 'pd-counts';
-
-        var allIncidents = item.incidents || [];
-        function mkBadge(label, val, cls, filter, alwaysTip) {
-          var b = document.createElement('span');
-          b.className = 'pd-count ' + (val === 0 ? 'zero' : cls);
-          b.textContent = val + ' ' + label;
-          if (live) {
-            var tipIncidents = filter ? allIncidents.filter(function(inc) { return inc.status === filter; }) : allIncidents;
-            if (tipIncidents.length || alwaysTip) {
-              b.style.cursor = 'default';
-              b.addEventListener('mouseenter', function() { showPdTooltip(b, tipIncidents); });
-              b.addEventListener('mouseleave', hidePdTooltip);
-            }
-          }
-          return b;
-        }
-        if (!open) {
-          counts.appendChild(mkBadge('open', 0, 'open', null, true));
-        } else if (triggered && acknowledged) {
-          counts.appendChild(mkBadge('open', open, 'open', null, true));
-          counts.appendChild(mkBadge('trig', triggered, 'triggered', 'triggered', false));
-          counts.appendChild(mkBadge('ack', acknowledged, 'acknowledged', 'acknowledged', false));
-        } else if (triggered) {
-          counts.appendChild(mkBadge('trig', triggered, 'triggered', 'triggered', true));
-        } else {
-          counts.appendChild(mkBadge('ack', acknowledged, 'acknowledged', 'acknowledged', true));
-        }
-
-        div.appendChild(nameEl);
-        div.appendChild(personEl);
-        div.appendChild(counts);
-        container.appendChild(div);
-
-        if (i < pagerdutyData.length - 1) {
-          var divider = document.createElement('div');
-          divider.className = 'pd-divider';
-          container.appendChild(divider);
-        }
-      });
-    }
-
-    addItems(inner, true);
-    panel.appendChild(inner);
-
-    requestAnimationFrame(function() {
-      var contentWidth = inner.scrollWidth;
-      if (contentWidth > panel.clientWidth + 2) {
-        var sep = document.createElement('div');
-        sep.className = 'pd-divider';
-        inner.appendChild(sep);
-        addItems(inner, false);
-        var dur = Math.max(12, Math.round(contentWidth / 80));
-        inner.style.setProperty('--pd-dur', dur + 's');
-        inner.classList.add('marquee');
-      }
-    });
+  function pdSlide(el, from, to, secs, easing) {
+    el.style.transition = 'none';
+    el.style.transform  = from;
+    el.offsetWidth; // reflow so the transition starts from `from`
+    el.style.transition = 'transform ' + secs + 's ' + easing;
+    el.style.transform  = to;
+    return pdWait(secs);
   }
 
+  // View 1: each team's on-call person and open/trig/ack badges
+  function pdTeamView() {
+    var view = document.createElement('div');
+    view.className = 'pd-view team';
+    pagerdutyData.forEach(function(item, i) {
+      var open         = (item.triggered || 0) + (item.acknowledged || 0);
+      var triggered    = item.triggered   || 0;
+      var acknowledged = item.acknowledged || 0;
+
+      var div = document.createElement('div');
+      div.className = 'pd-team';
+
+      var nameEl = document.createElement('span');
+      nameEl.className = 'pd-team-name';
+      nameEl.textContent = item.team;
+
+      var personEl = document.createElement('span');
+      personEl.className = 'pd-person';
+      personEl.textContent = item.person;
+
+      var counts = document.createElement('div');
+      counts.className = 'pd-counts';
+
+      var allIncidents = item.incidents || [];
+      function mkBadge(label, val, cls, filter, alwaysTip) {
+        var b = document.createElement('span');
+        b.className = 'pd-count ' + (val === 0 ? 'zero' : cls);
+        b.textContent = val + ' ' + label;
+        var tipIncidents = filter ? allIncidents.filter(function(inc) { return inc.status === filter; }) : allIncidents;
+        if (tipIncidents.length || alwaysTip) {
+          b.style.cursor = 'default';
+          b.addEventListener('mouseenter', function() { showPdTooltip(b, tipIncidents); });
+          b.addEventListener('mouseleave', hidePdTooltip);
+        }
+        return b;
+      }
+      if (!open) {
+        counts.appendChild(mkBadge('open', 0, 'open', null, true));
+      } else if (triggered && acknowledged) {
+        counts.appendChild(mkBadge('open', open, 'open', null, true));
+        counts.appendChild(mkBadge('trig', triggered, 'triggered', 'triggered', false));
+        counts.appendChild(mkBadge('ack', acknowledged, 'acknowledged', 'acknowledged', false));
+      } else if (triggered) {
+        counts.appendChild(mkBadge('trig', triggered, 'triggered', 'triggered', true));
+      } else {
+        counts.appendChild(mkBadge('ack', acknowledged, 'acknowledged', 'acknowledged', true));
+      }
+
+      div.appendChild(nameEl);
+      div.appendChild(personEl);
+      div.appendChild(counts);
+      view.appendChild(div);
+
+      if (i < pagerdutyData.length - 1) {
+        var divider = document.createElement('div');
+        divider.className = 'pd-divider';
+        view.appendChild(divider);
+      }
+    });
+    return view;
+  }
+
+  // P1 view: fixed "P1 - Open:" header, incidents in a track that scrolls behind it
+  function pdP1View(group) {
+    var view = document.createElement('div');
+    view.className = 'pd-view pd-p1';
+
+    var labelEl = document.createElement('span');
+    labelEl.className = 'pd-p1-label';
+    labelEl.textContent = group.label + ':';
+    view.appendChild(labelEl);
+
+    var viewport = document.createElement('div');
+    viewport.className = 'pd-p1-viewport';
+    var track = document.createElement('div');
+    track.className = 'pd-p1-track';
+
+    if (!group.items.length) {
+      var none = document.createElement('span');
+      none.className = 'pd-p1-none';
+      none.textContent = 'none';
+      track.appendChild(none);
+    }
+    group.items.forEach(function(inc, j) {
+      var a = document.createElement('a');
+      a.className = 'pd-p1-item';
+      a.href = inc.html_url || '#';
+      a.target = '_blank';
+      a.textContent = inc.title;
+      var meta = document.createElement('span');
+      meta.className = 'pd-p1-meta';
+      meta.textContent = ' - ' + inc.service + ' - ' + inc.status + ' - ' + pdFmtDate(inc[group.dateKey]);
+      a.appendChild(meta);
+      track.appendChild(a);
+      if (j < group.items.length - 1) {
+        var divider = document.createElement('div');
+        divider.className = 'pd-divider';
+        track.appendChild(divider);
+      }
+    });
+
+    viewport.appendChild(track);
+    view.appendChild(viewport);
+    return view;
+  }
+
+  // Cycle: teams view, then each P1 view — each slides in, holds/scrolls, slides out
+  async function pdRotate() {
+    var panel     = document.getElementById('pagerduty-panel');
+    var offRight  = 'translateX(calc(100% + 20px))';
+    var offLeft   = 'translateX(calc(-100% - 20px))';
+    for (var i = 0; ; i++) {
+      var groups = pdP1Groups();
+      var v      = i % (groups.length + 1);
+      var view   = v === 0 ? pdTeamView() : pdP1View(groups[v - 1]);
+      panel.innerHTML = '';
+      panel.appendChild(view);
+
+      await pdSlide(view, offRight, 'translateX(0)', PD_SLIDE_S, 'ease-out');
+      if (v === 0) {
+        await pdWait(PD_TEAM_HOLD_S);
+      } else {
+        var track    = view.querySelector('.pd-p1-track');
+        var overflow = track.scrollWidth - view.querySelector('.pd-p1-viewport').clientWidth;
+        if (overflow > 0) {
+          // same px/s pace as the movie quotes ticker
+          var speed = (stockPxPerSec || FALLBACK_PX_PER_SEC) * MOVIEQUOTE_SPEED_FACTOR;
+          await pdWait(PD_P1_PAUSE_S);
+          await pdSlide(track, 'translateX(0)', 'translateX(' + (-overflow) + 'px)', overflow / speed, 'linear');
+          await pdWait(PD_P1_PAUSE_S);
+        } else {
+          await pdWait(PD_P1_HOLD_S);
+        }
+      }
+      hidePdTooltip();
+      await pdSlide(view, 'translateX(0)', offLeft, PD_SLIDE_S, 'ease-in');
+    }
+  }
 
   // ── Regional Clocks ──────────────────────────────────────────────────────
   var CLOCKS = [];

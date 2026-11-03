@@ -128,6 +128,7 @@ try:
     )
     import config as _config
     PORT            = getattr(_config, 'PORT', 8080)
+    PAGERDUTY_P1_PRIORITIES = getattr(_config, 'PAGERDUTY_P1_PRIORITIES', ['P1', 'SEV-1'])
     print(f'Config: {os.path.abspath(_config.__file__)}')
 except ModuleNotFoundError:
     print('ERROR: config.py not found.')
@@ -882,7 +883,7 @@ class Handler(http.server.BaseHTTPRequestHandler):
                             oncall_person = user.get('summary', 'Unknown')
 
                         # Fetch incident counts by service
-                        incident_url = f'https://api.pagerduty.com/incidents?service_ids[]={team["service"]}&statuses[]=triggered&statuses[]=acknowledged&statuses[]=resolved&limit=100'
+                        incident_url = f'https://api.pagerduty.com/incidents?service_ids[]={team["service"]}&statuses[]=triggered&statuses[]=acknowledged&statuses[]=resolved&sort_by=created_at:desc&limit=100'
                         req = urllib.request.Request(incident_url, headers=headers)
                         try:
                             with opener.open(req, timeout=15) as r:
@@ -920,7 +921,50 @@ class Handler(http.server.BaseHTTPRequestHandler):
                         print(f'PagerDuty error for {team["name"]}: {e}')
                         results.append({'team': team['name'], 'person': 'Error', 'triggered': 0, 'acknowledged': 0, 'resolved': 0, 'incidents': []})
 
-                body = json.dumps(results).encode()
+                # Account-wide P1s (any service): all open, plus resolved in the last 7 days.
+                # The incidents API can't filter by priority, so page through and filter here.
+                def norm_priority(s):
+                    return (s or '').upper().replace('-', '').replace(' ', '')
+                p1_names = {norm_priority(p) for p in PAGERDUTY_P1_PRIORITIES}
+
+                def fetch_incidents(query, max_pages=20):
+                    out, offset = [], 0
+                    for _ in range(max_pages):
+                        url = f'https://api.pagerduty.com/incidents?{query}&limit=100&offset={offset}'
+                        with opener.open(urllib.request.Request(url, headers=headers), timeout=15) as r:
+                            page = json.loads(r.read())
+                        out.extend(page.get('incidents', []))
+                        if not page.get('more'):
+                            break
+                        offset += 100
+                    return out
+
+                p1 = []
+                try:
+                    since = (datetime.datetime.now(datetime.timezone.utc) - datetime.timedelta(days=7)).strftime('%Y-%m-%dT%H:%M:%SZ')
+                    candidates = (
+                        fetch_incidents('statuses[]=triggered&statuses[]=acknowledged&date_range=all')
+                        + fetch_incidents(f'statuses[]=resolved&since={urllib.parse.quote(since)}&sort_by=created_at:desc')
+                    )
+                    p1 = [
+                        {
+                            'id':          inc.get('id', ''),
+                            'title':       inc.get('title', ''),
+                            'status':      inc.get('status', ''),
+                            'service':     (inc.get('service') or {}).get('summary', ''),
+                            'html_url':    inc.get('html_url', ''),
+                            'created_at':  inc.get('created_at', ''),
+                            'resolved_at': inc.get('resolved_at') or inc.get('last_status_change_at', ''),
+                        }
+                        for inc in candidates
+                        if norm_priority((inc.get('priority') or {}).get('summary')) in p1_names
+                    ]
+                except urllib.error.HTTPError as he:
+                    print(f'PagerDuty P1 incidents {he.code}: {he.read().decode("utf-8")}')
+                except Exception as e:
+                    print(f'PagerDuty P1 incidents error: {e}')
+
+                body = json.dumps({'teams': results, 'p1': p1}).encode()
                 self.send_response(200)
                 self._cors()
                 self.send_header('Content-Type', 'application/json')

@@ -23,6 +23,10 @@ PAGERDUTY_TEAMS      = [
     {'name': 'Your Team', 'schedule': 'XXXXXXX', 'service': 'XXXXXXX'},
 ]
 
+# PagerDuty priority names shown in the P1 ticker views (account-wide, any service).
+# Matching ignores case, spaces and hyphens. Optional — defaults to these.
+PAGERDUTY_P1_PRIORITIES = ['P1', 'SEV-1']
+
 # Finnhub API key — finnhub.io → Dashboard → API Key (free tier works)
 FINNHUB_KEY          = 'your-finnhub-api-key'
 
